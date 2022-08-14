@@ -82,6 +82,14 @@ var ModName = [...]string{
 	SymMSL:  "SymMSL",
 }
 
+var ModRequiresImm = [...]bool{
+	SymLSL: true,
+	SymLSR: true,
+	SymASR: true,
+	SymROR: true,
+	SymMSL: true,
+}
+
 func checkMod(list []uint8, id uint8) bool {
 	for _, x := range list {
 		if id == x {
