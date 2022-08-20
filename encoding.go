@@ -89,8 +89,6 @@ const (
 	SymCONTROLREGS
 )
 
-func IsRelocCmd(op uint8) bool { return op >= RelB && op <= RelTbz }
-
 // Arm Architecture Reference Manual for A-profile architecture, 4 Feb 2022 Issue H.a
 // B2.6.2: Instruction endianness:
 // A64 instructions have a fixed length of 32 bits and are always little-endian.

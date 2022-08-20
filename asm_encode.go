@@ -132,9 +132,6 @@ Scan:
 				if !symListContains(listSym, Symbol(arg)) {
 					return false
 				}
-				if listSym == SymCONTROLREGS {
-					arg -= FlatImm(C0)
-				}
 				opcode |= uint32(SymbolValue[arg]) << offset
 
 			// arithmetic/bitwise:

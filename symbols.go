@@ -27,176 +27,173 @@ const (
 
 	// Literals
 
-	RCTX
-	IVAU
-	INVERTED
-	LOGICAL
-	CSYNC
+	RCTX     // restriction by context
+	IVAU     // instruction cache line invalidation
+	INVERTED // inverted moves
+	LOGICAL  // logical moves
+	CSYNC    // profile/trace synchronization
 
-	// CONTROLREGS
+	C0  // CONTROLREGS (Control Registers)
+	C1  // CONTROLREGS (Control Registers)
+	C2  // CONTROLREGS (Control Registers)
+	C3  // CONTROLREGS (Control Registers)
+	C4  // CONTROLREGS (Control Registers)
+	C5  // CONTROLREGS (Control Registers)
+	C6  // CONTROLREGS (Control Registers)
+	C7  // CONTROLREGS (Control Registers)
+	C8  // CONTROLREGS (Control Registers)
+	C9  // CONTROLREGS (Control Registers)
+	C10 // CONTROLREGS (Control Registers)
+	C11 // CONTROLREGS (Control Registers)
+	C12 // CONTROLREGS (Control Registers)
+	C13 // CONTROLREGS (Control Registers)
+	C14 // CONTROLREGS (Control Registers)
+	C15 // CONTROLREGS (Control Registers)
 
-	C0
-	C1
-	C2
-	C3
-	C4
-	C5
-	C6
-	C7
-	C8
-	C9
-	C10
-	C11
-	C12
-	C13
-	C14
-	C15
+	S1E1R  // ATOPS (Address Translation)
+	S1E1W  // ATOPS (Address Translation)
+	S1E0R  // ATOPS (Address Translation)
+	S1E0W  // ATOPS (Address Translation)
+	S1E2R  // ATOPS (Address Translation)
+	S1E2W  // ATOPS (Address Translation)
+	S12E1R // ATOPS (Address Translation)
+	S12E1W // ATOPS (Address Translation)
+	S12E0R // ATOPS (Address Translation)
+	S12E0W // ATOPS (Address Translation)
+	S1E3R  // ATOPS (Address Translation)
+	S1E3W  // ATOPS (Address Translation)
+	S1E1RP // ATOPS (Address Translation)
+	S1E1WP // ATOPS (Address Translation)
 
-	// ATOPS
+	IALLUIS // ICOPS (Instruction Cache)
+	IALLU   // ICOPS (Instruction Cache)
 
-	S1E1R
-	S1E1W
-	S1E0R
-	S1E0W
-	S1E2R
-	S1E2W
-	S12E1R
-	S12E1W
-	S12E0R
-	S12E0W
-	S1E3R
-	S1E3W
-	S1E1RP
-	S1E1WP
+	IVAC  // DCOPS (Data Cache)
+	ISW   // DCOPS (Data Cache)
+	CSW   // DCOPS (Data Cache)
+	CISW  // DCOPS (Data Cache)
+	ZVA   // DCOPS (Data Cache)
+	CVAC  // DCOPS (Data Cache)
+	CVAU  // DCOPS (Data Cache)
+	CIVAC // DCOPS (Data Cache)
+	CVAP  // DCOPS (Data Cache)
 
-	// ICOPS
+	SY    // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	ST    // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	LD    // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	ISH   // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	ISHST // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	ISHLD // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	NSH   // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	NSHST // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	NSHLD // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	OSH   // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	OSHST // BARRIEROPS (Instruction/Data Synchronization Barriers)
+	OSHLD // BARRIEROPS (Instruction/Data Synchronization Barriers)
 
-	IALLUIS
-	IALLU
+	SPSEL        // MSRIMMOPS (System Registers)
+	DAIFSET      // MSRIMMOPS (System Registers)
+	DAIFCLR      // MSRIMMOPS (System Registers)
+	UAO          // MSRIMMOPS (System Registers)
+	PAN          // MSRIMMOPS (System Registers)
+	DIT          // MSRIMMOPS (System Registers)
+	VMALLE1IS    // MSRIMMOPS (System Registers)
+	VAE1IS       // MSRIMMOPS (System Registers)
+	ASIDE1IS     // MSRIMMOPS (System Registers)
+	VAAE1IS      // MSRIMMOPS (System Registers)
+	VALE1IS      // MSRIMMOPS (System Registers)
+	VAALE1IS     // MSRIMMOPS (System Registers)
+	VMALLE1      // MSRIMMOPS (System Registers)
+	VAE1         // MSRIMMOPS (System Registers)
+	ASIDE1       // MSRIMMOPS (System Registers)
+	VAAE1        // MSRIMMOPS (System Registers)
+	VALE1        // MSRIMMOPS (System Registers)
+	VAALE1       // MSRIMMOPS (System Registers)
+	IPAS2E1IS    // MSRIMMOPS (System Registers)
+	IPAS2LE1IS   // MSRIMMOPS (System Registers)
+	ALLE2IS      // MSRIMMOPS (System Registers)
+	VAE2IS       // MSRIMMOPS (System Registers)
+	ALLE1IS      // MSRIMMOPS (System Registers)
+	VALE2IS      // MSRIMMOPS (System Registers)
+	VMALLS12E1IS // MSRIMMOPS (System Registers)
+	IPAS2E1      // MSRIMMOPS (System Registers)
+	IPAS2LE1     // MSRIMMOPS (System Registers)
+	ALLE2        // MSRIMMOPS (System Registers)
+	VAE2         // MSRIMMOPS (System Registers)
+	ALLE1        // MSRIMMOPS (System Registers)
+	VALE2        // MSRIMMOPS (System Registers)
+	VMALLS12E1   // MSRIMMOPS (System Registers)
+	ALLE3IS      // MSRIMMOPS (System Registers)
+	VAE3IS       // MSRIMMOPS (System Registers)
+	VALE3IS      // MSRIMMOPS (System Registers)
+	ALLE3        // MSRIMMOPS (System Registers)
+	VAE3         // MSRIMMOPS (System Registers)
+	VALE3        // MSRIMMOPS (System Registers)
+	VMALLE1OS    // MSRIMMOPS (System Registers)
+	VAE1OS       // MSRIMMOPS (System Registers)
+	ASIDE1OS     // MSRIMMOPS (System Registers)
+	VAAE1OS      // MSRIMMOPS (System Registers)
+	VALE1OS      // MSRIMMOPS (System Registers)
+	VAALE1OS     // MSRIMMOPS (System Registers)
+	RVAE1IS      // MSRIMMOPS (System Registers)
+	RVAAE1IS     // MSRIMMOPS (System Registers)
+	RVALE1IS     // MSRIMMOPS (System Registers)
+	RVAALE1IS    // MSRIMMOPS (System Registers)
+	RVAE1OS      // MSRIMMOPS (System Registers)
+	RVAAE1OS     // MSRIMMOPS (System Registers)
+	RVALE1OS     // MSRIMMOPS (System Registers)
+	RVAALE1OS    // MSRIMMOPS (System Registers)
+	RVAE1        // MSRIMMOPS (System Registers)
+	RVAAE1       // MSRIMMOPS (System Registers)
+	RVALE1       // MSRIMMOPS (System Registers)
+	RVAALE1      // MSRIMMOPS (System Registers)
+	RIPAS2E1IS   // MSRIMMOPS (System Registers)
+	RIPAS2LE1IS  // MSRIMMOPS (System Registers)
+	ALLE2OS      // MSRIMMOPS (System Registers)
+	VAE2OS       // MSRIMMOPS (System Registers)
+	ALLE1OS      // MSRIMMOPS (System Registers)
+	VALE2OS      // MSRIMMOPS (System Registers)
 
-	// DCOPS
-
-	IVAC
-	ISW
-	CSW
-	CISW
-	ZVA
-	CVAC
-	CVAU
-	CIVAC
-	CVAP
-
-	// BARRIEROPS
-
-	SY
-	ST
-	LD
-	ISH
-	ISHST
-	ISHLD
-	NSH
-	NSHST
-	NSHLD
-	OSH
-	OSHST
-	OSHLD
-
-	// MSRIMMOPS
-
-	SPSEL
-	DAIFSET
-	DAIFCLR
-	UAO
-	PAN
-	DIT
-	VMALLE1IS
-	VAE1IS
-	ASIDE1IS
-	VAAE1IS
-	VALE1IS
-	VAALE1IS
-	VMALLE1
-	VAE1
-	ASIDE1
-	VAAE1
-	VALE1
-	VAALE1
-	IPAS2E1IS
-	IPAS2LE1IS
-	ALLE2IS
-	VAE2IS
-	ALLE1IS
-	VALE2IS
-	VMALLS12E1IS
-	IPAS2E1
-	IPAS2LE1
-	ALLE2
-	VAE2
-	ALLE1
-	VALE2
-	VMALLS12E1
-	ALLE3IS
-	VAE3IS
-	VALE3IS
-	ALLE3
-	VAE3
-	VALE3
-	VMALLE1OS
-	VAE1OS
-	ASIDE1OS
-	VAAE1OS
-	VALE1OS
-	VAALE1OS
-	RVAE1IS
-	RVAAE1IS
-	RVALE1IS
-	RVAALE1IS
-	RVAE1OS
-	RVAAE1OS
-	RVALE1OS
-	RVAALE1OS
-	RVAE1
-	RVAAE1
-	RVALE1
-	RVAALE1
-	RIPAS2E1IS
-	RIPAS2LE1IS
-	ALLE2OS
-	VAE2OS
-	ALLE1OS
-	VALE2OS
-
-	// TLBIOPS
-
-	VMALLS12E1OS
-	RVAE2IS
-	RVALE2IS
-	IPAS2E1OS
-	RIPAS2E1
-	RIPAS2E1OS
-	IPAS2LE1OS
-	RIPAS2LE1
-	RIPAS2LE1OS
-	RVAE2OS
-	RVALE2OS
-	RVAE2
-	RVALE2
-	ALLE3OS
-	VAE3OS
-	VALE3OS
-	RVAE3IS
-	RVALE3IS
-	RVAE3OS
-	RVALE3OS
-	RVAE3
-	RVALE3
+	VMALLS12E1OS // TLBIOPS (Translation Table)
+	RVAE2IS      // TLBIOPS (Translation Table)
+	RVALE2IS     // TLBIOPS (Translation Table)
+	IPAS2E1OS    // TLBIOPS (Translation Table)
+	RIPAS2E1     // TLBIOPS (Translation Table)
+	RIPAS2E1OS   // TLBIOPS (Translation Table)
+	IPAS2LE1OS   // TLBIOPS (Translation Table)
+	RIPAS2LE1    // TLBIOPS (Translation Table)
+	RIPAS2LE1OS  // TLBIOPS (Translation Table)
+	RVAE2OS      // TLBIOPS (Translation Table)
+	RVALE2OS     // TLBIOPS (Translation Table)
+	RVAE2        // TLBIOPS (Translation Table)
+	RVALE2       // TLBIOPS (Translation Table)
+	ALLE3OS      // TLBIOPS (Translation Table)
+	VAE3OS       // TLBIOPS (Translation Table)
+	VALE3OS      // TLBIOPS (Translation Table)
+	RVAE3IS      // TLBIOPS (Translation Table)
+	RVALE3IS     // TLBIOPS (Translation Table)
+	RVAE3OS      // TLBIOPS (Translation Table)
+	RVALE3OS     // TLBIOPS (Translation Table)
+	RVAE3        // TLBIOPS (Translation Table)
+	RVALE3       // TLBIOPS (Translation Table)
 )
 
+// Address Translation
 var ATOPS = [...]Symbol{S1E1R, S1E1W, S1E0R, S1E0W, S1E2R, S1E2W, S12E1R, S12E1W, S12E0R, S12E0W, S1E3R, S1E3W, S1E1RP, S1E1WP}
+
+// Instruction Cache
 var ICOPS = [...]Symbol{IALLUIS, IALLU}
+
+// Data Cache
 var DCOPS = [...]Symbol{IVAC, ISW, CSW, CISW, ZVA, CVAC, CVAU, CIVAC, CVAP}
+
+// Instruction/Data Synchronization Barriers
 var BARRIEROPS = [...]Symbol{SY, ST, LD, ISH, ISHST, ISHLD, NSH, NSHST, NSHLD, OSH, OSHST, OSHLD}
+
+// System Registers
 var MSRIMMOPS = [...]Symbol{SPSEL, DAIFSET, DAIFCLR, UAO, PAN, DIT}
+
+// Translation Table
 var TLBIOPS = [...]Symbol{VMALLE1IS, VAE1IS, ASIDE1IS, VAAE1IS, VALE1IS, VAALE1IS, VMALLE1, VAE1, ASIDE1, VAAE1, VALE1, VAALE1, IPAS2E1IS, IPAS2LE1IS, ALLE2IS, VAE2IS, ALLE1IS, VALE2IS, VMALLS12E1IS, IPAS2E1, IPAS2LE1, ALLE2, VAE2, ALLE1, VALE2, VMALLS12E1, ALLE3IS, VAE3IS, VALE3IS, ALLE3, VAE3, VALE3, VMALLE1OS, VAE1OS, ASIDE1OS, VAAE1OS, VALE1OS, VAALE1OS, RVAE1IS, RVAAE1IS, RVALE1IS, RVAALE1IS, RVAE1OS, RVAAE1OS, RVALE1OS, RVAALE1OS, RVAE1, RVAAE1, RVALE1, RVAALE1, RIPAS2E1IS, RIPAS2LE1IS, ALLE2OS, VAE2OS, ALLE1OS, VALE2OS, VMALLS12E1OS, RVAE2IS, RVALE2IS, IPAS2E1OS, RIPAS2E1, RIPAS2E1OS, IPAS2LE1OS, RIPAS2LE1, RIPAS2LE1OS, RVAE2OS, RVALE2OS, RVAE2, RVALE2, ALLE3OS, VAE3OS, VALE3OS, RVAE3IS, RVALE3IS, RVAE3OS, RVALE3OS, RVAE3, RVALE3}
 
 func symListContains(listSym uint8, arg Symbol) bool {
@@ -237,21 +234,21 @@ var SymbolValue = [...]uint16{
 	LOGICAL:      uint16(LOGICAL),
 	CSYNC:        uint16(CSYNC),
 	C0:           uint16(C0),
-	C1:           uint16(C1),
-	C2:           uint16(C2),
-	C3:           uint16(C3),
-	C4:           uint16(C4),
-	C5:           uint16(C5),
-	C6:           uint16(C6),
-	C7:           uint16(C7),
-	C8:           uint16(C8),
-	C9:           uint16(C9),
-	C10:          uint16(C10),
-	C11:          uint16(C11),
-	C12:          uint16(C12),
-	C13:          uint16(C13),
-	C14:          uint16(C14),
-	C15:          uint16(C15),
+	C1:           uint16(C1 - C0),
+	C2:           uint16(C2 - C0),
+	C3:           uint16(C3 - C0),
+	C4:           uint16(C4 - C0),
+	C5:           uint16(C5 - C0),
+	C6:           uint16(C6 - C0),
+	C7:           uint16(C7 - C0),
+	C8:           uint16(C8 - C0),
+	C9:           uint16(C9 - C0),
+	C10:          uint16(C10 - C0),
+	C11:          uint16(C11 - C0),
+	C12:          uint16(C12 - C0),
+	C13:          uint16(C13 - C0),
+	C14:          uint16(C14 - C0),
+	C15:          uint16(C15 - C0),
 	S1E1R:        0b00001111000000,
 	S1E1W:        0b00001111000001,
 	S1E0R:        0b00001111000010,
