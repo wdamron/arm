@@ -22,6 +22,13 @@ type Arg interface {
 // ----------------------------------------------------------------
 
 // Reg is a scalar or vector register argument. Vector registers may include an element specifier.
+//
+// The following register constructors and values are available:
+//
+//   - Integer: [W], [X], [WZR], [XZR]
+//   - Stack Pointer: [WSP], [XSP]
+//   - Scalar SIMD: [ScalarB], [ScalarH], [ScalarS], [ScalarD], [ScalarQ]
+//   - Vector SIMD: [Vec4B], [Vec8B], [Vec16B], [Vec2H], [Vec4H], [Vec8H], [Vec2S], [Vec4S], [Vec1D], [Vec2D], [Vec1Q]
 type Reg struct {
 	ID      uint8   // 0-31 register number
 	Type    RegType // element size; integer, SP, or SIMD register type; 34/64/128-bit indicator
