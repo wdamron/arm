@@ -23,7 +23,7 @@ const (
 	CmdUAlt2     // UAlt2(offset, *[2]uint8), encode an immediate that can only be a limited amount of options
 	CmdUAlt4     // UAlt4(offset, *[4]uint8), encode an immediate that can only be a limited amount of options
 	CmdUrange    // Urange(offset, min, max), (loc, min, max) asserts the immediate is below or equal to max, encodes the value of (imm-min)
-	CmdUsub      // Usub(offset, bitlen, val), encode at $0, $1 bits long, $2 - value. Checks if the value is in the range 1 ..= value
+	CmdUsub      // Usub(offset, bitlen, val), encode at $0, $1 bits long, $2 - value. Checks if the value is in the range 0 .. value
 	CmdUnegmod   // Unegmod(offset, bitlen), encode at $0, $1 bits long, -value % (1 << $1). Checks if the value is in the range 0 .. value
 	CmdUsumdec   // Usumdec(offset, bitlen), encode at $0, $1 bits long, the value of the previous arg + the value of the current arg - 1
 	CmdUfields11 // Ufields11(count), encode an immediate bitwise with $0 fields, into bits [11, 21, 20]

@@ -1,14 +1,31 @@
-// Package asm implements an ARMv8 (aarch64) instruction assembler in Go.
+// Package asm implements an ARMv8 (AArch64) instruction assembler in Go.
 //
-// This library is mostly adapted from the CensoredUsername/dynasm-rs (Rust) project.
-// See https://github.com/CensoredUsername/dynasm-rs.
+// This library is mostly adapted from the CensoredUsername/dynasm-rs (Rust) project, and is not heavily tested.
+// See https://github.com/CensoredUsername/dynasm-rs. SVE instructions are not yet supported.
+//
+// The Assembler type encodes executable instructions to a code buffer.
+//
+// Some instructions support label offset arguments, which may be resolved by the Assembler
+// and encoded after all label addresses are assigned.
+//
+// The following are argument types:
+//   - Reg: integer, SP, SIMD scalar, or SIMD vector register (with optional element index)
+//   - RegList: list of sequential registers
+//   - Ref: memory reference with register base, optionally followed by X register or immediate for post-indexing
+//   - RefOffset: memory reference with register base and immediate offset
+//   - RefPreIndexed: pre-indexed memory reference with register base and immediate offset
+//   - RefIndexed: memory index with register base, register index, and optional index modifier
+//   - Imm: 32-bit immediate integer
+//   - Float: 32-bit immediate float
+//   - Wide: 64-bit immediate integer
+//   - Mod: modifier with optional immediate shift/rotate
+//   - Label: label reference with optional offset from label address
+//   - Symbol: constant identifier
 package arm
-
-import "math"
 
 // Assembler encodes executable instructions to a code buffer.
 //
-// Some instructions support label offset arguments, may be resolved
+// Some instructions support label offset arguments, which may be resolved
 // and encoded after all label addresses are assigned.
 type Assembler struct {
 	Code    []byte   // code buffer indexed by PC
@@ -36,6 +53,7 @@ type Assembler struct {
 }
 
 // Reloc is a label reference deferred for encoding after all relocations are being applied.
+// Relocations are used internally, and exposed for debugging.
 type Reloc struct {
 	InstPC uint32    // instruction with label offset argument
 	Op     uint8     // relocation type
@@ -43,6 +61,7 @@ type Reloc struct {
 }
 
 // EncOp is a matching or encoding operator decoded from the Patterns or Commands arrays.
+// Operators are used internally, and exposed for debugging.
 type EncOp struct {
 	Op uint8
 	X  [3]uint8
@@ -75,6 +94,12 @@ func (a *Assembler) NewLabel() Label {
 // SetLabel sets the PC for a label to the current PC.
 func (a *Assembler) SetLabel(label Label) { a.LabelPC[label.ID] = a.PC }
 
+// Pattern returns the list of matching operators for the most recent matching iteration, useful for debugging.
+func (a *Assembler) Pattern() []EncOp { return a.pattern[:a.patternLen] }
+
+// Commands returns the list of encoding operators for the most recent matching iteration, useful for debugging.
+func (a *Assembler) Commands() []EncOp { return a.cmds[:a.cmdsLen] }
+
 // ApplyRelocations patches all instructions containing label offset arguments, with the currently assigned
 // PC value for each label.
 func (a *Assembler) ApplyRelocations() bool {
@@ -84,12 +109,7 @@ func (a *Assembler) ApplyRelocations() bool {
 	for _, rel := range a.Relocs {
 		opcode := dec32(a.Code[rel.InstPC:])
 		targetPC := int64(a.LabelPC[rel.Jump.ID]) + int64(rel.Jump.Offset)
-		offset := targetPC - int64(rel.InstPC)
-		if offset < math.MinInt32 || offset > math.MaxInt32 {
-			a.Err = ErrInvalidEncoding
-			return false
-		}
-		enc, ok := encReloc(rel.Op, int32(offset))
+		enc, ok := encOffset(rel.Op, targetPC-int64(rel.InstPC))
 		if !ok {
 			a.Err = ErrInvalidEncoding
 			return false
@@ -167,7 +187,3 @@ func (a *Assembler) Inst(inst Inst, args ...Arg) bool {
 	a.Err = ErrNoMatch
 	return false
 }
-
-func (a *Assembler) Pattern() []EncOp { return a.pattern[:a.patternLen] }
-
-func (a *Assembler) Commands() []EncOp { return a.cmds[:a.cmdsLen] }

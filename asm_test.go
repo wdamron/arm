@@ -8,43 +8,49 @@ func TestLabels(t *testing.T) {
 	a.Init(code)
 
 	// Backward label jump:
+
 	start := a.NewLabel()
 	a.PC = 64
 	if !a.Inst(B, start) {
 		t.Fatalf("Failed to encode B: %v", a.Err)
 	}
+	// Patch instructions:
 	if !a.ApplyRelocations() {
 		t.Fatalf("Failed to apply relocs: %v", a.Err)
 	}
 	if actual, expected := dec32(code[a.PC-4:]), 0x17FFFFF0; actual != uint32(expected) {
 		t.Fatalf("Invalid B %08X, expecting %08X", actual, expected)
 	}
-
+	// Ensure branch with immediate offset encodes to the same instruction:
 	a.PC = 0
 	a.Inst(B, Imm(-64))
 	if actual, expected := dec32(code[0:]), 0x17FFFFF0; actual != uint32(expected) {
 		t.Fatalf("Invalid B %08X, expecting %08X", actual, expected)
 	}
 
-	// Forward label jump:
+	// Forward label jump, with extra extraOffset:
+
+	const endPC, extraOffset = 96, -16
 	code = make([]byte, 256)
 	a.Init(code)
-	end := a.NewLabel()
-	if !a.Inst(B, end) {
+	end := a.NewLabel() // PC assigned later
+	if !a.Inst(B, Label{end.ID, extraOffset}) {
 		t.Fatalf("Failed to encode B: %v", a.Err)
 	}
-	a.PC = 96
+	// Assign the current PC to the label:
+	a.PC = endPC
 	a.SetLabel(end)
+	// Patch instructions:
 	if !a.ApplyRelocations() {
 		t.Fatalf("Failed to apply relocs: %v", a.Err)
 	}
-	if actual, expected := dec32(code[0:]), 0x14000018; actual != uint32(expected) {
+	if actual, expected := dec32(code[0:]), 0x14000014; actual != uint32(expected) {
 		t.Fatalf("Invalid B %08X, expecting %08X", actual, expected)
 	}
-
+	// Ensure branch with immediate offset encodes to the same instruction:
 	a.PC = 0
-	a.Inst(B, Imm(96))
-	if actual, expected := dec32(code[0:]), 0x14000018; actual != uint32(expected) {
+	a.Inst(B, Imm(endPC+extraOffset))
+	if actual, expected := dec32(code[0:]), 0x14000014; actual != uint32(expected) {
 		t.Fatalf("Invalid B %08X, expecting %08X", actual, expected)
 	}
 }

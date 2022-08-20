@@ -117,16 +117,16 @@ func (a *Assembler) matchArg(arg Arg, m EncOp) bool {
 		}
 
 	case Ref:
-		return checkReg(arg.Base) && (m.Op == MatRefBase || m.Op == MatRefOffset) && (arg.Base.Family() == RegInt || arg.Base.Family() == RegSP)
+		return (m.Op == MatRefBase || m.Op == MatRefOffset) && checkReg(arg.Base) && checkRefBase(arg.Base)
 
 	case RefOffset:
-		return checkReg(arg.Base) && m.Op == MatRefOffset && (arg.Base.Family() == RegInt || arg.Base.Family() == RegSP)
+		return m.Op == MatRefOffset && checkReg(arg.Base) && checkRefBase(arg.Base)
 
 	case RefPreIndexed:
-		return checkReg(arg.Base) && m.Op == MatRefPre && (arg.Base.Family() == RegInt || arg.Base.Family() == RegSP)
+		return m.Op == MatRefPre && checkReg(arg.Base) && checkRefBase(arg.Base)
 
 	case RefIndexed:
-		return checkReg(arg.Base) && checkReg(arg.Idx) && m.Op == MatRefIndex && (arg.Base.Family() == RegInt || arg.Base.Family() == RegSP) && arg.Idx.Family() == RegInt
+		return m.Op == MatRefIndex && checkReg(arg.Base) && checkReg(arg.Idx) && checkRefBase(arg.Base) && arg.Idx.Family() == RegInt
 
 	case Label:
 		if int(arg.ID) >= len(a.LabelPC) {
@@ -180,6 +180,8 @@ func checkReg(r Reg) bool {
 	}
 	return false
 }
+
+func checkRefBase(r Reg) bool { return r.Family() == RegInt || r.Family() == RegSP }
 
 func (a *Assembler) matchOrSetSimdSize(reg Reg) bool {
 	switch reg.Family() {

@@ -23,9 +23,9 @@ type Arg interface {
 
 // Reg is a scalar or vector register argument. Vector registers may include an element specifier.
 type Reg struct {
-	ID   uint8   // 0-31 integer, SP, or SIMD register
-	Type RegType // element size and 34/64/128-bit indicator
-	Elem uint8   // vector element index (bitwise complement, zero indicates unset)
+	ID      uint8   // 0-31 integer, SP, or SIMD register
+	Type    RegType // element size and 34/64/128-bit indicator
+	ElemInv uint8   // vector element index (bitwise complement, zero indicates unset)
 }
 
 func (r Reg) arg() {}
@@ -95,7 +95,7 @@ func (i Float) arg() {}
 // Mod is a shift, rotate, or extension modifier argument.
 // Shift and rotate modifiers require an immediate.
 type Mod struct {
-	ID     uint8
+	ID     uint8 // modifier symbol
 	ImmInv uint8 // bitwise complement, zero indicates unset
 }
 
@@ -105,8 +105,8 @@ func (m Mod) arg() {}
 
 // Label is a label reference argument with an optional offset from the label.
 type Label struct {
-	ID     uint32
-	Offset int32 // optional offset from label
+	ID     uint32 // generated label identifier
+	Offset int32  // optional offset from label
 }
 
 func (l Label) arg() {}
@@ -120,27 +120,32 @@ func (l Symbol) arg() {}
 
 // ----------------------------------------------------------------
 
-// Flat is an argument flattened for encoding.
+// Flat is an internal argument, flattened for encoding.
 type Flat interface {
 	flat()
 }
 
+// FlatReg is an internal register argument, flattened for encoding.
 type FlatReg uint8
 
 func (r FlatReg) flat() {}
 
+// FlatImm is an internal immediate argument, flattened for encoding.
 type FlatImm uint64
 
 func (i FlatImm) flat() {}
 
+// FlatMod is an internal modifier argument, flattened for encoding.
 type FlatMod uint8
 
 func (m FlatMod) flat() {}
 
+// FlatLabel is an internal label argument, flattened for encoding.
 type FlatLabel Label
 
 func (l FlatLabel) flat() {}
 
+// FlatDefault is an internal default argument, flattened for encoding.
 type FlatDefault struct{}
 
 func (d FlatDefault) flat() {}

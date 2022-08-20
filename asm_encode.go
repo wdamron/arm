@@ -35,44 +35,30 @@ Scan:
 			default:
 				return false
 			case CmdR0:
-				if arg > 31 {
-					return false
-				}
 				opcode |= uint32(arg)
 			case CmdR5:
-				if arg > 31 {
-					return false
-				}
 				opcode |= uint32(arg) << 5
 			case CmdR10:
-				if arg > 31 {
-					return false
-				}
 				opcode |= uint32(arg) << 10
 			case CmdR16:
-				if arg > 31 {
-					return false
-				}
 				opcode |= uint32(arg) << 16
 			case CmdRNz16:
-				if arg >= 31 {
+				if arg == 31 {
 					return false
 				}
 				opcode |= uint32(arg) << 16
 			case CmdRLo16:
-				if arg > 16 {
+				if arg >= 16 {
 					return false
 				}
 				opcode |= uint32(arg) << 16
 			case CmdREven:
-				if arg > 31 || arg&1 != 0 {
+				offset := cmd.X[0]
+				if arg&1 != 0 {
 					return false
 				}
-				opcode |= uint32(arg) << cmd.X[0]
+				opcode |= uint32(arg) << offset
 			case CmdRNext:
-				if arg > 31 || cursor == 0 {
-					return false
-				}
 				prev, ok := args[cursor-1].(FlatReg)
 				if !ok || arg != (prev+1)%32 {
 					return false
@@ -130,141 +116,127 @@ Scan:
 
 			// symbols:
 			case CmdCond:
+				offset := cmd.X[0]
 				if Symbol(arg) < EQ || Symbol(arg) > NV {
 					return false
 				}
-				opcode |= uint32(Symbol(arg)-EQ) << cmd.X[0]
+				opcode |= uint32(Symbol(arg)-EQ) << offset
 			case CmdCondInv:
-				if Symbol(arg) < EQ || Symbol(arg) > NV {
+				offset := cmd.X[0]
+				if Symbol(arg) < EQ || Symbol(arg) >= AL {
 					return false
 				}
-				opcode |= (uint32(Symbol(arg)-EQ) ^ 1) << cmd.X[0]
+				opcode |= (uint32(Symbol(arg)-EQ) ^ 1) << offset
 			case CmdLitList:
-				switch cmd.X[1] {
-				default:
+				offset, listSym := cmd.X[0], cmd.X[1]
+				if !symListContains(listSym, Symbol(arg)) {
 					return false
-				case SymCONTROLREGS:
-					if Symbol(arg) < C0 || Symbol(arg) > C15 {
-						return false
-					}
-					arg -= FlatImm(C0)
-				case SymATOPS:
-					if !symListContains(ATOPS[:], arg) {
-						return false
-					}
-				case SymDCOPS:
-					if !symListContains(DCOPS[:], arg) {
-						return false
-					}
-				case SymICOPS:
-					if !symListContains(ICOPS[:], arg) {
-						return false
-					}
-				case SymTLBIOPS:
-					if !symListContains(TLBIOPS[:], arg) {
-						return false
-					}
-				case SymBARRIEROPS:
-					if !symListContains(BARRIEROPS[:], arg) {
-						return false
-					}
-				case SymMSRIMMOPS:
-					if !symListContains(MSRIMMOPS[:], arg) {
-						return false
-					}
 				}
-				opcode |= uint32(SymbolValue[arg]) << cmd.X[0]
+				if listSym == SymCONTROLREGS {
+					arg -= FlatImm(C0)
+				}
+				opcode |= uint32(SymbolValue[arg]) << offset
 
 			// arithmetic/bitwise:
 			case CmdUAlt2:
-				i, ok := checkAlt(Alts2[cmd.X[1]][:], arg)
+				offset, listIdx := cmd.X[0], cmd.X[1]
+				i, ok := checkAlt(Alts2[listIdx][:], arg)
 				if !ok {
 					return false
 				}
-				opcode |= uint32(i) << cmd.X[0]
+				opcode |= uint32(i) << offset
 			case CmdUAlt4:
-				i, ok := checkAlt(Alts4[cmd.X[1]][:], arg)
+				offset, listIdx := cmd.X[0], cmd.X[1]
+				i, ok := checkAlt(Alts4[listIdx][:], arg)
 				if !ok {
 					return false
 				}
-				opcode |= uint32(i) << cmd.X[0]
+				opcode |= uint32(i) << offset
 			case CmdUbits:
-				mask := (uint32(1) << cmd.X[1]) - 1
+				offset, bitlen := cmd.X[0], cmd.X[1]
+				mask := (uint32(1) << bitlen) - 1
 				if !unsignedRangeCheck(uint64(arg), 0, mask, 0) {
 					return false
 				}
-				opcode |= (uint32(arg) & uint32(mask)) << cmd.X[0]
+				opcode |= (uint32(arg) & uint32(mask)) << offset
 			case CmdSbits:
-				mask := (int32(1) << 9) - 1
-				half := (int32(1) << (9 - 1)) * -1
+				const offset = 12
+				const mask = (int32(1) << 9) - 1
+				const half = (int32(1) << (9 - 1)) * -1
 				if !signedRangeCheck(int64(arg), half, mask+half, 0) {
 					return false
 				}
-				opcode |= (uint32(arg) & uint32(mask)) << 12
+				opcode |= (uint32(arg) & uint32(mask)) << offset
 			case CmdUscaled:
-				mask := (uint32(1) << cmd.X[1]) - 1
-				if !unsignedRangeCheck(uint64(arg), 0, mask, cmd.X[2]) {
+				offset, bitlen, shift := cmd.X[0], cmd.X[1], cmd.X[2]
+				mask := (uint32(1) << bitlen) - 1
+				if !unsignedRangeCheck(uint64(arg), 0, mask, shift) {
 					return false
 				}
-				opcode |= ((uint32(arg) >> cmd.X[2]) & mask) << cmd.X[0]
+				opcode |= ((uint32(arg) >> shift) & mask) << offset
 			case CmdSscaled:
-				mask := (int32(1) << 7) - 1
-				half := (int32(1) << (7 - 1)) * -1
-				if !signedRangeCheck(int64(arg), half, mask-half, cmd.X[0]) {
+				shift := cmd.X[0]
+				const offset = 15
+				const mask = (int32(1) << 7) - 1
+				const half = (int32(1) << (7 - 1)) * -1
+				if !signedRangeCheck(int64(arg), half, mask-half, shift) {
 					return false
 				}
-				opcode |= ((uint32(arg) >> cmd.X[0]) & uint32(mask)) << 15
-			case CmdUslice:
-				mask := (uint32(1) << cmd.X[1]) - 1
-				opcode |= ((uint32(arg) >> cmd.X[2]) & mask) << cmd.X[0]
-			case CmdSslice:
-				mask := (uint32(1) << cmd.X[1]) - 1
-				opcode |= ((uint32(arg) >> cmd.X[2]) & mask) << cmd.X[0]
+				opcode |= ((uint32(arg) >> shift) & uint32(mask)) << offset
+			case CmdUslice, CmdSslice:
+				offset, bitlen, start := cmd.X[0], cmd.X[1], cmd.X[2]
+				mask := (uint32(1) << bitlen) - 1
+				opcode |= ((uint32(arg) >> start) & mask) << offset
 			case CmdUrange:
-				if !unsignedRangeCheck(uint64(arg), uint32(cmd.X[1]), uint32(cmd.X[2]), 0) {
+				offset, min, max := cmd.X[0], uint32(cmd.X[1]), uint32(cmd.X[2])
+				if !unsignedRangeCheck(uint64(arg), min, max, 0) {
 					return false
 				}
-				opcode |= (uint32(arg) - uint32(cmd.X[1])) << cmd.X[0]
+				opcode |= (uint32(arg) - min) << offset
 			case CmdUsub:
-				mask := (int64(1) << cmd.X[1]) - 1
-				add := int64(cmd.X[2])
+				offset, bitlen, add := cmd.X[0], cmd.X[1], int64(cmd.X[2])
+				mask := (int64(1) << bitlen) - 1
 				if !unsignedRangeCheck(uint64(arg), uint32(add-mask), uint32(add), 0) {
 					return false
 				}
-				opcode |= ((uint32(add) - uint32(arg)) & uint32(mask)) << cmd.X[0]
+				opcode |= ((uint32(add) - uint32(arg)) & uint32(mask)) << offset
 			case CmdUnegmod:
-				mask := (uint64(1) << cmd.X[1]) - 1
-				add := int64(1) << cmd.X[1]
+				offset, bitlen := cmd.X[0], cmd.X[1]
+				mask := (uint64(1) << bitlen) - 1
+				add := int64(1) << bitlen
 				if !unsignedRangeCheck(uint64(arg), 0, uint32(mask), 0) {
 					return false
 				}
-				opcode |= ((uint32(add - int64(arg))) & uint32(mask)) << cmd.X[0]
+				opcode |= ((uint32(add - int64(arg))) & uint32(mask)) << offset
 			case CmdUsumdec:
+				offset, bitlen := cmd.X[0], cmd.X[1]
 				if cursor == 0 {
 					return false
 				}
-				mask := (uint64(1) << cmd.X[1]) - 1
+				mask := (uint64(1) << bitlen) - 1
 				prev, ok := args[cursor-1].(FlatImm)
 				if !ok {
 					return false
 				}
-				opcode |= uint32((uint64(prev)+uint64(arg)-1)&mask) << cmd.X[0]
+				opcode |= uint32((uint64(prev)+uint64(arg)-1)&mask) << offset
 			case CmdUfields11:
-				mask := (uint32(1) << cmd.X[0]) - 1
+				count := cmd.X[0]
+				mask := (uint32(1) << count) - 1
 				if !unsignedRangeCheck(uint64(arg), 0, mask, 0) {
 					return false
 				}
 				fields := [...]uint8{20, 21, 11}
-				for i, b := range fields[3-cmd.X[0]:] {
+				for i, b := range fields[3-count:] {
 					opcode |= ((uint32(arg) >> i) & 1) << b
 				}
 			case CmdUfields30:
-				mask := (uint32(1) << cmd.X[0]) - 1
+				count := cmd.X[0]
+				mask := (uint32(1) << count) - 1
 				if !unsignedRangeCheck(uint64(arg), 0, mask, 0) {
 					return false
 				}
 				fields := [...]uint8{10, 11, 12, 30}
-				for i, b := range fields[4-cmd.X[0]:] {
+				for i, b := range fields[4-count:] {
 					opcode |= ((uint32(arg) >> i) & 1) << b
 				}
 			case CmdUfields21:
@@ -273,13 +245,15 @@ Scan:
 				}
 				opcode |= (uint32(arg) & 1) << 21
 			case CmdSpecial:
-				enc, ok := encSpecialImm(cmd.X[0], cmd.X[1], uint64(arg))
+				offset, specialType := cmd.X[0], cmd.X[1]
+				enc, ok := encSpecialImm(offset, specialType, uint64(arg))
 				if !ok {
 					return false
 				}
 				opcode |= enc
 			case CmdOffset:
-				enc, ok := encReloc(cmd.X[0], int32(arg))
+				relType := cmd.X[0]
+				enc, ok := encOffset(relType, int64(arg))
 				if !ok {
 					return false
 				}
@@ -287,11 +261,13 @@ Scan:
 
 			// non-consuming:
 			case CmdChkUbits:
-				mask := (uint32(1) << cmd.X[0]) - 1
+				bitlen := cmd.X[0]
+				mask := (uint32(1) << bitlen) - 1
 				if !unsignedRangeCheck(uint64(arg), 0, mask, 0) {
 					return false
 				}
 			case CmdChkUsum:
+				shift := cmd.X[0]
 				if cursor == 0 {
 					return false
 				}
@@ -299,7 +275,7 @@ Scan:
 				if !ok {
 					return false
 				}
-				max := uint32(1) << cmd.X[0]
+				max := uint32(1) << shift
 				if arg == prev {
 					max -= uint32(arg)
 				}
@@ -307,13 +283,14 @@ Scan:
 					return false
 				}
 			case CmdChkSscaled:
-				mask := (int32(1) << 10) - 1
-				half := (int32(1) << (10 - 1)) * -1
+				const mask = (int32(1) << 10) - 1
+				const half = (int32(1) << (10 - 1)) * -1
 				if !signedRangeCheck(int64(arg), half, mask+half, 3) {
 					return false
 				}
 			case CmdChkUrange1:
-				if !unsignedRangeCheck(uint64(arg), 1, uint32(cmd.X[0]), 0) {
+				max := uint32(cmd.X[0])
+				if !unsignedRangeCheck(uint64(arg), 1, max, 0) {
 					return false
 				}
 			}
@@ -322,7 +299,8 @@ Scan:
 			if cmd.Op != CmdOffset {
 				return false
 			}
-			a.Relocs = append(a.Relocs, Reloc{a.PC, cmd.X[0], arg})
+			relType := cmd.X[0]
+			a.Relocs = append(a.Relocs, Reloc{a.PC, relType, arg})
 
 		case FlatDefault:
 			switch cmd.Op {
@@ -340,17 +318,19 @@ Scan:
 			case CmdExtendsX: // default to LSL
 				opcode |= 0b011 << 13
 			case CmdUAlt2: // default to 0
-				i, ok := checkAlt(Alts2[cmd.X[1]][:], 0)
+				offset, listIdx := cmd.X[0], cmd.X[1]
+				i, ok := checkAlt(Alts2[listIdx][:], 0)
 				if !ok {
 					return false
 				}
-				opcode |= uint32(i) << cmd.X[0]
+				opcode |= uint32(i) << offset
 			case CmdUAlt4: // default to 0
-				i, ok := checkAlt(Alts4[cmd.X[1]][:], 0)
+				offset, listIdx := cmd.X[0], cmd.X[1]
+				i, ok := checkAlt(Alts4[listIdx][:], 0)
 				if !ok {
 					return false
 				}
-				opcode |= uint32(i) << cmd.X[0]
+				opcode |= uint32(i) << offset
 			}
 		}
 
@@ -367,42 +347,43 @@ Scan:
 	return true
 }
 
-func encReloc(op uint8, imm int32) (opcode uint32, ok bool) {
-	switch op {
+func encOffset(relType uint8, imm int64) (opcode uint32, ok bool) {
+	switch relType {
 	case RelB: // b, bl 26-bit (+/- 128 MB); DWORD aligned
-		mask := (int32(1) << 26) - 1
-		half := (int32(1) << (26 - 1)) * -1
-		if !signedRangeCheck(int64(imm), half, mask+half, 2) {
+		const mask = (int32(1) << 26) - 1
+		const half = (int32(1) << (26 - 1)) * -1
+		if !signedRangeCheck(imm, half, mask+half, 2) {
 			return 0, false
 		}
 		return (uint32(imm) >> 2) & uint32(mask), true
 	case RelBCond: // b.cond, cbnz, cbz, ldr, ldrsw, prfm 19-bit (+/- 1 MB); DWORD aligned
-		mask := (int32(1) << 19) - 1
-		half := (int32(1) << (19 - 1)) * -1
-		if !signedRangeCheck(int64(imm), half, mask+half, 2) {
+		const mask = (int32(1) << 19) - 1
+		const half = (int32(1) << (19 - 1)) * -1
+		if !signedRangeCheck(imm, half, mask+half, 2) {
 			return 0, false
 		}
 		return ((uint32(imm) >> 2) & uint32(mask)) << 5, true
 	case RelAdr: // adr split 21-bit (+/- 1 MB); BYTE aligned
-		mask := (int32(1) << 21) - 1
-		half := (int32(1) << (21 - 1)) * -1
-		if !signedRangeCheck(int64(imm), half, mask+half, 0) {
+		const mask = (int32(1) << 21) - 1
+		const half = (int32(1) << (21 - 1)) * -1
+		if !signedRangeCheck(imm, half, mask+half, 0) {
 			return 0, false
 		}
 		low := ((uint32(imm) >> 2) & 0x7FFFF) << 5
 		return low | (uint32(imm)&3)<<29, true
 	case RelAdrp: // adrp split 21-bit (+/- 4 GB); page aligned (4KB)
-		mask := (int32(1) << 21) - 1
-		half := (int32(1) << (21 - 1)) * -1
-		if !signedRangeCheck(int64(imm), half, mask+half, 12) {
+		const mask = (int64(1) << 21) - 1
+		const half = (int64(1) << (21 - 1)) * -1
+		scaled := imm >> 12
+		if scaled<<12 != imm || scaled < half && scaled > mask+half {
 			return 0, false
 		}
-		low := ((uint32(imm) >> 14) & 0x7FFFF) << 5
-		return low | ((uint32(imm)>>12)&3)<<29, true
+		low := ((uint32(uint64(imm) >> 14)) & 0x7FFFF) << 5
+		return low | ((uint32(uint64(imm)>>12))&3)<<29, true
 	case RelTbz: // tbnz, tbz 14-bit (+/- 32 KB); DWORD aligned
-		mask := (int32(1) << 14) - 1
-		half := (int32(1) << (14 - 1)) * -1
-		if !signedRangeCheck(int64(imm), half, mask+half, 2) {
+		const mask = (int32(1) << 14) - 1
+		const half = (int32(1) << (14 - 1)) * -1
+		if !signedRangeCheck(imm, half, mask+half, 2) {
 			return 0, false
 		}
 		return ((uint32(imm) >> 2) & uint32(mask)) << 5, true
