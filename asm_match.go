@@ -174,7 +174,7 @@ func checkReg(r Reg) bool {
 		}
 	case RegVec128:
 		switch r.Type {
-		case V16B, V8H, V4S, V2D, V1O:
+		case V16B, V8H, V4S, V2D, V1Q:
 			return r.ID < 32 && (!r.HasElem() || r.GetElem() < r.Lanes())
 		}
 	}

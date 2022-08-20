@@ -88,8 +88,8 @@ func Vec1D(id uint8) Reg { return Reg{ID: id, Type: V1D} }
 // Vec2D constructs a 2x64-bit vector SIMD register, with type V2D and family RegVec128.
 func Vec2D(id uint8) Reg { return Reg{ID: id, Type: V2D} }
 
-// Vec1O constructs a 1x128-bit vector SIMD register, with type V1O and family RegVec128.
-func Vec1O(id uint8) Reg { return Reg{ID: id, Type: V1O} }
+// Vec1Q constructs a 1x128-bit vector SIMD register, with type V1Q and family RegVec128.
+func Vec1Q(id uint8) Reg { return Reg{ID: id, Type: V1Q} }
 
 // I selects a vector element from r.
 func (r Reg) I(idx uint8) Reg { return Reg{ID: r.ID, Type: r.Type, ElemInv: ^idx} }
@@ -153,7 +153,7 @@ const (
 	V4S  RegType = RegType(DWORD) | RegType(RegVec128<<4) // V4S represents 4x32-bit vector SIMD registers
 	V1D  RegType = RegType(QWORD) | RegType(RegVec64<<4)  // V1D represents 1x64-bit vector SIMD registers
 	V2D  RegType = RegType(QWORD) | RegType(RegVec128<<4) // V2D represents 2x64-bit vector SIMD registers
-	V1O  RegType = RegType(OWORD) | RegType(RegVec128<<4) // V1O represents 1x128-bit vector SIMD registers
+	V1Q  RegType = RegType(OWORD) | RegType(RegVec128<<4) // V1Q represents 1x128-bit vector SIMD registers
 )
 
 // Family returns the register family for sz (integer, SP, scalar, vector).
