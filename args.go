@@ -3,18 +3,18 @@ package arm
 // Arg is any instruction argument.
 //
 // The following are argument types:
-//   - Reg: integer, SP, SIMD scalar, or SIMD vector register (with optional element index)
-//   - RegList: list of sequential registers
-//   - Ref: memory reference with register base, optionally followed by X register or immediate for post-indexing
-//   - RefOffset: memory reference with register base and immediate offset
-//   - RefPreIndexed: pre-indexed memory reference with register base and immediate offset
-//   - RefIndexed: memory index with register base, register index, and optional index modifier
-//   - Imm: 32-bit immediate integer
-//   - Float: 32-bit immediate float
-//   - Wide: 64-bit immediate integer
-//   - Mod: modifier with optional immediate shift/rotate
-//   - Label: label reference with optional offset from label address
-//   - Symbol: constant identifier
+//   - [Reg]: integer, SP, SIMD scalar, or SIMD vector register (with optional element index)
+//   - [RegList]: list of sequential registers
+//   - [Ref]: memory reference with register base, optionally followed by X register or immediate for post-indexing
+//   - [RefOffset]: memory reference with register base and immediate offset
+//   - [RefPreIndexed]: pre-indexed memory reference with register base and immediate offset
+//   - [RefIndexed]: memory index with register base, register index, and optional index modifier
+//   - [Imm]: 32-bit immediate integer
+//   - [Float]: 32-bit immediate float
+//   - [Wide]: 64-bit immediate integer
+//   - [Mod]: modifier with optional immediate shift/rotate
+//   - [Label]: label reference with optional offset from label address
+//   - [Symbol]: constant identifier
 type Arg interface {
 	arg()
 }
@@ -23,14 +23,14 @@ type Arg interface {
 
 // Reg is a scalar or vector register argument. Vector registers may include an element specifier.
 type Reg struct {
-	ID      uint8   // 0-31 integer, SP, or SIMD register
-	Type    RegType // element size and 34/64/128-bit indicator
+	ID      uint8   // 0-31 register number
+	Type    RegType // element size; integer, SP, or SIMD register type; 34/64/128-bit indicator
 	ElemInv uint8   // vector element index (bitwise complement, zero indicates unset)
 }
 
 func (r Reg) arg() {}
 
-// RegList is a register list argument with sequentially numbered registers.
+// RegList is a register list argument with sequentially numbered registers (modulo 32).
 type RegList struct {
 	First Reg
 	Len   uint8

@@ -37,58 +37,58 @@ var (
 	XSP = Reg{ID: 31, Type: RXSP} // 64-bit stack pointer register
 )
 
-// W constructs a 32-bit integer register, with type RW and family RegInt.
+// W constructs a 32-bit integer register, with type [RW] and family [RegInt].
 func W(id uint8) Reg { return Reg{ID: id, Type: RW} }
 
-// X constructs a 64-bit integer register, with type RX and family RegInt.
+// X constructs a 64-bit integer register, with type [RX] and family [RegInt].
 func X(id uint8) Reg { return Reg{ID: id, Type: RX} }
 
-// ScalarB constructs an 8-bit scalar SIMD register, with type RB and family RegFloat.
+// ScalarB constructs an 8-bit scalar SIMD register, with type [RB] and family [RegFloat].
 func ScalarB(id uint8) Reg { return Reg{ID: id, Type: RB} }
 
-// ScalarH constructs a 16-bit scalar SIMD register, with type RH and family RegFloat.
+// ScalarH constructs a 16-bit scalar SIMD register, with type [RH] and family [RegFloat].
 func ScalarH(id uint8) Reg { return Reg{ID: id, Type: RH} }
 
-// ScalarS constructs a 32-bit scalar SIMD register, with type RS and family RegFloat.
+// ScalarS constructs a 32-bit scalar SIMD register, with type [RS] and family [RegFloat].
 func ScalarS(id uint8) Reg { return Reg{ID: id, Type: RS} }
 
-// ScalarD constructs a 64-bit scalar SIMD register, with type RD and family RegFloat.
+// ScalarD constructs a 64-bit scalar SIMD register, with type [RD] and family [RegFloat].
 func ScalarD(id uint8) Reg { return Reg{ID: id, Type: RD} }
 
-// ScalarQ constructs a 16-bit scalar SIMD register, with type RQ and family RegFloat.
+// ScalarQ constructs a 16-bit scalar SIMD register, with type [RQ] and family [RegFloat].
 func ScalarQ(id uint8) Reg { return Reg{ID: id, Type: RQ} }
 
-// Vec4B constructs a 4x8-bit vector SIMD register, with type V4B and family RegVec32.
+// Vec4B constructs a 4x8-bit vector SIMD register, with type [V4B] and family [RegVec32].
 func Vec4B(id uint8) Reg { return Reg{ID: id, Type: V4B} }
 
-// Vec8B constructs an 8x8-bit vector SIMD register, with type V8B and family RegVec64.
+// Vec8B constructs an 8x8-bit vector SIMD register, with type [V8B] and family [RegVec64].
 func Vec8B(id uint8) Reg { return Reg{ID: id, Type: V8B} }
 
-// Vec16B constructs a 16x8-bit vector SIMD register, with type V16B and family RegVec128.
+// Vec16B constructs a 16x8-bit vector SIMD register, with type [V16B] and family [RegVec128].
 func Vec16B(id uint8) Reg { return Reg{ID: id, Type: V16B} }
 
-// Vec2H constructs a 2x16-bit vector SIMD register, with type V2H and family RegVec32.
+// Vec2H constructs a 2x16-bit vector SIMD register, with type [V2H] and family [RegVec32].
 func Vec2H(id uint8) Reg { return Reg{ID: id, Type: V2H} }
 
-// Vec4H constructs a 4x16-bit vector SIMD register, with type V4H and family RegVec64.
+// Vec4H constructs a 4x16-bit vector SIMD register, with type [V4H] and family [RegVec64].
 func Vec4H(id uint8) Reg { return Reg{ID: id, Type: V4H} }
 
-// Vec8H constructs a 8x16-bit vector SIMD register, with type V8H and family RegVec128.
+// Vec8H constructs a 8x16-bit vector SIMD register, with type [V8H] and family [RegVec128].
 func Vec8H(id uint8) Reg { return Reg{ID: id, Type: V8H} }
 
-// Vec2S constructs a 2x32-bit vector SIMD register, with type V2S and family RegVec64.
+// Vec2S constructs a 2x32-bit vector SIMD register, with type [V2S] and family [RegVec64].
 func Vec2S(id uint8) Reg { return Reg{ID: id, Type: V2S} }
 
-// Vec4S constructs a 4x32-bit vector SIMD register, with type V4S and family RegVec128.
+// Vec4S constructs a 4x32-bit vector SIMD register, with type [V4S] and family [RegVec128].
 func Vec4S(id uint8) Reg { return Reg{ID: id, Type: V4S} }
 
-// Vec1D constructs a 1x64-bit vector SIMD register, with type V1D and family RegVec64.
+// Vec1D constructs a 1x64-bit vector SIMD register, with type [V1D] and family [RegVec64].
 func Vec1D(id uint8) Reg { return Reg{ID: id, Type: V1D} }
 
-// Vec2D constructs a 2x64-bit vector SIMD register, with type V2D and family RegVec128.
+// Vec2D constructs a 2x64-bit vector SIMD register, with type [V2D] and family [RegVec128].
 func Vec2D(id uint8) Reg { return Reg{ID: id, Type: V2D} }
 
-// Vec1Q constructs a 1x128-bit vector SIMD register, with type V1Q and family RegVec128.
+// Vec1Q constructs a 1x128-bit vector SIMD register, with type [V1Q] and family [RegVec128].
 func Vec1Q(id uint8) Reg { return Reg{ID: id, Type: V1Q} }
 
 // I selects a vector element from r.

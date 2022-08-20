@@ -9,23 +9,23 @@
 // and encoded after all label addresses are assigned.
 //
 // The following are argument types:
-//   - Reg: integer, SP, SIMD scalar, or SIMD vector register (with optional element index)
-//   - RegList: list of sequential registers
-//   - Ref: memory reference with register base, optionally followed by X register or immediate for post-indexing
-//   - RefOffset: memory reference with register base and immediate offset
-//   - RefPreIndexed: pre-indexed memory reference with register base and immediate offset
-//   - RefIndexed: memory index with register base, register index, and optional index modifier
-//   - Imm: 32-bit immediate integer
-//   - Float: 32-bit immediate float
-//   - Wide: 64-bit immediate integer
-//   - Mod: modifier with optional immediate shift/rotate
-//   - Label: label reference with optional offset from label address
-//   - Symbol: constant identifier
+//   - [Reg]: integer, SP, SIMD scalar, or SIMD vector register (with optional element index)
+//   - [RegList]: list of sequential registers
+//   - [Ref]: memory reference with register base, optionally followed by X register or immediate for post-indexing
+//   - [RefOffset]: memory reference with register base and immediate offset
+//   - [RefPreIndexed]: pre-indexed memory reference with register base and immediate offset
+//   - [RefIndexed]: memory index with register base, register index, and optional index modifier
+//   - [Imm]: 32-bit immediate integer
+//   - [Float]: 32-bit immediate float
+//   - [Wide]: 64-bit immediate integer
+//   - [Mod]: modifier with optional immediate shift/rotate
+//   - [Label]: label reference with optional offset from label address
+//   - [Symbol]: constant identifier
 package arm
 
 // Assembler encodes executable instructions to a code buffer.
 //
-// Some instructions support label offset arguments, which may be resolved
+// Some instructions support [Label] offset arguments, which may be resolved
 // and encoded after all label addresses are assigned.
 type Assembler struct {
 	Code    []byte   // code buffer indexed by PC
@@ -52,7 +52,7 @@ type Assembler struct {
 	cmds        [8]EncOp // current encoding-command list unpacked from the Commands array
 }
 
-// Reloc is a label reference deferred for encoding after all relocations are being applied.
+// Reloc is a [Label] reference deferred for encoding after all relocations are being applied.
 // Relocations are used internally, and exposed for debugging.
 type Reloc struct {
 	InstPC uint32    // instruction with label offset argument
@@ -60,7 +60,7 @@ type Reloc struct {
 	Jump   FlatLabel // label ID with optional offset
 }
 
-// EncOp is a matching or encoding operator decoded from the Patterns or Commands arrays.
+// EncOp is a matching or encoding operator decoded from the [Patterns] or [Commands] arrays.
 // Operators are used internally, and exposed for debugging.
 type EncOp struct {
 	Op uint8
@@ -120,7 +120,7 @@ func (a *Assembler) ApplyRelocations() bool {
 	return true
 }
 
-// MatchInst advances to the first matched encoding for inst and args, then writes
+// Inst advances to the first matched encoding for inst and args, then writes
 // the matched instruction to the code buffer if one was found.
 //
 // If no matching instruction was found or arguments could not be encoded,

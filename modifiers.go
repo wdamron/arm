@@ -39,11 +39,11 @@ var (
 	ModUXTH = Mod{ID: SymUXTH} // ModUXTH is an extension modifier argument with ID SymUXTH
 	ModUXTB = Mod{ID: SymUXTB} // ModUXTB is an extension modifier argument with ID SymUXTB
 
-	ModLSL = Mod{ID: SymLSL} // ModLSL is a shift modifier argument with ID SymLSL.
-	ModLSR = Mod{ID: SymLSR} // ModLSR is a shift modifier argument with ID SymLSR.
-	ModASR = Mod{ID: SymASR} // ModASR is a shift modifier argument with ID SymASR.
-	ModROR = Mod{ID: SymROR} // ModROR is a rotate modifier argument with ID SymROR.
-	ModMSL = Mod{ID: SymMSL} // ModMSL is a shift modifier argument with ID SymMSL.
+	ModLSL = Mod{ID: SymLSL} // ModLSL is a shift modifier argument with ID SymLSL
+	ModLSR = Mod{ID: SymLSR} // ModLSR is a shift modifier argument with ID SymLSR
+	ModASR = Mod{ID: SymASR} // ModASR is a shift modifier argument with ID SymASR
+	ModROR = Mod{ID: SymROR} // ModROR is a rotate modifier argument with ID SymROR
+	ModMSL = Mod{ID: SymMSL} // ModMSL is a shift modifier argument with ID SymMSL
 )
 
 // Imm constructs a modifier argument from m with an immediate shift or rotate amount.
