@@ -94,6 +94,22 @@ func (i Float) arg() {}
 
 // Mod is a shift, rotate, or extension modifier argument.
 // Shift and rotate modifiers require an immediate.
+//
+// The following modifiers are available:
+//
+//   - [ModSXTX]: extension modifier with ID [SymSXTX]
+//   - [ModSXTW]: extension modifier with ID [SymSXTW]
+//   - [ModSXTH]: extension modifier with ID [SymSXTH]
+//   - [ModSXTB]: extension modifier with ID [SymSXTB]
+//   - [ModUXTX]: extension modifier with ID [SymUXTX]
+//   - [ModUXTW]: extension modifier with ID [SymUXTW]
+//   - [ModUXTH]: extension modifier with ID [SymUXTH]
+//   - [ModUXTB]: extension modifier with ID [SymUXTB]
+//   - [ModLSL]: shift modifier with ID [SymLSL]
+//   - [ModLSR]: shift modifier with ID [SymLSR]
+//   - [ModASR]: shift modifier with ID [SymASR]
+//   - [ModROR]: rotate modifier with ID [SymROR]
+//   - [ModMSL]: shift modifier with ID [SymMSL]
 type Mod struct {
 	ID     uint8 // modifier symbol
 	ImmInv uint8 // bitwise complement, zero indicates unset
