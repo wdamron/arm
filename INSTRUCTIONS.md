@@ -209,8 +209,8 @@ ands Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ··················�
 
 ## ASR
 
-- _ASR (immediate)_: Arithmetic Shift Right (immediate): an alias of SBFM.
-- _ASR (register)_: Arithmetic Shift Right (register): an alias of ASRV.
+- _ASR (immediate)_: Arithmetic Shift Right (immediate): an alias of [SBFM](#sbfm).
+- _ASR (register)_: Arithmetic Shift Right (register): an alias of [ASRV](#asrv).
 
 ```
 asr Wd, Wn, Wm
@@ -230,7 +230,7 @@ asrv Xd, Xn, Xm
 
 ## AT
 
-Address Translate: an alias of SYS.
+Address Translate: an alias of [SYS](#sys).
 
 ```
 at <symbol>, Xn
@@ -368,7 +368,7 @@ bcax Vd.16B, Vn.16B, Vm.16B, Va.16B
 
 ## BFC
 
-Bitfield Clear: an alias of BFM.
+Bitfield Clear: an alias of [BFM](#bfm).
 
 ```
 bfc Wd, #imm1, #imm2  ·····················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -377,7 +377,7 @@ bfc Xd, #imm1, #imm2  ·····················  (0 <= imm1 < 6
 
 ## BFI
 
-Bitfield Insert: an alias of BFM.
+Bitfield Insert: an alias of [BFM](#bfm).
 
 ```
 bfi Wd, Wn, #imm1, #imm2  ·················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -395,7 +395,7 @@ bfm Xd, Xn, #imm1, #imm2  ··················  (0 <= imm1 < 64,
 
 ## BFXIL
 
-Bitfield extract and insert at low end: an alias of BFM.
+Bitfield extract and insert at low end: an alias of [BFM](#bfm).
 
 ```
 bfxil Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -739,7 +739,7 @@ cfinv
 
 ## CFP
 
-Control Flow Prediction Restriction by Context: an alias of SYS.
+Control Flow Prediction Restriction by Context: an alias of [SYS](#sys).
 
 ```
 cfp RCTX, Xn
@@ -747,7 +747,7 @@ cfp RCTX, Xn
 
 ## CINC
 
-Conditional Increment: an alias of CSINC.
+Conditional Increment: an alias of [CSINC](#csinc).
 
 ```
 cinc Wd, Wn, <cond>
@@ -756,7 +756,7 @@ cinc Xd, Xn, <cond>
 
 ## CINV
 
-Conditional Invert: an alias of CSINV.
+Conditional Invert: an alias of [CSINV](#csinv).
 
 ```
 cinv Wd, Wn, <cond>
@@ -938,9 +938,9 @@ cmlt Vd.2D, Vn.2D, #0
 
 ## CMN
 
-- _CMN (extended register)_: Compare Negative (extended register): an alias of ADDS (extended register).
-- _CMN (immediate)_: Compare Negative (immediate): an alias of ADDS (immediate).
-- _CMN (shifted register)_: Compare Negative (shifted register): an alias of ADDS (shifted register).
+- _CMN (extended register)_: Compare Negative (extended register): an alias of [ADDS (extended register)](#adds).
+- _CMN (immediate)_: Compare Negative (immediate): an alias of [ADDS (immediate)](#adds).
+- _CMN (shifted register)_: Compare Negative (shifted register): an alias of [ADDS (shifted register)](#adds).
 
 ```
 cmn Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
@@ -954,9 +954,9 @@ cmn Xd|SP, #imm1 {, LSL #imm2 }  ·······················�
 
 ## CMP
 
-- _CMP (extended register)_: Compare (extended register): an alias of SUBS (extended register).
-- _CMP (immediate)_: Compare (immediate): an alias of SUBS (immediate).
-- _CMP (shifted register)_: Compare (shifted register): an alias of SUBS (shifted register).
+- _CMP (extended register)_: Compare (extended register): an alias of [SUBS (extended register)](#subs).
+- _CMP (immediate)_: Compare (immediate): an alias of [SUBS (immediate)](#subs).
+- _CMP (shifted register)_: Compare (shifted register): an alias of [SUBS (shifted register)](#subs).
 
 ```
 cmp Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
@@ -985,7 +985,7 @@ cmtst Vd.2D, Vn.2D, Vm.2D
 
 ## CNEG
 
-Conditional Negate: an alias of CSNEG.
+Conditional Negate: an alias of [CSNEG](#csneg).
 
 ```
 cneg Wd, Wn, <cond>
@@ -1003,7 +1003,7 @@ cnt Vd.8B, Vn.8B
 
 ## CPP
 
-Cache Prefetch Prediction Restriction by Context: an alias of SYS.
+Cache Prefetch Prediction Restriction by Context: an alias of [SYS](#sys).
 
 ```
 cpp RCTX, Xn
@@ -1092,7 +1092,7 @@ csel Xd, Xn, Xm, <cond>
 
 ## CSET
 
-Conditional Set: an alias of CSINC.
+Conditional Set: an alias of [CSINC](#csinc).
 
 ```
 cset Wd, <cond>
@@ -1101,7 +1101,7 @@ cset Xd, <cond>
 
 ## CSETM
 
-Conditional Set Mask: an alias of CSINV.
+Conditional Set Mask: an alias of [CSINV](#csinv).
 
 ```
 csetm Wd, <cond>
@@ -1137,7 +1137,7 @@ csneg Xd, Xn, Xm, <cond>
 
 ## DC
 
-Data Cache operation: an alias of SYS.
+Data Cache operation: an alias of [SYS](#sys).
 
 ```
 dc <symbol>, Xn
@@ -1221,7 +1221,7 @@ dup Vd.2D, Xn
 
 ## DVP
 
-Data Value Prediction Restriction by Context: an alias of SYS.
+Data Value Prediction Restriction by Context: an alias of [SYS](#sys).
 
 ```
 dvp RCTX, Xn
@@ -2572,7 +2572,7 @@ hvc #imm  ···································
 
 ## IC
 
-Instruction Cache operation: an alias of SYS.
+Instruction Cache operation: an alias of [SYS](#sys).
 
 ```
 ic IVAU, Xn
@@ -3482,7 +3482,6 @@ ldpsw Xd, Xn, [Xm|SP {, #imm }]  ·······················�
 - _LDR (immediate, SIMD&FP)_: Load SIMD&FP Register (immediate offset).
 - _LDR (literal, SIMD&FP)_: Load SIMD&FP Register (PC-relative literal).
 - _LDR (register, SIMD&FP)_: Load SIMD&FP Register (register offset).
-- _LDR_: Load vector to ZA array.
 
 ```
 ldr Bd, [Xn|SP], #imm  ····················································  (-256 <= imm < 256)
@@ -4252,8 +4251,8 @@ ldxrh Wd, [Xn|SP]
 
 ## LSL
 
-- _LSL (immediate)_: Logical Shift Left (immediate): an alias of UBFM.
-- _LSL (register)_: Logical Shift Left (register): an alias of LSLV.
+- _LSL (immediate)_: Logical Shift Left (immediate): an alias of [UBFM](#ubfm).
+- _LSL (register)_: Logical Shift Left (register): an alias of [LSLV](#lslv).
 
 ```
 lsl Wd, Wn, Wm
@@ -4273,8 +4272,8 @@ lslv Xd, Xn, Xm
 
 ## LSR
 
-- _LSR (immediate)_: Logical Shift Right (immediate): an alias of UBFM.
-- _LSR (register)_: Logical Shift Right (register): an alias of LSRV.
+- _LSR (immediate)_: Logical Shift Right (immediate): an alias of [UBFM](#ubfm).
+- _LSR (register)_: Logical Shift Right (register): an alias of [LSRV](#lsrv).
 
 ```
 lsr Wd, Wn, Wm
@@ -4339,7 +4338,7 @@ mls Vd.2S, Vn.2S, Vm.2S
 
 ## MNEG
 
-Multiply-Negate: an alias of MSUB.
+Multiply-Negate: an alias of [MSUB](#msub).
 
 ```
 mneg Wd, Wn, Wm
@@ -4348,18 +4347,16 @@ mneg Xd, Xn, Xm
 
 ## MOV
 
-- _MOV (bitmask immediate)_: Move (bitmask immediate): an alias of ORR (immediate).
-- _MOV (inverted wide immediate)_: Move (inverted wide immediate): an alias of MOVN.
-- _MOV (register)_: Move (register): an alias of ORR (shifted register).
-- _MOV (to/from SP)_: Move between register and stack pointer: an alias of ADD (immediate).
-- _MOV (wide immediate)_: Move (wide immediate): an alias of MOVZ.
-- _MOV (element)_: Move vector element to another vector element: an alias of INS (element).
-- _MOV (from general)_: Move general-purpose register to a vector element: an alias of INS (general).
-- _MOV (scalar)_: Move vector element to scalar: an alias of DUP (element).
-- _MOV (to general)_: Move vector element to general-purpose register: an alias of UMOV.
-- _MOV (vector)_: Move vector: an alias of ORR (vector, register).
-- _MOV (tile to vector)_: Move ZA tile slice to vector register: an alias of MOVA (tile to vector).
-- _MOV (vector to tile)_: Move vector register to ZA tile slice: an alias of MOVA (vector to tile).
+- _MOV (bitmask immediate)_: Move (bitmask immediate): an alias of [ORR (immediate)](#orr).
+- _MOV (inverted wide immediate)_: Move (inverted wide immediate): an alias of [MOVN](#movn).
+- _MOV (register)_: Move (register): an alias of [ORR (shifted register)](#orr).
+- _MOV (to/from SP)_: Move between register and stack pointer: an alias of [ADD (immediate)](#add).
+- _MOV (wide immediate)_: Move (wide immediate): an alias of [MOVZ](#movz).
+- _MOV (element)_: Move vector element to another vector element: an alias of [INS (element)](#ins).
+- _MOV (from general)_: Move general-purpose register to a vector element: an alias of [INS (general)](#ins).
+- _MOV (scalar)_: Move vector element to scalar: an alias of [DUP (element)](#dup).
+- _MOV (to general)_: Move vector element to general-purpose register: an alias of [UMOV](#umov).
+- _MOV (vector)_: Move vector: an alias of [ORR (vector, register)](#orr).
 
 ```
 mov Wd, Wn
@@ -4463,7 +4460,7 @@ msub Xd, Xn, Xm, Xa
 
 ## MUL
 
-- _MUL_: Multiply: an alias of MADD.
+- _MUL_: Multiply: an alias of [MADD](#madd).
 - _MUL (by element)_: Multiply (vector, by element).
 - _MUL (vector)_: Multiply (vector).
 
@@ -4484,8 +4481,8 @@ mul Xd, Xn, Xm
 
 ## MVN
 
-- _MVN_: Bitwise NOT: an alias of ORN (shifted register).
-- _MVN_: Bitwise NOT (vector): an alias of NOT.
+- _MVN_: Bitwise NOT: an alias of [ORN (shifted register)](#orn).
+- _MVN_: Bitwise NOT (vector): an alias of [NOT](#not).
 
 ```
 mvn Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
@@ -4509,7 +4506,7 @@ mvni Vd.2S, #imm1, MSL #imm2  ·························
 
 ## NEG
 
-- _NEG (shifted register)_: Negate (shifted register): an alias of SUB (shifted register).
+- _NEG (shifted register)_: Negate (shifted register): an alias of [SUB (shifted register)](#sub).
 - _NEG (vector)_: Negate (vector).
 
 ```
@@ -4527,7 +4524,7 @@ neg Vd.2D, Vn.2D
 
 ## NEGS
 
-Negate, setting flags: an alias of SUBS (shifted register).
+Negate, setting flags: an alias of [SUBS (shifted register)](#subs).
 
 ```
 negs Wd, Wn {, LSL|LSR|ASR #imm }  ············································  (0 <= imm < 32)
@@ -4536,7 +4533,7 @@ negs Xd, Xn {, LSL|LSR|ASR #imm }  ······················�
 
 ## NGC
 
-Negate with Carry: an alias of SBC.
+Negate with Carry: an alias of [SBC](#sbc).
 
 ```
 ngc Wd, Wn
@@ -4545,7 +4542,7 @@ ngc Xd, Xn
 
 ## NGCS
 
-Negate with Carry, setting flags: an alias of SBCS.
+Negate with Carry, setting flags: an alias of [SBCS](#sbcs).
 
 ```
 ngcs Wd, Wn
@@ -4777,7 +4774,7 @@ psb CSYNC
 
 ## PSSBB
 
-Physical Speculative Store Bypass Barrier: an alias of DSB.
+Physical Speculative Store Bypass Barrier: an alias of [DSB](#dsb).
 
 ```
 pssbb 
@@ -4884,7 +4881,7 @@ rev32 Xd, Xn
 
 ## REV64
 
-- _REV64_: Reverse Bytes: an alias of REV.
+- _REV64_: Reverse Bytes: an alias of [REV](#rev).
 - _REV64_: Reverse elements in 64-bit doublewords (vector).
 
 ```
@@ -4907,8 +4904,8 @@ rmif Xd, #imm1, #imm2  ····························�
 
 ## ROR
 
-- _ROR (immediate)_: Rotate right (immediate): an alias of EXTR.
-- _ROR (register)_: Rotate Right (register): an alias of RORV.
+- _ROR (immediate)_: Rotate right (immediate): an alias of [EXTR](#extr).
+- _ROR (register)_: Rotate Right (register): an alias of [RORV](#rorv).
 
 ```
 ror Wd, Wn, #imm  ·····························································  (0 <= imm < 32)
@@ -5138,7 +5135,7 @@ sbcs Xd, Xn, Xm
 
 ## SBFIZ
 
-Signed Bitfield Insert in Zero: an alias of SBFM.
+Signed Bitfield Insert in Zero: an alias of [SBFM](#sbfm).
 
 ```
 sbfiz Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -5156,7 +5153,7 @@ sbfm Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 
 
 ## SBFX
 
-Signed Bitfield Extract: an alias of SBFM.
+Signed Bitfield Extract: an alias of [SBFM](#sbfm).
 
 ```
 sbfx Wd, Wn, #imm1, #imm2  ················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -5680,7 +5677,7 @@ smlsl2 Vd.2D, Vn.4S, Vm.4S
 
 ## SMNEGL
 
-Signed Multiply-Negate Long: an alias of SMSUBL.
+Signed Multiply-Negate Long: an alias of [SMSUBL](#smsubl).
 
 ```
 smnegl Xd, Wn, Wm
@@ -5716,7 +5713,7 @@ smulh Xd, Xn, Xm
 
 ## SMULL
 
-- _SMULL_: Signed Multiply Long: an alias of SMADDL.
+- _SMULL_: Signed Multiply Long: an alias of [SMADDL](#smaddl).
 - _SMULL_: Signed Multiply Long (vector, by element).
 - _SMULL_: Signed Multiply Long (vector).
 
@@ -6257,7 +6254,7 @@ srsra Vd.2D, Vn.2D, #imm  ···························
 
 ## SSBB
 
-Speculative Store Bypass Barrier: an alias of DSB.
+Speculative Store Bypass Barrier: an alias of [DSB](#dsb).
 
 ```
 ssbb 
@@ -6609,7 +6606,7 @@ st4 {Vd.D * 4}[i], [Xn|SP], Xm  ························
 
 ## STADD
 
-Atomic add on word or doubleword in memory, without return: an alias of LDADD, LDADDA, LDADDAL, LDADDL.
+Atomic add on word or doubleword in memory, without return: an alias of [LDADD](#ldadd), [LDADDA](#ldadda), [LDADDAL](#ldaddal), [LDADDL](#ldaddl).
 
 ```
 stadd Wd, [Xn|SP]
@@ -6618,7 +6615,7 @@ stadd Xd, [Xn|SP]
 
 ## STADDB
 
-Atomic add on byte in memory, without return: an alias of LDADDB, LDADDAB, LDADDALB, LDADDLB.
+Atomic add on byte in memory, without return: an alias of [LDADDB](#ldaddb), [LDADDAB](#ldaddab), [LDADDALB](#ldaddalb), [LDADDLB](#ldaddlb).
 
 ```
 staddb Wd, [Xn|SP]
@@ -6626,7 +6623,7 @@ staddb Wd, [Xn|SP]
 
 ## STADDH
 
-Atomic add on halfword in memory, without return: an alias of LDADDH, LDADDAH, LDADDALH, LDADDLH.
+Atomic add on halfword in memory, without return: an alias of [LDADDH](#ldaddh), [LDADDAH](#ldaddah), [LDADDALH](#ldaddalh), [LDADDLH](#ldaddlh).
 
 ```
 staddh Wd, [Xn|SP]
@@ -6634,7 +6631,7 @@ staddh Wd, [Xn|SP]
 
 ## STADDL
 
-Atomic add on word or doubleword in memory, without return: an alias of LDADD, LDADDA, LDADDAL, LDADDL.
+Atomic add on word or doubleword in memory, without return: an alias of [LDADD](#ldadd), [LDADDA](#ldadda), [LDADDAL](#ldaddal), [LDADDL](#ldaddl).
 
 ```
 staddl Wd, [Xn|SP]
@@ -6643,7 +6640,7 @@ staddl Xd, [Xn|SP]
 
 ## STADDLB
 
-Atomic add on byte in memory, without return: an alias of LDADDB, LDADDAB, LDADDALB, LDADDLB.
+Atomic add on byte in memory, without return: an alias of [LDADDB](#ldaddb), [LDADDAB](#ldaddab), [LDADDALB](#ldaddalb), [LDADDLB](#ldaddlb).
 
 ```
 staddlb Wd, [Xn|SP]
@@ -6651,7 +6648,7 @@ staddlb Wd, [Xn|SP]
 
 ## STADDLH
 
-Atomic add on halfword in memory, without return: an alias of LDADDH, LDADDAH, LDADDALH, LDADDLH.
+Atomic add on halfword in memory, without return: an alias of [LDADDH](#ldaddh), [LDADDAH](#ldaddah), [LDADDALH](#ldaddalh), [LDADDLH](#ldaddlh).
 
 ```
 staddlh Wd, [Xn|SP]
@@ -6659,7 +6656,7 @@ staddlh Wd, [Xn|SP]
 
 ## STCLR
 
-Atomic bit clear on word or doubleword in memory, without return: an alias of LDCLR, LDCLRA, LDCLRAL, LDCLRL.
+Atomic bit clear on word or doubleword in memory, without return: an alias of [LDCLR](#ldclr), [LDCLRA](#ldclra), [LDCLRAL](#ldclral), [LDCLRL](#ldclrl).
 
 ```
 stclr Wd, [Xn|SP]
@@ -6668,7 +6665,7 @@ stclr Xd, [Xn|SP]
 
 ## STCLRB
 
-Atomic bit clear on byte in memory, without return: an alias of LDCLRB, LDCLRAB, LDCLRALB, LDCLRLB.
+Atomic bit clear on byte in memory, without return: an alias of [LDCLRB](#ldclrb), [LDCLRAB](#ldclrab), [LDCLRALB](#ldclralb), [LDCLRLB](#ldclrlb).
 
 ```
 stclrb Wd, [Xn|SP]
@@ -6676,7 +6673,7 @@ stclrb Wd, [Xn|SP]
 
 ## STCLRH
 
-Atomic bit clear on halfword in memory, without return: an alias of LDCLRH, LDCLRAH, LDCLRALH, LDCLRLH.
+Atomic bit clear on halfword in memory, without return: an alias of [LDCLRH](#ldclrh), [LDCLRAH](#ldclrah), [LDCLRALH](#ldclralh), [LDCLRLH](#ldclrlh).
 
 ```
 stclrh Wd, [Xn|SP]
@@ -6684,7 +6681,7 @@ stclrh Wd, [Xn|SP]
 
 ## STCLRL
 
-Atomic bit clear on word or doubleword in memory, without return: an alias of LDCLR, LDCLRA, LDCLRAL, LDCLRL.
+Atomic bit clear on word or doubleword in memory, without return: an alias of [LDCLR](#ldclr), [LDCLRA](#ldclra), [LDCLRAL](#ldclral), [LDCLRL](#ldclrl).
 
 ```
 stclrl Wd, [Xn|SP]
@@ -6693,7 +6690,7 @@ stclrl Xd, [Xn|SP]
 
 ## STCLRLB
 
-Atomic bit clear on byte in memory, without return: an alias of LDCLRB, LDCLRAB, LDCLRALB, LDCLRLB.
+Atomic bit clear on byte in memory, without return: an alias of [LDCLRB](#ldclrb), [LDCLRAB](#ldclrab), [LDCLRALB](#ldclralb), [LDCLRLB](#ldclrlb).
 
 ```
 stclrlb Wd, [Xn|SP]
@@ -6701,7 +6698,7 @@ stclrlb Wd, [Xn|SP]
 
 ## STCLRLH
 
-Atomic bit clear on halfword in memory, without return: an alias of LDCLRH, LDCLRAH, LDCLRALH, LDCLRLH.
+Atomic bit clear on halfword in memory, without return: an alias of [LDCLRH](#ldclrh), [LDCLRAH](#ldclrah), [LDCLRALH](#ldclralh), [LDCLRLH](#ldclrlh).
 
 ```
 stclrlh Wd, [Xn|SP]
@@ -6709,7 +6706,7 @@ stclrlh Wd, [Xn|SP]
 
 ## STEOR
 
-Atomic exclusive OR on word or doubleword in memory, without return: an alias of LDEOR, LDEORA, LDEORAL, LDEORL.
+Atomic exclusive OR on word or doubleword in memory, without return: an alias of [LDEOR](#ldeor), [LDEORA](#ldeora), [LDEORAL](#ldeoral), [LDEORL](#ldeorl).
 
 ```
 steor Wd, [Xn|SP]
@@ -6718,7 +6715,7 @@ steor Xd, [Xn|SP]
 
 ## STEORB
 
-Atomic exclusive OR on byte in memory, without return: an alias of LDEORB, LDEORAB, LDEORALB, LDEORLB.
+Atomic exclusive OR on byte in memory, without return: an alias of [LDEORB](#ldeorb), [LDEORAB](#ldeorab), [LDEORALB](#ldeoralb), [LDEORLB](#ldeorlb).
 
 ```
 steorb Wd, [Xn|SP]
@@ -6726,7 +6723,7 @@ steorb Wd, [Xn|SP]
 
 ## STEORH
 
-Atomic exclusive OR on halfword in memory, without return: an alias of LDEORH, LDEORAH, LDEORALH, LDEORLH.
+Atomic exclusive OR on halfword in memory, without return: an alias of [LDEORH](#ldeorh), [LDEORAH](#ldeorah), [LDEORALH](#ldeoralh), [LDEORLH](#ldeorlh).
 
 ```
 steorh Wd, [Xn|SP]
@@ -6734,7 +6731,7 @@ steorh Wd, [Xn|SP]
 
 ## STEORL
 
-Atomic exclusive OR on word or doubleword in memory, without return: an alias of LDEOR, LDEORA, LDEORAL, LDEORL.
+Atomic exclusive OR on word or doubleword in memory, without return: an alias of [LDEOR](#ldeor), [LDEORA](#ldeora), [LDEORAL](#ldeoral), [LDEORL](#ldeorl).
 
 ```
 steorl Wd, [Xn|SP]
@@ -6743,7 +6740,7 @@ steorl Xd, [Xn|SP]
 
 ## STEORLB
 
-Atomic exclusive OR on byte in memory, without return: an alias of LDEORB, LDEORAB, LDEORALB, LDEORLB.
+Atomic exclusive OR on byte in memory, without return: an alias of [LDEORB](#ldeorb), [LDEORAB](#ldeorab), [LDEORALB](#ldeoralb), [LDEORLB](#ldeorlb).
 
 ```
 steorlb Wd, [Xn|SP]
@@ -6751,7 +6748,7 @@ steorlb Wd, [Xn|SP]
 
 ## STEORLH
 
-Atomic exclusive OR on halfword in memory, without return: an alias of LDEORH, LDEORAH, LDEORALH, LDEORLH.
+Atomic exclusive OR on halfword in memory, without return: an alias of [LDEORH](#ldeorh), [LDEORAH](#ldeorah), [LDEORALH](#ldeoralh), [LDEORLH](#ldeorlh).
 
 ```
 steorlh Wd, [Xn|SP]
@@ -6908,7 +6905,6 @@ stp Xd, Xn, [Xm|SP {, #imm }]  ························�
 - _STR (register)_: Store Register (register).
 - _STR (immediate, SIMD&FP)_: Store SIMD&FP register (immediate offset).
 - _STR (register, SIMD&FP)_: Store SIMD&FP register (register offset).
-- _STR_: Store vector from ZA array.
 
 ```
 str Bd, [Xn|SP], #imm  ····················································  (-256 <= imm < 256)
@@ -6967,7 +6963,7 @@ strh Wd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············
 
 ## STSET
 
-Atomic bit set on word or doubleword in memory, without return: an alias of LDSET, LDSETA, LDSETAL, LDSETL.
+Atomic bit set on word or doubleword in memory, without return: an alias of [LDSET](#ldset), [LDSETA](#ldseta), [LDSETAL](#ldsetal), [LDSETL](#ldsetl).
 
 ```
 stset Wd, [Xn|SP]
@@ -6976,7 +6972,7 @@ stset Xd, [Xn|SP]
 
 ## STSETB
 
-Atomic bit set on byte in memory, without return: an alias of LDSETB, LDSETAB, LDSETALB, LDSETLB.
+Atomic bit set on byte in memory, without return: an alias of [LDSETB](#ldsetb), [LDSETAB](#ldsetab), [LDSETALB](#ldsetalb), [LDSETLB](#ldsetlb).
 
 ```
 stsetb Wd, [Xn|SP]
@@ -6984,7 +6980,7 @@ stsetb Wd, [Xn|SP]
 
 ## STSETH
 
-Atomic bit set on halfword in memory, without return: an alias of LDSETH, LDSETAH, LDSETALH, LDSETLH.
+Atomic bit set on halfword in memory, without return: an alias of [LDSETH](#ldseth), [LDSETAH](#ldsetah), [LDSETALH](#ldsetalh), [LDSETLH](#ldsetlh).
 
 ```
 stseth Wd, [Xn|SP]
@@ -6992,7 +6988,7 @@ stseth Wd, [Xn|SP]
 
 ## STSETL
 
-Atomic bit set on word or doubleword in memory, without return: an alias of LDSET, LDSETA, LDSETAL, LDSETL.
+Atomic bit set on word or doubleword in memory, without return: an alias of [LDSET](#ldset), [LDSETA](#ldseta), [LDSETAL](#ldsetal), [LDSETL](#ldsetl).
 
 ```
 stsetl Wd, [Xn|SP]
@@ -7001,7 +6997,7 @@ stsetl Xd, [Xn|SP]
 
 ## STSETLB
 
-Atomic bit set on byte in memory, without return: an alias of LDSETB, LDSETAB, LDSETALB, LDSETLB.
+Atomic bit set on byte in memory, without return: an alias of [LDSETB](#ldsetb), [LDSETAB](#ldsetab), [LDSETALB](#ldsetalb), [LDSETLB](#ldsetlb).
 
 ```
 stsetlb Wd, [Xn|SP]
@@ -7009,7 +7005,7 @@ stsetlb Wd, [Xn|SP]
 
 ## STSETLH
 
-Atomic bit set on halfword in memory, without return: an alias of LDSETH, LDSETAH, LDSETALH, LDSETLH.
+Atomic bit set on halfword in memory, without return: an alias of [LDSETH](#ldseth), [LDSETAH](#ldsetah), [LDSETALH](#ldsetalh), [LDSETLH](#ldsetlh).
 
 ```
 stsetlh Wd, [Xn|SP]
@@ -7017,7 +7013,7 @@ stsetlh Wd, [Xn|SP]
 
 ## STSMAX
 
-Atomic signed maximum on word or doubleword in memory, without return: an alias of LDSMAX, LDSMAXA, LDSMAXAL, LDSMAXL.
+Atomic signed maximum on word or doubleword in memory, without return: an alias of [LDSMAX](#ldsmax), [LDSMAXA](#ldsmaxa), [LDSMAXAL](#ldsmaxal), [LDSMAXL](#ldsmaxl).
 
 ```
 stsmax Wd, [Xn|SP]
@@ -7026,7 +7022,7 @@ stsmax Xd, [Xn|SP]
 
 ## STSMAXB
 
-Atomic signed maximum on byte in memory, without return: an alias of LDSMAXB, LDSMAXAB, LDSMAXALB, LDSMAXLB.
+Atomic signed maximum on byte in memory, without return: an alias of [LDSMAXB](#ldsmaxb), [LDSMAXAB](#ldsmaxab), [LDSMAXALB](#ldsmaxalb), [LDSMAXLB](#ldsmaxlb).
 
 ```
 stsmaxb Wd, [Xn|SP]
@@ -7034,7 +7030,7 @@ stsmaxb Wd, [Xn|SP]
 
 ## STSMAXH
 
-Atomic signed maximum on halfword in memory, without return: an alias of LDSMAXH, LDSMAXAH, LDSMAXALH, LDSMAXLH.
+Atomic signed maximum on halfword in memory, without return: an alias of [LDSMAXH](#ldsmaxh), [LDSMAXAH](#ldsmaxah), [LDSMAXALH](#ldsmaxalh), [LDSMAXLH](#ldsmaxlh).
 
 ```
 stsmaxh Wd, [Xn|SP]
@@ -7042,7 +7038,7 @@ stsmaxh Wd, [Xn|SP]
 
 ## STSMAXL
 
-Atomic signed maximum on word or doubleword in memory, without return: an alias of LDSMAX, LDSMAXA, LDSMAXAL, LDSMAXL.
+Atomic signed maximum on word or doubleword in memory, without return: an alias of [LDSMAX](#ldsmax), [LDSMAXA](#ldsmaxa), [LDSMAXAL](#ldsmaxal), [LDSMAXL](#ldsmaxl).
 
 ```
 stsmaxl Wd, [Xn|SP]
@@ -7051,7 +7047,7 @@ stsmaxl Xd, [Xn|SP]
 
 ## STSMAXLB
 
-Atomic signed maximum on byte in memory, without return: an alias of LDSMAXB, LDSMAXAB, LDSMAXALB, LDSMAXLB.
+Atomic signed maximum on byte in memory, without return: an alias of [LDSMAXB](#ldsmaxb), [LDSMAXAB](#ldsmaxab), [LDSMAXALB](#ldsmaxalb), [LDSMAXLB](#ldsmaxlb).
 
 ```
 stsmaxlb Wd, [Xn|SP]
@@ -7059,7 +7055,7 @@ stsmaxlb Wd, [Xn|SP]
 
 ## STSMAXLH
 
-Atomic signed maximum on halfword in memory, without return: an alias of LDSMAXH, LDSMAXAH, LDSMAXALH, LDSMAXLH.
+Atomic signed maximum on halfword in memory, without return: an alias of [LDSMAXH](#ldsmaxh), [LDSMAXAH](#ldsmaxah), [LDSMAXALH](#ldsmaxalh), [LDSMAXLH](#ldsmaxlh).
 
 ```
 stsmaxlh Wd, [Xn|SP]
@@ -7067,7 +7063,7 @@ stsmaxlh Wd, [Xn|SP]
 
 ## STSMIN
 
-Atomic signed minimum on word or doubleword in memory, without return: an alias of LDSMIN, LDSMINA, LDSMINAL, LDSMINL.
+Atomic signed minimum on word or doubleword in memory, without return: an alias of [LDSMIN](#ldsmin), [LDSMINA](#ldsmina), [LDSMINAL](#ldsminal), [LDSMINL](#ldsminl).
 
 ```
 stsmin Wd, [Xn|SP]
@@ -7076,7 +7072,7 @@ stsmin Xd, [Xn|SP]
 
 ## STSMINB
 
-Atomic signed minimum on byte in memory, without return: an alias of LDSMINB, LDSMINAB, LDSMINALB, LDSMINLB.
+Atomic signed minimum on byte in memory, without return: an alias of [LDSMINB](#ldsminb), [LDSMINAB](#ldsminab), [LDSMINALB](#ldsminalb), [LDSMINLB](#ldsminlb).
 
 ```
 stsminb Wd, [Xn|SP]
@@ -7084,7 +7080,7 @@ stsminb Wd, [Xn|SP]
 
 ## STSMINH
 
-Atomic signed minimum on halfword in memory, without return: an alias of LDSMINH, LDSMINAH, LDSMINALH, LDSMINLH.
+Atomic signed minimum on halfword in memory, without return: an alias of [LDSMINH](#ldsminh), [LDSMINAH](#ldsminah), [LDSMINALH](#ldsminalh), [LDSMINLH](#ldsminlh).
 
 ```
 stsminh Wd, [Xn|SP]
@@ -7092,7 +7088,7 @@ stsminh Wd, [Xn|SP]
 
 ## STSMINL
 
-Atomic signed minimum on word or doubleword in memory, without return: an alias of LDSMIN, LDSMINA, LDSMINAL, LDSMINL.
+Atomic signed minimum on word or doubleword in memory, without return: an alias of [LDSMIN](#ldsmin), [LDSMINA](#ldsmina), [LDSMINAL](#ldsminal), [LDSMINL](#ldsminl).
 
 ```
 stsminl Wd, [Xn|SP]
@@ -7101,7 +7097,7 @@ stsminl Xd, [Xn|SP]
 
 ## STSMINLB
 
-Atomic signed minimum on byte in memory, without return: an alias of LDSMINB, LDSMINAB, LDSMINALB, LDSMINLB.
+Atomic signed minimum on byte in memory, without return: an alias of [LDSMINB](#ldsminb), [LDSMINAB](#ldsminab), [LDSMINALB](#ldsminalb), [LDSMINLB](#ldsminlb).
 
 ```
 stsminlb Wd, [Xn|SP]
@@ -7109,7 +7105,7 @@ stsminlb Wd, [Xn|SP]
 
 ## STSMINLH
 
-Atomic signed minimum on halfword in memory, without return: an alias of LDSMINH, LDSMINAH, LDSMINALH, LDSMINLH.
+Atomic signed minimum on halfword in memory, without return: an alias of [LDSMINH](#ldsminh), [LDSMINAH](#ldsminah), [LDSMINALH](#ldsminalh), [LDSMINLH](#ldsminlh).
 
 ```
 stsminlh Wd, [Xn|SP]
@@ -7142,7 +7138,7 @@ sttrh Wd, [Xn|SP {, #imm }]  ·························�
 
 ## STUMAX
 
-Atomic unsigned maximum on word or doubleword in memory, without return: an alias of LDUMAX, LDUMAXA, LDUMAXAL, LDUMAXL.
+Atomic unsigned maximum on word or doubleword in memory, without return: an alias of [LDUMAX](#ldumax), [LDUMAXA](#ldumaxa), [LDUMAXAL](#ldumaxal), [LDUMAXL](#ldumaxl).
 
 ```
 stumax Wd, [Xn|SP]
@@ -7151,7 +7147,7 @@ stumax Xd, [Xn|SP]
 
 ## STUMAXB
 
-Atomic unsigned maximum on byte in memory, without return: an alias of LDUMAXB, LDUMAXAB, LDUMAXALB, LDUMAXLB.
+Atomic unsigned maximum on byte in memory, without return: an alias of [LDUMAXB](#ldumaxb), [LDUMAXAB](#ldumaxab), [LDUMAXALB](#ldumaxalb), [LDUMAXLB](#ldumaxlb).
 
 ```
 stumaxb Wd, [Xn|SP]
@@ -7159,7 +7155,7 @@ stumaxb Wd, [Xn|SP]
 
 ## STUMAXH
 
-Atomic unsigned maximum on halfword in memory, without return: an alias of LDUMAXH, LDUMAXAH, LDUMAXALH, LDUMAXLH.
+Atomic unsigned maximum on halfword in memory, without return: an alias of [LDUMAXH](#ldumaxh), [LDUMAXAH](#ldumaxah), [LDUMAXALH](#ldumaxalh), [LDUMAXLH](#ldumaxlh).
 
 ```
 stumaxh Wd, [Xn|SP]
@@ -7167,7 +7163,7 @@ stumaxh Wd, [Xn|SP]
 
 ## STUMAXL
 
-Atomic unsigned maximum on word or doubleword in memory, without return: an alias of LDUMAX, LDUMAXA, LDUMAXAL, LDUMAXL.
+Atomic unsigned maximum on word or doubleword in memory, without return: an alias of [LDUMAX](#ldumax), [LDUMAXA](#ldumaxa), [LDUMAXAL](#ldumaxal), [LDUMAXL](#ldumaxl).
 
 ```
 stumaxl Wd, [Xn|SP]
@@ -7176,7 +7172,7 @@ stumaxl Xd, [Xn|SP]
 
 ## STUMAXLB
 
-Atomic unsigned maximum on byte in memory, without return: an alias of LDUMAXB, LDUMAXAB, LDUMAXALB, LDUMAXLB.
+Atomic unsigned maximum on byte in memory, without return: an alias of [LDUMAXB](#ldumaxb), [LDUMAXAB](#ldumaxab), [LDUMAXALB](#ldumaxalb), [LDUMAXLB](#ldumaxlb).
 
 ```
 stumaxlb Wd, [Xn|SP]
@@ -7184,7 +7180,7 @@ stumaxlb Wd, [Xn|SP]
 
 ## STUMAXLH
 
-Atomic unsigned maximum on halfword in memory, without return: an alias of LDUMAXH, LDUMAXAH, LDUMAXALH, LDUMAXLH.
+Atomic unsigned maximum on halfword in memory, without return: an alias of [LDUMAXH](#ldumaxh), [LDUMAXAH](#ldumaxah), [LDUMAXALH](#ldumaxalh), [LDUMAXLH](#ldumaxlh).
 
 ```
 stumaxlh Wd, [Xn|SP]
@@ -7192,7 +7188,7 @@ stumaxlh Wd, [Xn|SP]
 
 ## STUMIN
 
-Atomic unsigned minimum on word or doubleword in memory, without return: an alias of LDUMIN, LDUMINA, LDUMINAL, LDUMINL.
+Atomic unsigned minimum on word or doubleword in memory, without return: an alias of [LDUMIN](#ldumin), [LDUMINA](#ldumina), [LDUMINAL](#lduminal), [LDUMINL](#lduminl).
 
 ```
 stumin Wd, [Xn|SP]
@@ -7201,7 +7197,7 @@ stumin Xd, [Xn|SP]
 
 ## STUMINB
 
-Atomic unsigned minimum on byte in memory, without return: an alias of LDUMINB, LDUMINAB, LDUMINALB, LDUMINLB.
+Atomic unsigned minimum on byte in memory, without return: an alias of [LDUMINB](#lduminb), [LDUMINAB](#lduminab), [LDUMINALB](#lduminalb), [LDUMINLB](#lduminlb).
 
 ```
 stuminb Wd, [Xn|SP]
@@ -7209,7 +7205,7 @@ stuminb Wd, [Xn|SP]
 
 ## STUMINH
 
-Atomic unsigned minimum on halfword in memory, without return: an alias of LDUMINH, LDUMINAH, LDUMINALH, LDUMINLH.
+Atomic unsigned minimum on halfword in memory, without return: an alias of [LDUMINH](#lduminh), [LDUMINAH](#lduminah), [LDUMINALH](#lduminalh), [LDUMINLH](#lduminlh).
 
 ```
 stuminh Wd, [Xn|SP]
@@ -7217,7 +7213,7 @@ stuminh Wd, [Xn|SP]
 
 ## STUMINL
 
-Atomic unsigned minimum on word or doubleword in memory, without return: an alias of LDUMIN, LDUMINA, LDUMINAL, LDUMINL.
+Atomic unsigned minimum on word or doubleword in memory, without return: an alias of [LDUMIN](#ldumin), [LDUMINA](#ldumina), [LDUMINAL](#lduminal), [LDUMINL](#lduminl).
 
 ```
 stuminl Wd, [Xn|SP]
@@ -7226,7 +7222,7 @@ stuminl Xd, [Xn|SP]
 
 ## STUMINLB
 
-Atomic unsigned minimum on byte in memory, without return: an alias of LDUMINB, LDUMINAB, LDUMINALB, LDUMINLB.
+Atomic unsigned minimum on byte in memory, without return: an alias of [LDUMINB](#lduminb), [LDUMINAB](#lduminab), [LDUMINALB](#lduminalb), [LDUMINLB](#lduminlb).
 
 ```
 stuminlb Wd, [Xn|SP]
@@ -7234,7 +7230,7 @@ stuminlb Wd, [Xn|SP]
 
 ## STUMINLH
 
-Atomic unsigned minimum on halfword in memory, without return: an alias of LDUMINH, LDUMINAH, LDUMINALH, LDUMINLH.
+Atomic unsigned minimum on halfword in memory, without return: an alias of [LDUMINH](#lduminh), [LDUMINAH](#lduminah), [LDUMINALH](#lduminalh), [LDUMINLH](#lduminlh).
 
 ```
 stuminlh Wd, [Xn|SP]
@@ -7494,7 +7490,7 @@ swplh Wd, Wn, [Xm|SP]
 
 ## SXTB
 
-Signed Extend Byte: an alias of SBFM.
+Signed Extend Byte: an alias of [SBFM](#sbfm).
 
 ```
 sxtb Wd, Wn
@@ -7503,7 +7499,7 @@ sxtb Xd, Wn
 
 ## SXTH
 
-Sign Extend Halfword: an alias of SBFM.
+Sign Extend Halfword: an alias of [SBFM](#sbfm).
 
 ```
 sxth Wd, Wn
@@ -7512,7 +7508,7 @@ sxth Xd, Wn
 
 ## SXTL
 
-Signed extend Long: an alias of SSHLL, SSHLL2.
+Signed extend Long: an alias of [SSHLL](#sshll), [SSHLL2](#sshll2).
 
 ```
 sxtl Vd.8H, Vn.8B
@@ -7522,7 +7518,7 @@ sxtl Vd.2D, Vn.2S
 
 ## SXTL2
 
-Signed extend Long: an alias of SSHLL, SSHLL2.
+Signed extend Long: an alias of [SSHLL](#sshll), [SSHLL2](#sshll2).
 
 ```
 sxtl2 Vd.8H, Vn.16B
@@ -7532,7 +7528,7 @@ sxtl2 Vd.2D, Vn.4S
 
 ## SXTW
 
-Sign Extend Word: an alias of SBFM.
+Sign Extend Word: an alias of [SBFM](#sbfm).
 
 ```
 sxtw Xd, Wn
@@ -7604,7 +7600,7 @@ tbz Xd, #imm, <offset>  ····················  (0 <= imm < 64
 
 ## TLBI
 
-TLB Invalidate operation: an alias of SYS.
+TLB Invalidate operation: an alias of [SYS](#sys).
 
 ```
 tlbi <symbol> {, Xn }
@@ -7648,8 +7644,8 @@ tsb CSYNC
 
 ## TST
 
-- _TST (immediate)_: Test bits (immediate): an alias of ANDS (immediate).
-- _TST (shifted register)_: Test (shifted register): an alias of ANDS (shifted register).
+- _TST (immediate)_: Test bits (immediate): an alias of [ANDS (immediate)](#ands).
+- _TST (shifted register)_: Test (shifted register): an alias of [ANDS (shifted register)](#ands).
 
 ```
 tst Wd, #imm  ·························································  (imm is 32-bit logical)
@@ -7804,7 +7800,7 @@ uaddw2 Vd.2D, Vn.2D, Vm.4S
 
 ## UBFIZ
 
-Unsigned Bitfield Insert in Zero: an alias of UBFM.
+Unsigned Bitfield Insert in Zero: an alias of [UBFM](#ubfm).
 
 ```
 ubfiz Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -7822,7 +7818,7 @@ ubfm Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 
 
 ## UBFX
 
-Unsigned Bitfield Extract: an alias of UBFM.
+Unsigned Bitfield Extract: an alias of [UBFM](#ubfm).
 
 ```
 ubfx Wd, Wn, #imm1, #imm2  ················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -8060,7 +8056,7 @@ umlsl2 Vd.2D, Vn.4S, Vm.4S
 
 ## UMNEGL
 
-Unsigned Multiply-Negate Long: an alias of UMSUBL.
+Unsigned Multiply-Negate Long: an alias of [UMSUBL](#umsubl).
 
 ```
 umnegl Xd, Wn, Wm
@@ -8095,7 +8091,7 @@ umulh Xd, Xn, Xm
 
 ## UMULL
 
-- _UMULL_: Unsigned Multiply Long: an alias of UMADDL.
+- _UMULL_: Unsigned Multiply Long: an alias of [UMADDL](#umaddl).
 - _UMULL_: Unsigned Multiply Long (vector, by element).
 - _UMULL_: Unsigned Multiply long (vector).
 
@@ -8475,7 +8471,7 @@ usubw2 Vd.2D, Vn.2D, Vm.4S
 
 ## UXTB
 
-Unsigned Extend Byte: an alias of UBFM.
+Unsigned Extend Byte: an alias of [UBFM](#ubfm).
 
 ```
 uxtb Wd, Wn
@@ -8483,7 +8479,7 @@ uxtb Wd, Wn
 
 ## UXTH
 
-Unsigned Extend Halfword: an alias of UBFM.
+Unsigned Extend Halfword: an alias of [UBFM](#ubfm).
 
 ```
 uxth Wd, Wn
@@ -8491,7 +8487,7 @@ uxth Wd, Wn
 
 ## UXTL
 
-Unsigned extend Long: an alias of USHLL, USHLL2.
+Unsigned extend Long: an alias of [USHLL](#ushll), [USHLL2](#ushll2).
 
 ```
 uxtl Vd.8H, Vn.8B
@@ -8501,7 +8497,7 @@ uxtl Vd.2D, Vn.2S
 
 ## UXTL2
 
-Unsigned extend Long: an alias of USHLL, USHLL2.
+Unsigned extend Long: an alias of [USHLL](#ushll), [USHLL2](#ushll2).
 
 ```
 uxtl2 Vd.8H, Vn.16B

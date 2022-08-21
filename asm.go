@@ -1,7 +1,7 @@
 // Package asm implements an ARMv8 (AArch64) instruction assembler in Go.
 //
 // This library is mostly adapted from the CensoredUsername/dynasm-rs (Rust) project, and is not heavily tested.
-// See https://github.com/CensoredUsername/dynasm-rs. SVE instructions are not yet supported.
+// See https://github.com/CensoredUsername/dynasm-rs. SVE/SME instructions are not yet supported.
 //
 // The Assembler type encodes executable instructions to a code buffer.
 //

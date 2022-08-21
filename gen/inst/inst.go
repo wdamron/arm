@@ -227,17 +227,35 @@ func main() {
 	out.WriteString("during encoding but the provided argument should not be shifted beforehand; the shift amount indicates\n")
 	out.WriteString("the required alignment for the provided argument.\n\n\n")
 
+	writeAliasLinks := func(nameDesc instref.NameDesc) {
+		if len(nameDesc.AliasOf) != 0 {
+			out.WriteString(instref.AliasPrefix)
+			sep := ""
+			for _, other := range nameDesc.AliasOf {
+				fmt.Fprintf(out, "%s[%s](#%s)", sep, other.Name, strings.ToLower(other.Mnemonic))
+				sep = ", "
+			}
+			out.WriteByte('.')
+		}
+	}
+
 	for _, name := range names {
 		fmt.Fprintf(out, "## %s\n\n", strings.ToUpper(name))
 
-		if descs := encDescMap[strings.ToUpper(name)]; len(descs) == 1 {
-			out.WriteString(descs[0].Desc)
+		if descs := encDescMap[strings.ToUpper(name)]; len(descs) == 0 {
+			panic("No descriptions for " + name)
+		} else if len(descs) == 1 {
+			nameDesc := descs[0]
+			out.WriteString(nameDesc.Desc)
+			writeAliasLinks(nameDesc)
 			out.WriteString("\n\n")
 		} else if len(descs) == 0 {
 			panic("no descs for " + name)
 		} else {
 			for _, nameDesc := range descs {
-				fmt.Fprintf(out, "- _%s_: %s\n", nameDesc.Name, nameDesc.Desc)
+				fmt.Fprintf(out, "- _%s_: %s", nameDesc.Name, nameDesc.Desc)
+				writeAliasLinks(nameDesc)
+				out.WriteByte('\n')
 			}
 			out.WriteByte('\n')
 		}

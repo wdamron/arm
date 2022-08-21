@@ -4,7 +4,7 @@
 import "github.com/wdamron/arm"
 ```
 
-Package `arm` implements an ARMv8 (AArch64) instruction assembler in Go, for runtime or ahead-of-time generation of executable code. SVE instructions are not yet supported.
+Package `arm` implements an ARMv8 (AArch64) instruction assembler in Go, for runtime or ahead-of-time generation of executable code. SVE/SME instructions are not yet supported.
 
 This library is mostly adapted from the [CensoredUsername/dynasm-rs](https://github.com/CensoredUsername/dynasm-rs) (Rust) project, and is not heavily tested.
 
