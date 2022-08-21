@@ -21,6 +21,10 @@ func main() {
 
 	const docLineChars = 96 // pad
 	encDocMap := instref.Get(docLineChars)
+	encDescMap, err := instref.Descriptions()
+	if err != nil {
+		panic(err.Error())
+	}
 
 	var encOffset uint32
 	var out *strings.Builder
@@ -224,7 +228,21 @@ func main() {
 	out.WriteString("the required alignment for the provided argument.\n\n\n")
 
 	for _, name := range names {
-		fmt.Fprintf(out, "## %s\n\n```\n", strings.ToUpper(name))
+		fmt.Fprintf(out, "## %s\n\n", strings.ToUpper(name))
+
+		if descs := encDescMap[strings.ToUpper(name)]; len(descs) == 1 {
+			out.WriteString(descs[0].Desc)
+			out.WriteString("\n\n")
+		} else if len(descs) == 0 {
+			panic("no descs for " + name)
+		} else {
+			for _, nameDesc := range descs {
+				fmt.Fprintf(out, "- _%s_: %s\n", nameDesc.Name, nameDesc.Desc)
+			}
+			out.WriteByte('\n')
+		}
+
+		out.WriteString("```\n")
 		for _, encWidths := range encDocMap[name] {
 			for _, width := range encWidths {
 				out.WriteString(width.Doc)

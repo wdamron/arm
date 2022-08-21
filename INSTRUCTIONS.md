@@ -12,6 +12,8 @@ the required alignment for the provided argument.
 
 ## ABS
 
+Absolute value (vector).
+
 ```
 abs Dd, Dn
 abs Vd.16B, Vn.16B
@@ -25,6 +27,8 @@ abs Vd.2D, Vn.2D
 
 ## ADC
 
+Add with Carry.
+
 ```
 adc Wd, Wn, Wm
 adc Xd, Xn, Xm
@@ -32,12 +36,19 @@ adc Xd, Xn, Xm
 
 ## ADCS
 
+Add with Carry, setting flags.
+
 ```
 adcs Wd, Wn, Wm
 adcs Xd, Xn, Xm
 ```
 
 ## ADD
+
+- _ADD (extended register)_: Add (extended register).
+- _ADD (immediate)_: Add (immediate).
+- _ADD (shifted register)_: Add (shifted register).
+- _ADD (vector)_: Add (vector).
 
 ```
 add Wd, Wn, Wm {, LSL|LSR|ASR #imm }  ·········································  (0 <= imm < 32)
@@ -59,6 +70,8 @@ add Vd.2D, Vn.2D, Vm.2D
 
 ## ADDHN
 
+Add returning High Narrow.
+
 ```
 addhn Vd.8B, Vn.8H, Vm.8H
 addhn Vd.4H, Vn.4S, Vm.4S
@@ -67,6 +80,8 @@ addhn Vd.2S, Vn.2D, Vm.2D
 
 ## ADDHN2
 
+Add returning High Narrow.
+
 ```
 addhn2 Vd.16B, Vn.8H, Vm.8H
 addhn2 Vd.8H, Vn.4S, Vm.4S
@@ -74,6 +89,9 @@ addhn2 Vd.4S, Vn.2D, Vm.2D
 ```
 
 ## ADDP
+
+- _ADDP (scalar)_: Add Pair of elements (scalar).
+- _ADDP (vector)_: Add Pairwise (vector).
 
 ```
 addp Dd, Vn.2D
@@ -88,6 +106,10 @@ addp Vd.2D, Vn.2D, Vm.2D
 
 ## ADDS
 
+- _ADDS (extended register)_: Add (extended register), setting flags.
+- _ADDS (immediate)_: Add (immediate), setting flags.
+- _ADDS (shifted register)_: Add (shifted register), setting flags.
+
 ```
 adds Wd, Wn, Wm {, LSL|LSR|ASR #imm }  ········································  (0 <= imm < 32)
 adds Xd, Xn, Xm {, LSL|LSR|ASR #imm }  ········································  (0 <= imm < 64)
@@ -100,6 +122,8 @@ adds Xd, Xn|SP, #imm1 {, LSL #imm2 }  ·····················
 
 ## ADDV
 
+Add across Vector.
+
 ```
 addv Bd, Vn.16B
 addv Bd, Vn.8B
@@ -110,11 +134,15 @@ addv Sd, Vn.4S
 
 ## ADR
 
+Form PC-relative address.
+
 ```
 adr Xd, <offset>  ···············································  (offset is 21-bit (+/- 1 MB))
 ```
 
 ## ADRP
+
+Form PC-relative address to 4KB page.
 
 ```
 adrp Xd, <offset>  ········································  (offset >> 12 is 21-bit (+/- 4 GB))
@@ -122,11 +150,15 @@ adrp Xd, <offset>  ······························�
 
 ## AESD
 
+AES single round decryption.
+
 ```
 aesd Vd.16B, Vn.16B
 ```
 
 ## AESE
+
+AES single round encryption.
 
 ```
 aese Vd.16B, Vn.16B
@@ -134,17 +166,25 @@ aese Vd.16B, Vn.16B
 
 ## AESIMC
 
+AES inverse mix columns.
+
 ```
 aesimc Vd.16B, Vn.16B
 ```
 
 ## AESMC
 
+AES mix columns.
+
 ```
 aesmc Vd.16B, Vn.16B
 ```
 
 ## AND
+
+- _AND (immediate)_: Bitwise AND (immediate).
+- _AND (shifted register)_: Bitwise AND (shifted register).
+- _AND (vector)_: Bitwise AND (vector).
 
 ```
 and Vd.16B, Vn.16B, Vm.16B
@@ -157,6 +197,9 @@ and Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 
 ## ANDS
 
+- _ANDS (immediate)_: Bitwise AND (immediate), setting flags.
+- _ANDS (shifted register)_: Bitwise AND (shifted register), setting flags.
+
 ```
 ands Wd, Wn, #imm  ····················································  (imm is 32-bit logical)
 ands Xd, Xn, #imm  ····················································  (imm is 64-bit logical)
@@ -165,6 +208,9 @@ ands Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ··················�
 ```
 
 ## ASR
+
+- _ASR (immediate)_: Arithmetic Shift Right (immediate): an alias of SBFM.
+- _ASR (register)_: Arithmetic Shift Right (register): an alias of ASRV.
 
 ```
 asr Wd, Wn, Wm
@@ -175,6 +221,8 @@ asr Xd, Xn, #imm  ·······························
 
 ## ASRV
 
+Arithmetic Shift Right Variable.
+
 ```
 asrv Wd, Wn, Wm
 asrv Xd, Xn, Xm
@@ -182,11 +230,15 @@ asrv Xd, Xn, Xm
 
 ## AT
 
+Address Translate: an alias of SYS.
+
 ```
 at <symbol>, Xn
 ```
 
 ## AUTDA
+
+Authenticate Data address, using key A.
 
 ```
 autda Xd, Xn|SP
@@ -194,11 +246,15 @@ autda Xd, Xn|SP
 
 ## AUTDB
 
+Authenticate Data address, using key B.
+
 ```
 autdb Xd, Xn|SP
 ```
 
 ## AUTDZA
+
+Authenticate Data address, using key A.
 
 ```
 autdza Xd
@@ -206,11 +262,15 @@ autdza Xd
 
 ## AUTDZB
 
+Authenticate Data address, using key B.
+
 ```
 autdzb Xd
 ```
 
 ## AUTIA
+
+Authenticate Instruction address, using key A.
 
 ```
 autia Xd, Xn|SP
@@ -218,11 +278,15 @@ autia Xd, Xn|SP
 
 ## AUTIA1716
 
+Authenticate Instruction address, using key A.
+
 ```
 autia1716 
 ```
 
 ## AUTIASP
+
+Authenticate Instruction address, using key A.
 
 ```
 autiasp 
@@ -230,11 +294,15 @@ autiasp
 
 ## AUTIAZ
 
+Authenticate Instruction address, using key A.
+
 ```
 autiaz 
 ```
 
 ## AUTIB
+
+Authenticate Instruction address, using key B.
 
 ```
 autib Xd, Xn|SP
@@ -242,11 +310,15 @@ autib Xd, Xn|SP
 
 ## AUTIB1716
 
+Authenticate Instruction address, using key B.
+
 ```
 autib1716 
 ```
 
 ## AUTIBSP
+
+Authenticate Instruction address, using key B.
 
 ```
 autibsp 
@@ -254,11 +326,15 @@ autibsp
 
 ## AUTIBZ
 
+Authenticate Instruction address, using key B.
+
 ```
 autibz 
 ```
 
 ## AUTIZA
+
+Authenticate Instruction address, using key A.
 
 ```
 autiza Xd
@@ -266,11 +342,16 @@ autiza Xd
 
 ## AUTIZB
 
+Authenticate Instruction address, using key B.
+
 ```
 autizb Xd
 ```
 
 ## B
+
+- _B_: Branch.
+- _B.cond_: Branch conditionally.
 
 ```
 b <cond>, <offset>  ········································  (offset >> 2 is 19-bit (+/- 1 MB))
@@ -279,11 +360,15 @@ b <offset>  ··································
 
 ## BCAX
 
+Bit Clear and XOR.
+
 ```
 bcax Vd.16B, Vn.16B, Vm.16B, Va.16B
 ```
 
 ## BFC
+
+Bitfield Clear: an alias of BFM.
 
 ```
 bfc Wd, #imm1, #imm2  ·····················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -292,12 +377,16 @@ bfc Xd, #imm1, #imm2  ·····················  (0 <= imm1 < 6
 
 ## BFI
 
+Bitfield Insert: an alias of BFM.
+
 ```
 bfi Wd, Wn, #imm1, #imm2  ·················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
 bfi Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 0 < imm2 <= 64, imm1 + imm2 <= 64)
 ```
 
 ## BFM
+
+Bitfield Move.
 
 ```
 bfm Wd, Wn, #imm1, #imm2  ····································  (0 <= imm1 < 32, 0 <= imm2 < 32)
@@ -306,12 +395,18 @@ bfm Xd, Xn, #imm1, #imm2  ··················  (0 <= imm1 < 64,
 
 ## BFXIL
 
+Bitfield extract and insert at low end: an alias of BFM.
+
 ```
 bfxil Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
 bfxil Xd, Xn, #imm1, #imm2  ···············  (0 <= imm1 < 64, 0 < imm2 <= 64, imm1 + imm2 <= 64)
 ```
 
 ## BIC
+
+- _BIC (shifted register)_: Bitwise Bit Clear (shifted register).
+- _BIC (vector, immediate)_: Bitwise bit Clear (vector, immediate).
+- _BIC (vector, register)_: Bitwise bit Clear (vector, register).
 
 ```
 bic Vd.8H, #imm1 {, LSL #imm2 }  ····························  (0 <= imm1 < 256, imm2 in [0, 8])
@@ -326,12 +421,16 @@ bic Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 
 ## BICS
 
+Bitwise Bit Clear (shifted register), setting flags.
+
 ```
 bics Wd, Wn, Wm {, LSL|LSR|ASR|ROR #imm }  ····································  (0 <= imm < 32)
 bics Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ····································  (0 <= imm < 64)
 ```
 
 ## BIF
+
+Bitwise Insert if False.
 
 ```
 bif Vd.16B, Vn.16B, Vm.16B
@@ -340,6 +439,8 @@ bif Vd.8B, Vn.8B, Vm.8B
 
 ## BIT
 
+Bitwise Insert if True.
+
 ```
 bit Vd.16B, Vn.16B, Vm.16B
 bit Vd.8B, Vn.8B, Vm.8B
@@ -347,11 +448,15 @@ bit Vd.8B, Vn.8B, Vm.8B
 
 ## BL
 
+Branch with Link.
+
 ```
 bl <offset>  ·············································  (offset >> 2 is 26-bit (+/- 128 MB))
 ```
 
 ## BLR
+
+Branch with Link to Register.
 
 ```
 blr Xd
@@ -359,11 +464,15 @@ blr Xd
 
 ## BLRAA
 
+Branch with Link to Register, with pointer authentication.
+
 ```
 blraa Xd, Xn|SP
 ```
 
 ## BLRAAZ
+
+Branch with Link to Register, with pointer authentication.
 
 ```
 blraaz Xd
@@ -371,11 +480,15 @@ blraaz Xd
 
 ## BLRAB
 
+Branch with Link to Register, with pointer authentication.
+
 ```
 blrab Xd, Xn|SP
 ```
 
 ## BLRABZ
+
+Branch with Link to Register, with pointer authentication.
 
 ```
 blrabz Xd
@@ -383,11 +496,15 @@ blrabz Xd
 
 ## BR
 
+Branch to Register.
+
 ```
 br Xd
 ```
 
 ## BRAA
+
+Branch to Register, with pointer authentication.
 
 ```
 braa Xd, Xn|SP
@@ -395,11 +512,15 @@ braa Xd, Xn|SP
 
 ## BRAAZ
 
+Branch to Register, with pointer authentication.
+
 ```
 braaz Xd
 ```
 
 ## BRAB
+
+Branch to Register, with pointer authentication.
 
 ```
 brab Xd, Xn|SP
@@ -407,17 +528,23 @@ brab Xd, Xn|SP
 
 ## BRABZ
 
+Branch to Register, with pointer authentication.
+
 ```
 brabz Xd
 ```
 
 ## BRK
 
+Breakpoint instruction.
+
 ```
 brk #imm  ··································································  (0 <= imm < 65536)
 ```
 
 ## BSL
+
+Bitwise Select.
 
 ```
 bsl Vd.16B, Vn.16B, Vm.16B
@@ -426,12 +553,16 @@ bsl Vd.8B, Vn.8B, Vm.8B
 
 ## CAS
 
+Compare and Swap word or doubleword in memory.
+
 ```
 cas Wd, Wn, [Xm|SP]
 cas Xd, Xn, [Xm|SP]
 ```
 
 ## CASA
+
+Compare and Swap word or doubleword in memory.
 
 ```
 casa Wd, Wn, [Xm|SP]
@@ -440,17 +571,23 @@ casa Xd, Xn, [Xm|SP]
 
 ## CASAB
 
+Compare and Swap byte in memory.
+
 ```
 casab Wd, Wn, [Xm|SP]
 ```
 
 ## CASAH
 
+Compare and Swap halfword in memory.
+
 ```
 casah Wd, Wn, [Xm|SP]
 ```
 
 ## CASAL
+
+Compare and Swap word or doubleword in memory.
 
 ```
 casal Wd, Wn, [Xm|SP]
@@ -459,11 +596,15 @@ casal Xd, Xn, [Xm|SP]
 
 ## CASALB
 
+Compare and Swap byte in memory.
+
 ```
 casalb Wd, Wn, [Xm|SP]
 ```
 
 ## CASALH
+
+Compare and Swap halfword in memory.
 
 ```
 casalh Wd, Wn, [Xm|SP]
@@ -471,17 +612,23 @@ casalh Wd, Wn, [Xm|SP]
 
 ## CASB
 
+Compare and Swap byte in memory.
+
 ```
 casb Wd, Wn, [Xm|SP]
 ```
 
 ## CASH
 
+Compare and Swap halfword in memory.
+
 ```
 cash Wd, Wn, [Xm|SP]
 ```
 
 ## CASL
+
+Compare and Swap word or doubleword in memory.
 
 ```
 casl Wd, Wn, [Xm|SP]
@@ -490,17 +637,23 @@ casl Xd, Xn, [Xm|SP]
 
 ## CASLB
 
+Compare and Swap byte in memory.
+
 ```
 caslb Wd, Wn, [Xm|SP]
 ```
 
 ## CASLH
 
+Compare and Swap halfword in memory.
+
 ```
 caslh Wd, Wn, [Xm|SP]
 ```
 
 ## CASP
+
+Compare and Swap Pair of words or doublewords in memory.
 
 ```
 casp Wn, Wm, Wa, Wb, [Xd|SP]  ··················  (n is even, m == n + 1, a is even, b == a + 1)
@@ -509,12 +662,16 @@ casp Xn, Xm, Xa, Xb, [Xd|SP]  ··················  (n is even, 
 
 ## CASPA
 
+Compare and Swap Pair of words or doublewords in memory.
+
 ```
 caspa Wn, Wm, Wa, Wb, [Xd|SP]  ·················  (n is even, m == n + 1, a is even, b == a + 1)
 caspa Xn, Xm, Xa, Xb, [Xd|SP]  ·················  (n is even, m == n + 1, a is even, b == a + 1)
 ```
 
 ## CASPAL
+
+Compare and Swap Pair of words or doublewords in memory.
 
 ```
 caspal Wn, Wm, Wa, Wb, [Xd|SP]  ················  (n is even, m == n + 1, a is even, b == a + 1)
@@ -523,12 +680,16 @@ caspal Xn, Xm, Xa, Xb, [Xd|SP]  ················  (n is even, m 
 
 ## CASPL
 
+Compare and Swap Pair of words or doublewords in memory.
+
 ```
 caspl Wn, Wm, Wa, Wb, [Xd|SP]  ·················  (n is even, m == n + 1, a is even, b == a + 1)
 caspl Xn, Xm, Xa, Xb, [Xd|SP]  ·················  (n is even, m == n + 1, a is even, b == a + 1)
 ```
 
 ## CBNZ
+
+Compare and Branch on Nonzero.
 
 ```
 cbnz Wd, <offset>  ·········································  (offset >> 2 is 19-bit (+/- 1 MB))
@@ -537,12 +698,17 @@ cbnz Xd, <offset>  ······························�
 
 ## CBZ
 
+Compare and Branch on Zero.
+
 ```
 cbz Wd, <offset>  ··········································  (offset >> 2 is 19-bit (+/- 1 MB))
 cbz Xd, <offset>  ··········································  (offset >> 2 is 19-bit (+/- 1 MB))
 ```
 
 ## CCMN
+
+- _CCMN (immediate)_: Conditional Compare Negative (immediate).
+- _CCMN (register)_: Conditional Compare Negative (register).
 
 ```
 ccmn Wd, #imm1, #imm2, <cond>  ·······························  (0 <= imm1 < 32, 0 <= imm2 < 16)
@@ -553,6 +719,9 @@ ccmn Xd, Xn, #imm, <cond>  ··························�
 
 ## CCMP
 
+- _CCMP (immediate)_: Conditional Compare (immediate).
+- _CCMP (register)_: Conditional Compare (register).
+
 ```
 ccmp Wd, #imm1, #imm2, <cond>  ·······························  (0 <= imm1 < 32, 0 <= imm2 < 16)
 ccmp Xd, #imm1, #imm2, <cond>  ·······························  (0 <= imm1 < 32, 0 <= imm2 < 16)
@@ -562,17 +731,23 @@ ccmp Xd, Xn, #imm, <cond>  ··························�
 
 ## CFINV
 
+Invert Carry Flag.
+
 ```
 cfinv 
 ```
 
 ## CFP
 
+Control Flow Prediction Restriction by Context: an alias of SYS.
+
 ```
 cfp RCTX, Xn
 ```
 
 ## CINC
+
+Conditional Increment: an alias of CSINC.
 
 ```
 cinc Wd, Wn, <cond>
@@ -581,6 +756,8 @@ cinc Xd, Xn, <cond>
 
 ## CINV
 
+Conditional Invert: an alias of CSINV.
+
 ```
 cinv Wd, Wn, <cond>
 cinv Xd, Xn, <cond>
@@ -588,12 +765,17 @@ cinv Xd, Xn, <cond>
 
 ## CLREX
 
+Clear Exclusive.
+
 ```
 clrex #imm  ···································································  (0 <= imm < 16)
 clrex 
 ```
 
 ## CLS
+
+- _CLS_: Count Leading Sign bits.
+- _CLS (vector)_: Count Leading Sign bits (vector).
 
 ```
 cls Vd.16B, Vn.16B
@@ -608,6 +790,9 @@ cls Xd, Xn
 
 ## CLZ
 
+- _CLZ_: Count Leading Zeros.
+- _CLZ (vector)_: Count Leading Zero bits (vector).
+
 ```
 clz Vd.16B, Vn.16B
 clz Vd.8B, Vn.8B
@@ -620,6 +805,9 @@ clz Xd, Xn
 ```
 
 ## CMEQ
+
+- _CMEQ (register)_: Compare bitwise Equal (vector).
+- _CMEQ (zero)_: Compare bitwise Equal to zero (vector).
 
 ```
 cmeq Dd, Dn, Dm
@@ -642,6 +830,9 @@ cmeq Vd.2D, Vn.2D, #0
 
 ## CMGE
 
+- _CMGE (register)_: Compare signed Greater than or Equal (vector).
+- _CMGE (zero)_: Compare signed Greater than or Equal to zero (vector).
+
 ```
 cmge Dd, Dn, Dm
 cmge Vd.16B, Vn.16B, Vm.16B
@@ -662,6 +853,9 @@ cmge Vd.2D, Vn.2D, #0
 ```
 
 ## CMGT
+
+- _CMGT (register)_: Compare signed Greater than (vector).
+- _CMGT (zero)_: Compare signed Greater than zero (vector).
 
 ```
 cmgt Dd, Dn, Dm
@@ -684,6 +878,8 @@ cmgt Vd.2D, Vn.2D, #0
 
 ## CMHI
 
+Compare unsigned Higher (vector).
+
 ```
 cmhi Dd, Dn, Dm
 cmhi Vd.16B, Vn.16B, Vm.16B
@@ -696,6 +892,8 @@ cmhi Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## CMHS
+
+Compare unsigned Higher or Same (vector).
 
 ```
 cmhs Dd, Dn, Dm
@@ -710,6 +908,8 @@ cmhs Vd.2D, Vn.2D, Vm.2D
 
 ## CMLE
 
+Compare signed Less than or Equal to zero (vector).
+
 ```
 cmle Dd, Dn, #0
 cmle Vd.16B, Vn.16B, #0
@@ -722,6 +922,8 @@ cmle Vd.2D, Vn.2D, #0
 ```
 
 ## CMLT
+
+Compare signed Less than zero (vector).
 
 ```
 cmlt Dd, Dn, #0
@@ -736,6 +938,10 @@ cmlt Vd.2D, Vn.2D, #0
 
 ## CMN
 
+- _CMN (extended register)_: Compare Negative (extended register): an alias of ADDS (extended register).
+- _CMN (immediate)_: Compare Negative (immediate): an alias of ADDS (immediate).
+- _CMN (shifted register)_: Compare Negative (shifted register): an alias of ADDS (shifted register).
+
 ```
 cmn Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
 cmn Xd, Xn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 64)
@@ -748,6 +954,10 @@ cmn Xd|SP, #imm1 {, LSL #imm2 }  ·······················�
 
 ## CMP
 
+- _CMP (extended register)_: Compare (extended register): an alias of SUBS (extended register).
+- _CMP (immediate)_: Compare (immediate): an alias of SUBS (immediate).
+- _CMP (shifted register)_: Compare (shifted register): an alias of SUBS (shifted register).
+
 ```
 cmp Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
 cmp Xd, Xn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 64)
@@ -759,6 +969,8 @@ cmp Xd|SP, #imm1 {, LSL #imm2 }  ·······················�
 ```
 
 ## CMTST
+
+Compare bitwise Test bits nonzero (vector).
 
 ```
 cmtst Dd, Dn, Dm
@@ -773,12 +985,16 @@ cmtst Vd.2D, Vn.2D, Vm.2D
 
 ## CNEG
 
+Conditional Negate: an alias of CSNEG.
+
 ```
 cneg Wd, Wn, <cond>
 cneg Xd, Xn, <cond>
 ```
 
 ## CNT
+
+Population Count per byte.
 
 ```
 cnt Vd.16B, Vn.16B
@@ -787,11 +1003,15 @@ cnt Vd.8B, Vn.8B
 
 ## CPP
 
+Cache Prefetch Prediction Restriction by Context: an alias of SYS.
+
 ```
 cpp RCTX, Xn
 ```
 
 ## CRC32B
+
+CRC32 checksum.
 
 ```
 crc32b Wd, Wn, Wm
@@ -799,11 +1019,15 @@ crc32b Wd, Wn, Wm
 
 ## CRC32CB
 
+CRC32C checksum.
+
 ```
 crc32cb Wd, Wn, Wm
 ```
 
 ## CRC32CH
+
+CRC32C checksum.
 
 ```
 crc32ch Wd, Wn, Wm
@@ -811,11 +1035,15 @@ crc32ch Wd, Wn, Wm
 
 ## CRC32CW
 
+CRC32C checksum.
+
 ```
 crc32cw Wd, Wn, Wm
 ```
 
 ## CRC32CX
+
+CRC32C checksum.
 
 ```
 crc32cx Wd, Wn, Xm
@@ -823,11 +1051,15 @@ crc32cx Wd, Wn, Xm
 
 ## CRC32H
 
+CRC32 checksum.
+
 ```
 crc32h Wd, Wn, Wm
 ```
 
 ## CRC32W
+
+CRC32 checksum.
 
 ```
 crc32w Wd, Wn, Wm
@@ -835,17 +1067,23 @@ crc32w Wd, Wn, Wm
 
 ## CRC32X
 
+CRC32 checksum.
+
 ```
 crc32x Wd, Wn, Xm
 ```
 
 ## CSDB
 
+Consumption of Speculative Data Barrier.
+
 ```
 csdb 
 ```
 
 ## CSEL
+
+Conditional Select.
 
 ```
 csel Wd, Wn, Wm, <cond>
@@ -854,12 +1092,16 @@ csel Xd, Xn, Xm, <cond>
 
 ## CSET
 
+Conditional Set: an alias of CSINC.
+
 ```
 cset Wd, <cond>
 cset Xd, <cond>
 ```
 
 ## CSETM
+
+Conditional Set Mask: an alias of CSINV.
 
 ```
 csetm Wd, <cond>
@@ -868,12 +1110,16 @@ csetm Xd, <cond>
 
 ## CSINC
 
+Conditional Select Increment.
+
 ```
 csinc Wd, Wn, Wm, <cond>
 csinc Xd, Xn, Xm, <cond>
 ```
 
 ## CSINV
+
+Conditional Select Invert.
 
 ```
 csinv Wd, Wn, Wm, <cond>
@@ -882,6 +1128,8 @@ csinv Xd, Xn, Xm, <cond>
 
 ## CSNEG
 
+Conditional Select Negation.
+
 ```
 csneg Wd, Wn, Wm, <cond>
 csneg Xd, Xn, Xm, <cond>
@@ -889,11 +1137,15 @@ csneg Xd, Xn, Xm, <cond>
 
 ## DC
 
+Data Cache operation: an alias of SYS.
+
 ```
 dc <symbol>, Xn
 ```
 
 ## DCPS1
+
+Debug Change PE State to EL1..
 
 ```
 dcps1  {, #imm }  ··························································  (0 <= imm < 65536)
@@ -901,17 +1153,23 @@ dcps1  {, #imm }  ·······························
 
 ## DCPS2
 
+Debug Change PE State to EL2..
+
 ```
 dcps2  {, #imm }  ··························································  (0 <= imm < 65536)
 ```
 
 ## DCPS3
 
+Debug Change PE State to EL3.
+
 ```
 dcps3  {, #imm }  ··························································  (0 <= imm < 65536)
 ```
 
 ## DMB
+
+Data Memory Barrier.
 
 ```
 dmb <symbol>
@@ -920,11 +1178,15 @@ dmb #imm  ···································
 
 ## DRPS
 
+Debug restore process state.
+
 ```
 drps 
 ```
 
 ## DSB
+
+Data Synchronization Barrier.
 
 ```
 dsb <symbol>
@@ -932,6 +1194,9 @@ dsb #imm  ···································
 ```
 
 ## DUP
+
+- _DUP (element)_: Duplicate vector element to vector or scalar.
+- _DUP (general)_: Duplicate general-purpose register to vector.
 
 ```
 dup Bd, Vn.B[i]
@@ -956,11 +1221,15 @@ dup Vd.2D, Xn
 
 ## DVP
 
+Data Value Prediction Restriction by Context: an alias of SYS.
+
 ```
 dvp RCTX, Xn
 ```
 
 ## EON
+
+Bitwise Exclusive OR NOT (shifted register).
 
 ```
 eon Wd, Wn, Wm {, LSL|LSR|ASR|ROR #imm }  ·····································  (0 <= imm < 32)
@@ -968,6 +1237,10 @@ eon Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 ```
 
 ## EOR
+
+- _EOR (immediate)_: Bitwise Exclusive OR (immediate).
+- _EOR (shifted register)_: Bitwise Exclusive OR (shifted register).
+- _EOR (vector)_: Bitwise Exclusive OR (vector).
 
 ```
 eor Vd.16B, Vn.16B, Vm.16B
@@ -980,11 +1253,15 @@ eor Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 
 ## EOR3
 
+Three-way Exclusive OR.
+
 ```
 eor3 Vd.16B, Vn.16B, Vm.16B, Va.16B
 ```
 
 ## ERET
+
+Exception Return.
 
 ```
 eret 
@@ -992,11 +1269,15 @@ eret
 
 ## ERETAA
 
+Exception Return, with pointer authentication.
+
 ```
 eretaa 
 ```
 
 ## ERETAB
+
+Exception Return, with pointer authentication.
 
 ```
 eretab 
@@ -1004,11 +1285,15 @@ eretab
 
 ## ESB
 
+Error Synchronization Barrier.
+
 ```
 esb 
 ```
 
 ## EXT
+
+Extract vector from pair of vectors.
 
 ```
 ext Vd.8B, Vn.8B, Vm.8B, #imm  ·················································  (0 <= imm < 8)
@@ -1017,12 +1302,16 @@ ext Vd.16B, Vn.16B, Vm.16B, #imm  ·······················
 
 ## EXTR
 
+Extract register.
+
 ```
 extr Wd, Wn, Wm, #imm  ························································  (0 <= imm < 32)
 extr Xd, Xn, Xm, #imm  ························································  (0 <= imm < 64)
 ```
 
 ## FABD
+
+Floating-point Absolute Difference (vector).
 
 ```
 fabd Hd, Hn, Hm
@@ -1037,6 +1326,9 @@ fabd Vd.2D, Vn.2D, Vm.2D
 
 ## FABS
 
+- _FABS (scalar)_: Floating-point Absolute value (scalar).
+- _FABS (vector)_: Floating-point Absolute value (vector).
+
 ```
 fabs Vd.8H, Vn.8H
 fabs Vd.4H, Vn.4H
@@ -1049,6 +1341,8 @@ fabs Dd, Dn
 ```
 
 ## FACGE
+
+Floating-point Absolute Compare Greater than or Equal (vector).
 
 ```
 facge Hd, Hn, Hm
@@ -1063,6 +1357,8 @@ facge Vd.2D, Vn.2D, Vm.2D
 
 ## FACGT
 
+Floating-point Absolute Compare Greater than (vector).
+
 ```
 facgt Hd, Hn, Hm
 facgt Sd, Sn, Sm
@@ -1075,6 +1371,9 @@ facgt Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## FADD
+
+- _FADD (scalar)_: Floating-point Add (scalar).
+- _FADD (vector)_: Floating-point Add (vector).
 
 ```
 fadd Vd.8H, Vn.8H, Vm.8H
@@ -1089,6 +1388,9 @@ fadd Dd, Dn, Dm
 
 ## FADDP
 
+- _FADDP (scalar)_: Floating-point Add Pair of elements (scalar).
+- _FADDP (vector)_: Floating-point Add Pairwise (vector).
+
 ```
 faddp Hd, Vn.2H
 faddp Sd, Vn.2S
@@ -1102,6 +1404,8 @@ faddp Vd.2D, Vn.2D, Vm.2D
 
 ## FCADD
 
+Floating-point Complex Add.
+
 ```
 fcadd Vd.8H, Vn.8H, Vm.8H, #imm  ···········································  (imm in [90, 270])
 fcadd Vd.4H, Vn.4H, Vm.4H, #imm  ···········································  (imm in [90, 270])
@@ -1112,6 +1416,8 @@ fcadd Vd.2D, Vn.2D, Vm.2D, #imm  ·······················�
 
 ## FCCMP
 
+Floating-point Conditional quiet Compare (scalar).
+
 ```
 fccmp Hd, Hn, #imm, <cond>  ···················································  (0 <= imm < 16)
 fccmp Sd, Sn, #imm, <cond>  ···················································  (0 <= imm < 16)
@@ -1120,6 +1426,8 @@ fccmp Dd, Dn, #imm, <cond>  ··························
 
 ## FCCMPE
 
+Floating-point Conditional signaling Compare (scalar).
+
 ```
 fccmpe Hd, Hn, #imm, <cond>  ··················································  (0 <= imm < 16)
 fccmpe Sd, Sn, #imm, <cond>  ··················································  (0 <= imm < 16)
@@ -1127,6 +1435,9 @@ fccmpe Dd, Dn, #imm, <cond>  ·························�
 ```
 
 ## FCMEQ
+
+- _FCMEQ (register)_: Floating-point Compare Equal (vector).
+- _FCMEQ (zero)_: Floating-point Compare Equal to zero (vector).
 
 ```
 fcmeq Hd, Hn, Hm
@@ -1149,6 +1460,9 @@ fcmeq Vd.2D, Vn.2D, #0.0
 
 ## FCMGE
 
+- _FCMGE (register)_: Floating-point Compare Greater than or Equal (vector).
+- _FCMGE (zero)_: Floating-point Compare Greater than or Equal to zero (vector).
+
 ```
 fcmge Hd, Hn, Hm
 fcmge Sd, Sn, Sm
@@ -1169,6 +1483,9 @@ fcmge Vd.2D, Vn.2D, #0.0
 ```
 
 ## FCMGT
+
+- _FCMGT (register)_: Floating-point Compare Greater than (vector).
+- _FCMGT (zero)_: Floating-point Compare Greater than zero (vector).
 
 ```
 fcmgt Hd, Hn, Hm
@@ -1191,6 +1508,9 @@ fcmgt Vd.2D, Vn.2D, #0.0
 
 ## FCMLA
 
+- _FCMLA_: Floating-point Complex Multiply Accumulate.
+- _FCMLA (by element)_: Floating-point Complex Multiply Accumulate (by element).
+
 ```
 fcmla Vd.4H, Vn.4H, Vm.H[i], #imm  ·································  (imm in [0, 90, 180, 270])
 fcmla Vd.8H, Vn.8H, Vm.H[i], #imm  ·································  (imm in [0, 90, 180, 270])
@@ -1203,6 +1523,8 @@ fcmla Vd.2D, Vn.2D, Vm.2D, #imm  ·······················�
 ```
 
 ## FCMLE
+
+Floating-point Compare Less than or Equal to zero (vector).
 
 ```
 fcmle Hd, Hn, #0.0
@@ -1217,6 +1539,8 @@ fcmle Vd.2D, Vn.2D, #0.0
 
 ## FCMLT
 
+Floating-point Compare Less than zero (vector).
+
 ```
 fcmlt Hd, Hn, #0.0
 fcmlt Sd, Sn, #0.0
@@ -1230,6 +1554,8 @@ fcmlt Vd.2D, Vn.2D, #0.0
 
 ## FCMP
 
+Floating-point quiet Compare (scalar).
+
 ```
 fcmp Hd, Hn
 fcmp Hd, #0.0
@@ -1240,6 +1566,8 @@ fcmp Dd, #0.0
 ```
 
 ## FCMPE
+
+Floating-point signaling Compare (scalar).
 
 ```
 fcmpe Hd, Hn
@@ -1252,6 +1580,8 @@ fcmpe Dd, #0.0
 
 ## FCSEL
 
+Floating-point Conditional Select (scalar).
+
 ```
 fcsel Hd, Hn, Hm, <cond>
 fcsel Sd, Sn, Sm, <cond>
@@ -1259,6 +1589,8 @@ fcsel Dd, Dn, Dm, <cond>
 ```
 
 ## FCVT
+
+Floating-point Convert precision (scalar).
 
 ```
 fcvt Sd, Hn
@@ -1270,6 +1602,9 @@ fcvt Sd, Dn
 ```
 
 ## FCVTAS
+
+- _FCVTAS (scalar)_: Floating-point Convert to Signed integer, rounding to nearest with ties to Away (scalar).
+- _FCVTAS (vector)_: Floating-point Convert to Signed integer, rounding to nearest with ties to Away (vector).
 
 ```
 fcvtas Hd, Hn
@@ -1290,6 +1625,9 @@ fcvtas Xd, Dn
 
 ## FCVTAU
 
+- _FCVTAU (scalar)_: Floating-point Convert to Unsigned integer, rounding to nearest with ties to Away (scalar).
+- _FCVTAU (vector)_: Floating-point Convert to Unsigned integer, rounding to nearest with ties to Away (vector).
+
 ```
 fcvtau Hd, Hn
 fcvtau Sd, Sn
@@ -1309,6 +1647,8 @@ fcvtau Xd, Dn
 
 ## FCVTL
 
+Floating-point Convert to higher precision Long (vector).
+
 ```
 fcvtl Vd.4S, Vn.4H
 fcvtl Vd.2D, Vn.2S
@@ -1316,12 +1656,17 @@ fcvtl Vd.2D, Vn.2S
 
 ## FCVTL2
 
+Floating-point Convert to higher precision Long (vector).
+
 ```
 fcvtl2 Vd.4S, Vn.8H
 fcvtl2 Vd.2D, Vn.4S
 ```
 
 ## FCVTMS
+
+- _FCVTMS (scalar)_: Floating-point Convert to Signed integer, rounding toward Minus infinity (scalar).
+- _FCVTMS (vector)_: Floating-point Convert to Signed integer, rounding toward Minus infinity (vector).
 
 ```
 fcvtms Hd, Hn
@@ -1342,6 +1687,9 @@ fcvtms Xd, Dn
 
 ## FCVTMU
 
+- _FCVTMU (scalar)_: Floating-point Convert to Unsigned integer, rounding toward Minus infinity (scalar).
+- _FCVTMU (vector)_: Floating-point Convert to Unsigned integer, rounding toward Minus infinity (vector).
+
 ```
 fcvtmu Hd, Hn
 fcvtmu Sd, Sn
@@ -1361,17 +1709,24 @@ fcvtmu Xd, Dn
 
 ## FCVTN
 
+Floating-point Convert to lower precision Narrow (vector).
+
 ```
 fcvtn Vd.2S, Vn.2D
 ```
 
 ## FCVTN2
 
+Floating-point Convert to lower precision Narrow (vector).
+
 ```
 fcvtn2 Vd.4S, Vn.2D
 ```
 
 ## FCVTNS
+
+- _FCVTNS (scalar)_: Floating-point Convert to Signed integer, rounding to nearest with ties to even (scalar).
+- _FCVTNS (vector)_: Floating-point Convert to Signed integer, rounding to nearest with ties to even (vector).
 
 ```
 fcvtns Hd, Hn
@@ -1392,6 +1747,9 @@ fcvtns Xd, Dn
 
 ## FCVTNU
 
+- _FCVTNU (scalar)_: Floating-point Convert to Unsigned integer, rounding to nearest with ties to even (scalar).
+- _FCVTNU (vector)_: Floating-point Convert to Unsigned integer, rounding to nearest with ties to even (vector).
+
 ```
 fcvtnu Hd, Hn
 fcvtnu Sd, Sn
@@ -1410,6 +1768,9 @@ fcvtnu Xd, Dn
 ```
 
 ## FCVTPS
+
+- _FCVTPS (scalar)_: Floating-point Convert to Signed integer, rounding toward Plus infinity (scalar).
+- _FCVTPS (vector)_: Floating-point Convert to Signed integer, rounding toward Plus infinity (vector).
 
 ```
 fcvtps Hd, Hn
@@ -1430,6 +1791,9 @@ fcvtps Xd, Dn
 
 ## FCVTPU
 
+- _FCVTPU (scalar)_: Floating-point Convert to Unsigned integer, rounding toward Plus infinity (scalar).
+- _FCVTPU (vector)_: Floating-point Convert to Unsigned integer, rounding toward Plus infinity (vector).
+
 ```
 fcvtpu Hd, Hn
 fcvtpu Sd, Sn
@@ -1449,6 +1813,8 @@ fcvtpu Xd, Dn
 
 ## FCVTXN
 
+Floating-point Convert to lower precision Narrow, rounding to odd (vector).
+
 ```
 fcvtxn Sd, Dn
 fcvtxn Vd.2S, Vn.2D
@@ -1456,11 +1822,18 @@ fcvtxn Vd.2S, Vn.2D
 
 ## FCVTXN2
 
+Floating-point Convert to lower precision Narrow, rounding to odd (vector).
+
 ```
 fcvtxn2 Vd.4S, Vn.2D
 ```
 
 ## FCVTZS
+
+- _FCVTZS (scalar, fixed-point)_: Floating-point Convert to Signed fixed-point, rounding toward Zero (scalar).
+- _FCVTZS (scalar, integer)_: Floating-point Convert to Signed integer, rounding toward Zero (scalar).
+- _FCVTZS (vector, fixed-point)_: Floating-point Convert to Signed fixed-point, rounding toward Zero (vector).
+- _FCVTZS (vector, integer)_: Floating-point Convert to Signed integer, rounding toward Zero (vector).
 
 ```
 fcvtzs Hd, Hn, #imm  ··························································  (0 < imm <= 16)
@@ -1495,6 +1868,11 @@ fcvtzs Xd, Dn
 
 ## FCVTZU
 
+- _FCVTZU (scalar, fixed-point)_: Floating-point Convert to Unsigned fixed-point, rounding toward Zero (scalar).
+- _FCVTZU (scalar, integer)_: Floating-point Convert to Unsigned integer, rounding toward Zero (scalar).
+- _FCVTZU (vector, fixed-point)_: Floating-point Convert to Unsigned fixed-point, rounding toward Zero (vector).
+- _FCVTZU (vector, integer)_: Floating-point Convert to Unsigned integer, rounding toward Zero (vector).
+
 ```
 fcvtzu Hd, Hn, #imm  ··························································  (0 < imm <= 16)
 fcvtzu Sd, Sn, #imm  ··························································  (0 < imm <= 32)
@@ -1528,6 +1906,9 @@ fcvtzu Xd, Dn
 
 ## FDIV
 
+- _FDIV (scalar)_: Floating-point Divide (scalar).
+- _FDIV (vector)_: Floating-point Divide (vector).
+
 ```
 fdiv Vd.8H, Vn.8H, Vm.8H
 fdiv Vd.4H, Vn.4H, Vm.4H
@@ -1541,11 +1922,15 @@ fdiv Dd, Dn, Dm
 
 ## FJCVTZS
 
+Floating-point Javascript Convert to Signed fixed-point, rounding toward Zero.
+
 ```
 fjcvtzs Wd, Dn
 ```
 
 ## FMADD
+
+Floating-point fused Multiply-Add (scalar).
 
 ```
 fmadd Hd, Hn, Hm, Ha
@@ -1554,6 +1939,9 @@ fmadd Dd, Dn, Dm, Da
 ```
 
 ## FMAX
+
+- _FMAX (scalar)_: Floating-point Maximum (scalar).
+- _FMAX (vector)_: Floating-point Maximum (vector).
 
 ```
 fmax Vd.8H, Vn.8H, Vm.8H
@@ -1568,6 +1956,9 @@ fmax Dd, Dn, Dm
 
 ## FMAXNM
 
+- _FMAXNM (scalar)_: Floating-point Maximum Number (scalar).
+- _FMAXNM (vector)_: Floating-point Maximum Number (vector).
+
 ```
 fmaxnm Vd.8H, Vn.8H, Vm.8H
 fmaxnm Vd.4H, Vn.4H, Vm.4H
@@ -1580,6 +1971,9 @@ fmaxnm Dd, Dn, Dm
 ```
 
 ## FMAXNMP
+
+- _FMAXNMP (scalar)_: Floating-point Maximum Number of Pair of elements (scalar).
+- _FMAXNMP (vector)_: Floating-point Maximum Number Pairwise (vector).
 
 ```
 fmaxnmp Hd, Vn.2H
@@ -1594,6 +1988,8 @@ fmaxnmp Vd.2D, Vn.2D, Vm.2D
 
 ## FMAXNMV
 
+Floating-point Maximum Number across Vector.
+
 ```
 fmaxnmv Hd, Vn.8H
 fmaxnmv Hd, Vn.4H
@@ -1601,6 +1997,9 @@ fmaxnmv Sd, Vn.4S
 ```
 
 ## FMAXP
+
+- _FMAXP (scalar)_: Floating-point Maximum of Pair of elements (scalar).
+- _FMAXP (vector)_: Floating-point Maximum Pairwise (vector).
 
 ```
 fmaxp Hd, Vn.2H
@@ -1615,6 +2014,8 @@ fmaxp Vd.2D, Vn.2D, Vm.2D
 
 ## FMAXV
 
+Floating-point Maximum across Vector.
+
 ```
 fmaxv Hd, Vn.8H
 fmaxv Hd, Vn.4H
@@ -1622,6 +2023,9 @@ fmaxv Sd, Vn.4S
 ```
 
 ## FMIN
+
+- _FMIN (scalar)_: Floating-point Minimum (scalar).
+- _FMIN (vector)_: Floating-point minimum (vector).
 
 ```
 fmin Vd.8H, Vn.8H, Vm.8H
@@ -1636,6 +2040,9 @@ fmin Dd, Dn, Dm
 
 ## FMINNM
 
+- _FMINNM (scalar)_: Floating-point Minimum Number (scalar).
+- _FMINNM (vector)_: Floating-point Minimum Number (vector).
+
 ```
 fminnm Vd.8H, Vn.8H, Vm.8H
 fminnm Vd.4H, Vn.4H, Vm.4H
@@ -1648,6 +2055,9 @@ fminnm Dd, Dn, Dm
 ```
 
 ## FMINNMP
+
+- _FMINNMP (scalar)_: Floating-point Minimum Number of Pair of elements (scalar).
+- _FMINNMP (vector)_: Floating-point Minimum Number Pairwise (vector).
 
 ```
 fminnmp Hd, Vn.2H
@@ -1662,6 +2072,8 @@ fminnmp Vd.2D, Vn.2D, Vm.2D
 
 ## FMINNMV
 
+Floating-point Minimum Number across Vector.
+
 ```
 fminnmv Hd, Vn.8H
 fminnmv Hd, Vn.4H
@@ -1669,6 +2081,9 @@ fminnmv Sd, Vn.4S
 ```
 
 ## FMINP
+
+- _FMINP (scalar)_: Floating-point Minimum of Pair of elements (scalar).
+- _FMINP (vector)_: Floating-point Minimum Pairwise (vector).
 
 ```
 fminp Hd, Vn.2H
@@ -1683,6 +2098,8 @@ fminp Vd.2D, Vn.2D, Vm.2D
 
 ## FMINV
 
+Floating-point Minimum across Vector.
+
 ```
 fminv Hd, Vn.8H
 fminv Hd, Vn.4H
@@ -1690,6 +2107,9 @@ fminv Sd, Vn.4S
 ```
 
 ## FMLA
+
+- _FMLA (by element)_: Floating-point fused Multiply-Add to accumulator (by element).
+- _FMLA (vector)_: Floating-point fused Multiply-Add to accumulator (vector).
 
 ```
 fmla Hd, Hn, Vm.H[i]  ································································  (m < 16)
@@ -1709,6 +2129,9 @@ fmla Vd.2D, Vn.2D, Vm.2D
 
 ## FMLAL
 
+- _FMLAL_: Floating-point fused Multiply-Add Long to accumulator (by element).
+- _FMLAL_: Floating-point fused Multiply-Add Long to accumulator (vector).
+
 ```
 fmlal Vd.2S, Vn.2H, Vm.H[i]  ·························································  (m < 16)
 fmlal Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -1718,6 +2141,9 @@ fmlal Vd.4S, Vn.4H, Vm.4H
 
 ## FMLAL2
 
+- _FMLAL2 (by element)_: Floating-point fused Multiply-Add Long to accumulator (by element).
+- _FMLAL2 (vector)_: Floating-point fused Multiply-Add Long to accumulator (vector).
+
 ```
 fmlal2 Vd.2S, Vn.2H, Vm.H[i]  ························································  (m < 16)
 fmlal2 Vd.4S, Vn.4H, Vm.H[i]  ························································  (m < 16)
@@ -1726,6 +2152,9 @@ fmlal2 Vd.4S, Vn.4H, Vm.4H
 ```
 
 ## FMLS
+
+- _FMLS (by element)_: Floating-point fused Multiply-Subtract from accumulator (by element).
+- _FMLS (vector)_: Floating-point fused Multiply-Subtract from accumulator (vector).
 
 ```
 fmls Hd, Hn, Vm.H[i]  ································································  (m < 16)
@@ -1745,6 +2174,9 @@ fmls Vd.2D, Vn.2D, Vm.2D
 
 ## FMLSL
 
+- _FMLSL_: Floating-point fused Multiply-Subtract Long from accumulator (by element).
+- _FMLSL_: Floating-point fused Multiply-Subtract Long from accumulator (vector).
+
 ```
 fmlsl Vd.2S, Vn.2H, Vm.H[i]  ·························································  (m < 16)
 fmlsl Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -1754,6 +2186,9 @@ fmlsl Vd.4S, Vn.4H, Vm.4H
 
 ## FMLSL2
 
+- _FMLSL2 (by element)_: Floating-point fused Multiply-Subtract Long from accumulator (by element).
+- _FMLSL2 (vector)_: Floating-point fused Multiply-Subtract Long from accumulator (vector).
+
 ```
 fmlsl2 Vd.2S, Vn.2H, Vm.H[i]  ························································  (m < 16)
 fmlsl2 Vd.4S, Vn.4H, Vm.H[i]  ························································  (m < 16)
@@ -1762,6 +2197,11 @@ fmlsl2 Vd.4S, Vn.4H, Vm.4H
 ```
 
 ## FMOV
+
+- _FMOV (general)_: Floating-point Move to or from general-purpose register without conversion.
+- _FMOV (register)_: Floating-point Move register without conversion.
+- _FMOV (scalar, immediate)_: Floating-point move immediate (scalar).
+- _FMOV (vector, immediate)_: Floating-point move immediate (vector).
 
 ```
 fmov Vd.8H, #imm  ························································  (imm is split float)
@@ -1789,6 +2229,8 @@ fmov Dd, #imm  ································�
 
 ## FMSUB
 
+Floating-point Fused Multiply-Subtract (scalar).
+
 ```
 fmsub Hd, Hn, Hm, Ha
 fmsub Sd, Sn, Sm, Sa
@@ -1796,6 +2238,10 @@ fmsub Dd, Dn, Dm, Da
 ```
 
 ## FMUL
+
+- _FMUL (by element)_: Floating-point Multiply (by element).
+- _FMUL (scalar)_: Floating-point Multiply (scalar).
+- _FMUL (vector)_: Floating-point Multiply (vector).
 
 ```
 fmul Hd, Hn, Vm.H[i]  ································································  (m < 16)
@@ -1818,6 +2264,9 @@ fmul Dd, Dn, Dm
 
 ## FMULX
 
+- _FMULX_: Floating-point Multiply extended.
+- _FMULX (by element)_: Floating-point Multiply extended (by element).
+
 ```
 fmulx Hd, Hn, Vm.H[i]  ·······························································  (m < 16)
 fmulx Sd, Sn, Vm.S[i]
@@ -1839,6 +2288,9 @@ fmulx Vd.2D, Vn.2D, Vm.2D
 
 ## FNEG
 
+- _FNEG (scalar)_: Floating-point Negate (scalar).
+- _FNEG (vector)_: Floating-point Negate (vector).
+
 ```
 fneg Vd.8H, Vn.8H
 fneg Vd.4H, Vn.4H
@@ -1852,6 +2304,8 @@ fneg Dd, Dn
 
 ## FNMADD
 
+Floating-point Negated fused Multiply-Add (scalar).
+
 ```
 fnmadd Hd, Hn, Hm, Ha
 fnmadd Sd, Sn, Sm, Sa
@@ -1859,6 +2313,8 @@ fnmadd Dd, Dn, Dm, Da
 ```
 
 ## FNMSUB
+
+Floating-point Negated fused Multiply-Subtract (scalar).
 
 ```
 fnmsub Hd, Hn, Hm, Ha
@@ -1868,6 +2324,8 @@ fnmsub Dd, Dn, Dm, Da
 
 ## FNMUL
 
+Floating-point Multiply-Negate (scalar).
+
 ```
 fnmul Hd, Hn, Hm
 fnmul Sd, Sn, Sm
@@ -1875,6 +2333,8 @@ fnmul Dd, Dn, Dm
 ```
 
 ## FRECPE
+
+Floating-point Reciprocal Estimate.
 
 ```
 frecpe Hd, Hn
@@ -1889,6 +2349,8 @@ frecpe Vd.2D, Vn.2D
 
 ## FRECPS
 
+Floating-point Reciprocal Step.
+
 ```
 frecps Hd, Hn, Hm
 frecps Sd, Sn, Sm
@@ -1902,6 +2364,8 @@ frecps Vd.2D, Vn.2D, Vm.2D
 
 ## FRECPX
 
+Floating-point Reciprocal exponent (scalar).
+
 ```
 frecpx Hd, Hn
 frecpx Sd, Sn
@@ -1909,6 +2373,9 @@ frecpx Dd, Dn
 ```
 
 ## FRINTA
+
+- _FRINTA (scalar)_: Floating-point Round to Integral, to nearest with ties to Away (scalar).
+- _FRINTA (vector)_: Floating-point Round to Integral, to nearest with ties to Away (vector).
 
 ```
 frinta Vd.8H, Vn.8H
@@ -1923,6 +2390,9 @@ frinta Dd, Dn
 
 ## FRINTI
 
+- _FRINTI (scalar)_: Floating-point Round to Integral, using current rounding mode (scalar).
+- _FRINTI (vector)_: Floating-point Round to Integral, using current rounding mode (vector).
+
 ```
 frinti Vd.8H, Vn.8H
 frinti Vd.4H, Vn.4H
@@ -1935,6 +2405,9 @@ frinti Dd, Dn
 ```
 
 ## FRINTM
+
+- _FRINTM (scalar)_: Floating-point Round to Integral, toward Minus infinity (scalar).
+- _FRINTM (vector)_: Floating-point Round to Integral, toward Minus infinity (vector).
 
 ```
 frintm Vd.8H, Vn.8H
@@ -1949,6 +2422,9 @@ frintm Dd, Dn
 
 ## FRINTN
 
+- _FRINTN (scalar)_: Floating-point Round to Integral, to nearest with ties to even (scalar).
+- _FRINTN (vector)_: Floating-point Round to Integral, to nearest with ties to even (vector).
+
 ```
 frintn Vd.8H, Vn.8H
 frintn Vd.4H, Vn.4H
@@ -1961,6 +2437,9 @@ frintn Dd, Dn
 ```
 
 ## FRINTP
+
+- _FRINTP (scalar)_: Floating-point Round to Integral, toward Plus infinity (scalar).
+- _FRINTP (vector)_: Floating-point Round to Integral, toward Plus infinity (vector).
 
 ```
 frintp Vd.8H, Vn.8H
@@ -1975,6 +2454,9 @@ frintp Dd, Dn
 
 ## FRINTX
 
+- _FRINTX (scalar)_: Floating-point Round to Integral exact, using current rounding mode (scalar).
+- _FRINTX (vector)_: Floating-point Round to Integral exact, using current rounding mode (vector).
+
 ```
 frintx Vd.8H, Vn.8H
 frintx Vd.4H, Vn.4H
@@ -1987,6 +2469,9 @@ frintx Dd, Dn
 ```
 
 ## FRINTZ
+
+- _FRINTZ (scalar)_: Floating-point Round to Integral, toward Zero (scalar).
+- _FRINTZ (vector)_: Floating-point Round to Integral, toward Zero (vector).
 
 ```
 frintz Vd.8H, Vn.8H
@@ -2001,6 +2486,8 @@ frintz Dd, Dn
 
 ## FRSQRTE
 
+Floating-point Reciprocal Square Root Estimate.
+
 ```
 frsqrte Hd, Hn
 frsqrte Sd, Sn
@@ -2013,6 +2500,8 @@ frsqrte Vd.2D, Vn.2D
 ```
 
 ## FRSQRTS
+
+Floating-point Reciprocal Square Root Step.
 
 ```
 frsqrts Hd, Hn, Hm
@@ -2027,6 +2516,9 @@ frsqrts Vd.2D, Vn.2D, Vm.2D
 
 ## FSQRT
 
+- _FSQRT (scalar)_: Floating-point Square Root (scalar).
+- _FSQRT (vector)_: Floating-point Square Root (vector).
+
 ```
 fsqrt Vd.8H, Vn.8H
 fsqrt Vd.4H, Vn.4H
@@ -2039,6 +2531,9 @@ fsqrt Dd, Dn
 ```
 
 ## FSUB
+
+- _FSUB (scalar)_: Floating-point Subtract (scalar).
+- _FSUB (vector)_: Floating-point Subtract (vector).
 
 ```
 fsub Vd.8H, Vn.8H, Vm.8H
@@ -2053,11 +2548,15 @@ fsub Dd, Dn, Dm
 
 ## HINT
 
+Hint instruction.
+
 ```
 hint #imm  ···································································  (0 <= imm < 128)
 ```
 
 ## HLT
+
+Halt instruction.
 
 ```
 hlt #imm  ··································································  (0 <= imm < 65536)
@@ -2065,11 +2564,15 @@ hlt #imm  ···································
 
 ## HVC
 
+Hypervisor Call.
+
 ```
 hvc #imm  ··································································  (0 <= imm < 65536)
 ```
 
 ## IC
+
+Instruction Cache operation: an alias of SYS.
 
 ```
 ic IVAU, Xn
@@ -2077,6 +2580,9 @@ ic <symbol>
 ```
 
 ## INS
+
+- _INS (element)_: Insert vector element from another vector element.
+- _INS (general)_: Insert vector element from general-purpose register.
 
 ```
 ins Vd.B[i], Vn.B[i]
@@ -2091,6 +2597,8 @@ ins Vd.D[i], Xn
 
 ## ISB
 
+Instruction Synchronization Barrier.
+
 ```
 isb SY
 isb #imm  ·····································································  (0 <= imm < 16)
@@ -2098,6 +2606,9 @@ isb
 ```
 
 ## LD1
+
+- _LD1 (multiple structures)_: Load multiple single-element structures to one, two, three, or four registers.
+- _LD1 (single structure)_: Load one single-element structure to one lane of one register.
 
 ```
 ld1 {Vd.16B * 1}, [Xn|SP]
@@ -2212,6 +2723,8 @@ ld1 {Vd.D * 1}[i], [Xn|SP], Xm  ························
 
 ## LD1R
 
+Load one single-element structure and Replicate to all lanes (of one register).
+
 ```
 ld1r {Vd.16B * 1}, [Xn|SP]
 ld1r {Vd.8B * 1}, [Xn|SP]
@@ -2240,6 +2753,9 @@ ld1r {Vd.1D * 1}, [Xn|SP], Xm  ························�
 ```
 
 ## LD2
+
+- _LD2 (multiple structures)_: Load multiple 2-element structures to two registers.
+- _LD2 (single structure)_: Load single 2-element structure to one lane of two registers.
 
 ```
 ld2 {Vd.16B * 2}, [Xn|SP]
@@ -2279,6 +2795,8 @@ ld2 {Vd.D * 2}[i], [Xn|SP], Xm  ························
 
 ## LD2R
 
+Load single 2-element structure and Replicate to all lanes of two registers.
+
 ```
 ld2r {Vd.16B * 2}, [Xn|SP]
 ld2r {Vd.8B * 2}, [Xn|SP]
@@ -2307,6 +2825,9 @@ ld2r {Vd.1D * 2}, [Xn|SP], Xm  ························�
 ```
 
 ## LD3
+
+- _LD3 (multiple structures)_: Load multiple 3-element structures to three registers.
+- _LD3 (single structure)_: Load single 3-element structure to one lane of three registers.
 
 ```
 ld3 {Vd.16B * 3}, [Xn|SP]
@@ -2346,6 +2867,8 @@ ld3 {Vd.D * 3}[i], [Xn|SP], Xm  ························
 
 ## LD3R
 
+Load single 3-element structure and Replicate to all lanes of three registers.
+
 ```
 ld3r {Vd.16B * 3}, [Xn|SP]
 ld3r {Vd.8B * 3}, [Xn|SP]
@@ -2374,6 +2897,9 @@ ld3r {Vd.1D * 3}, [Xn|SP], Xm  ························�
 ```
 
 ## LD4
+
+- _LD4 (multiple structures)_: Load multiple 4-element structures to four registers.
+- _LD4 (single structure)_: Load single 4-element structure to one lane of four registers.
 
 ```
 ld4 {Vd.16B * 4}, [Xn|SP]
@@ -2413,6 +2939,8 @@ ld4 {Vd.D * 4}[i], [Xn|SP], Xm  ························
 
 ## LD4R
 
+Load single 4-element structure and Replicate to all lanes of four registers.
+
 ```
 ld4r {Vd.16B * 4}, [Xn|SP]
 ld4r {Vd.8B * 4}, [Xn|SP]
@@ -2442,12 +2970,16 @@ ld4r {Vd.1D * 4}, [Xn|SP], Xm  ························�
 
 ## LDADD
 
+Atomic add on word or doubleword in memory.
+
 ```
 ldadd Wd, Wn, [Xm|SP]
 ldadd Xd, Xn, [Xm|SP]
 ```
 
 ## LDADDA
+
+Atomic add on word or doubleword in memory.
 
 ```
 ldadda Wd, Wn, [Xm|SP]
@@ -2456,17 +2988,23 @@ ldadda Xd, Xn, [Xm|SP]
 
 ## LDADDAB
 
+Atomic add on byte in memory.
+
 ```
 ldaddab Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDAH
 
+Atomic add on halfword in memory.
+
 ```
 ldaddah Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDAL
+
+Atomic add on word or doubleword in memory.
 
 ```
 ldaddal Wd, Wn, [Xm|SP]
@@ -2475,11 +3013,15 @@ ldaddal Xd, Xn, [Xm|SP]
 
 ## LDADDALB
 
+Atomic add on byte in memory.
+
 ```
 ldaddalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDALH
+
+Atomic add on halfword in memory.
 
 ```
 ldaddalh Wd, Wn, [Xm|SP]
@@ -2487,17 +3029,23 @@ ldaddalh Wd, Wn, [Xm|SP]
 
 ## LDADDB
 
+Atomic add on byte in memory.
+
 ```
 ldaddb Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDH
 
+Atomic add on halfword in memory.
+
 ```
 ldaddh Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDL
+
+Atomic add on word or doubleword in memory.
 
 ```
 ldaddl Wd, Wn, [Xm|SP]
@@ -2506,17 +3054,23 @@ ldaddl Xd, Xn, [Xm|SP]
 
 ## LDADDLB
 
+Atomic add on byte in memory.
+
 ```
 ldaddlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDADDLH
 
+Atomic add on halfword in memory.
+
 ```
 ldaddlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDAPR
+
+Load-Acquire RCpc Register.
 
 ```
 ldapr Wd, [Xn|SP]
@@ -2525,17 +3079,23 @@ ldapr Xd, [Xn|SP]
 
 ## LDAPRB
 
+Load-Acquire RCpc Register Byte.
+
 ```
 ldaprb Wd, [Xn|SP]
 ```
 
 ## LDAPRH
 
+Load-Acquire RCpc Register Halfword.
+
 ```
 ldaprh Wd, [Xn|SP]
 ```
 
 ## LDAPUR
+
+Load-Acquire RCpc Register (unscaled).
 
 ```
 ldapur Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
@@ -2544,17 +3104,23 @@ ldapur Xd, [Xn|SP {, #imm }]  ·························
 
 ## LDAPURB
 
+Load-Acquire RCpc Register Byte (unscaled).
+
 ```
 ldapurb Wd, [Xn|SP {, #imm }]  ············································  (-256 <= imm < 256)
 ```
 
 ## LDAPURH
 
+Load-Acquire RCpc Register Halfword (unscaled).
+
 ```
 ldapurh Wd, [Xn|SP {, #imm }]  ············································  (-256 <= imm < 256)
 ```
 
 ## LDAPURSB
+
+Load-Acquire RCpc Register Signed Byte (unscaled).
 
 ```
 ldapursb Wd, [Xn|SP {, #imm }]  ···········································  (-256 <= imm < 256)
@@ -2563,6 +3129,8 @@ ldapursb Xd, [Xn|SP {, #imm }]  ························
 
 ## LDAPURSH
 
+Load-Acquire RCpc Register Signed Halfword (unscaled).
+
 ```
 ldapursh Wd, [Xn|SP {, #imm }]  ···········································  (-256 <= imm < 256)
 ldapursh Xd, [Xn|SP {, #imm }]  ···········································  (-256 <= imm < 256)
@@ -2570,11 +3138,15 @@ ldapursh Xd, [Xn|SP {, #imm }]  ························
 
 ## LDAPURSW
 
+Load-Acquire RCpc Register Signed Word (unscaled).
+
 ```
 ldapursw Xd, [Xn|SP {, #imm }]  ···········································  (-256 <= imm < 256)
 ```
 
 ## LDAR
+
+Load-Acquire Register.
 
 ```
 ldar Wd, [Xn|SP]
@@ -2583,17 +3155,23 @@ ldar Xd, [Xn|SP]
 
 ## LDARB
 
+Load-Acquire Register Byte.
+
 ```
 ldarb Wd, [Xn|SP]
 ```
 
 ## LDARH
 
+Load-Acquire Register Halfword.
+
 ```
 ldarh Wd, [Xn|SP]
 ```
 
 ## LDAXP
+
+Load-Acquire Exclusive Pair of Registers.
 
 ```
 ldaxp Wd, Wn, [Xm|SP]
@@ -2602,6 +3180,8 @@ ldaxp Xd, Xn, [Xm|SP]
 
 ## LDAXR
 
+Load-Acquire Exclusive Register.
+
 ```
 ldaxr Wd, [Xn|SP]
 ldaxr Xd, [Xn|SP]
@@ -2609,17 +3189,23 @@ ldaxr Xd, [Xn|SP]
 
 ## LDAXRB
 
+Load-Acquire Exclusive Register Byte.
+
 ```
 ldaxrb Wd, [Xn|SP]
 ```
 
 ## LDAXRH
 
+Load-Acquire Exclusive Register Halfword.
+
 ```
 ldaxrh Wd, [Xn|SP]
 ```
 
 ## LDCLR
+
+Atomic bit clear on word or doubleword in memory.
 
 ```
 ldclr Wd, Wn, [Xm|SP]
@@ -2628,6 +3214,8 @@ ldclr Xd, Xn, [Xm|SP]
 
 ## LDCLRA
 
+Atomic bit clear on word or doubleword in memory.
+
 ```
 ldclra Wd, Wn, [Xm|SP]
 ldclra Xd, Xn, [Xm|SP]
@@ -2635,17 +3223,23 @@ ldclra Xd, Xn, [Xm|SP]
 
 ## LDCLRAB
 
+Atomic bit clear on byte in memory.
+
 ```
 ldclrab Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRAH
 
+Atomic bit clear on halfword in memory.
+
 ```
 ldclrah Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRAL
+
+Atomic bit clear on word or doubleword in memory.
 
 ```
 ldclral Wd, Wn, [Xm|SP]
@@ -2654,11 +3248,15 @@ ldclral Xd, Xn, [Xm|SP]
 
 ## LDCLRALB
 
+Atomic bit clear on byte in memory.
+
 ```
 ldclralb Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRALH
+
+Atomic bit clear on halfword in memory.
 
 ```
 ldclralh Wd, Wn, [Xm|SP]
@@ -2666,17 +3264,23 @@ ldclralh Wd, Wn, [Xm|SP]
 
 ## LDCLRB
 
+Atomic bit clear on byte in memory.
+
 ```
 ldclrb Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRH
 
+Atomic bit clear on halfword in memory.
+
 ```
 ldclrh Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRL
+
+Atomic bit clear on word or doubleword in memory.
 
 ```
 ldclrl Wd, Wn, [Xm|SP]
@@ -2685,17 +3289,23 @@ ldclrl Xd, Xn, [Xm|SP]
 
 ## LDCLRLB
 
+Atomic bit clear on byte in memory.
+
 ```
 ldclrlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDCLRLH
 
+Atomic bit clear on halfword in memory.
+
 ```
 ldclrlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDEOR
+
+Atomic exclusive OR on word or doubleword in memory.
 
 ```
 ldeor Wd, Wn, [Xm|SP]
@@ -2704,6 +3314,8 @@ ldeor Xd, Xn, [Xm|SP]
 
 ## LDEORA
 
+Atomic exclusive OR on word or doubleword in memory.
+
 ```
 ldeora Wd, Wn, [Xm|SP]
 ldeora Xd, Xn, [Xm|SP]
@@ -2711,17 +3323,23 @@ ldeora Xd, Xn, [Xm|SP]
 
 ## LDEORAB
 
+Atomic exclusive OR on byte in memory.
+
 ```
 ldeorab Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORAH
 
+Atomic exclusive OR on halfword in memory.
+
 ```
 ldeorah Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORAL
+
+Atomic exclusive OR on word or doubleword in memory.
 
 ```
 ldeoral Wd, Wn, [Xm|SP]
@@ -2730,11 +3348,15 @@ ldeoral Xd, Xn, [Xm|SP]
 
 ## LDEORALB
 
+Atomic exclusive OR on byte in memory.
+
 ```
 ldeoralb Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORALH
+
+Atomic exclusive OR on halfword in memory.
 
 ```
 ldeoralh Wd, Wn, [Xm|SP]
@@ -2742,17 +3364,23 @@ ldeoralh Wd, Wn, [Xm|SP]
 
 ## LDEORB
 
+Atomic exclusive OR on byte in memory.
+
 ```
 ldeorb Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORH
 
+Atomic exclusive OR on halfword in memory.
+
 ```
 ldeorh Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORL
+
+Atomic exclusive OR on word or doubleword in memory.
 
 ```
 ldeorl Wd, Wn, [Xm|SP]
@@ -2761,17 +3389,23 @@ ldeorl Xd, Xn, [Xm|SP]
 
 ## LDEORLB
 
+Atomic exclusive OR on byte in memory.
+
 ```
 ldeorlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDEORLH
 
+Atomic exclusive OR on halfword in memory.
+
 ```
 ldeorlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDLAR
+
+Load LOAcquire Register.
 
 ```
 ldlar Wd, [Xn|SP]
@@ -2780,17 +3414,24 @@ ldlar Xd, [Xn|SP]
 
 ## LDLARB
 
+Load LOAcquire Register Byte.
+
 ```
 ldlarb Wd, [Xn|SP]
 ```
 
 ## LDLARH
 
+Load LOAcquire Register Halfword.
+
 ```
 ldlarh Wd, [Xn|SP]
 ```
 
 ## LDNP
+
+- _LDNP_: Load Pair of Registers, with non-temporal hint.
+- _LDNP (SIMD&FP)_: Load Pair of SIMD&FP registers, with Non-temporal hint.
 
 ```
 ldnp Sd, Sn, [Xm|SP {, #imm }]  ·································  (-256 <= imm < 256, imm >> 2)
@@ -2801,6 +3442,9 @@ ldnp Xd, Xn, [Xm|SP {, #imm }]  ························
 ```
 
 ## LDP
+
+- _LDP_: Load Pair of Registers.
+- _LDP (SIMD&FP)_: Load Pair of SIMD&FP registers.
 
 ```
 ldp Sd, Sn, [Xm|SP], #imm  ······································  (-256 <= imm < 256, imm >> 2)
@@ -2822,6 +3466,8 @@ ldp Xd, Xn, [Xm|SP {, #imm }]  ························�
 
 ## LDPSW
 
+Load Pair of Registers Signed Word.
+
 ```
 ldpsw Xd, Xn, [Xm|SP], #imm  ····································  (-256 <= imm < 256, imm >> 2)
 ldpsw Xd, Xn, [Xm|SP, #imm]!  ···································  (-256 <= imm < 256, imm >> 2)
@@ -2829,6 +3475,14 @@ ldpsw Xd, Xn, [Xm|SP {, #imm }]  ·······················�
 ```
 
 ## LDR
+
+- _LDR (immediate)_: Load Register (immediate).
+- _LDR (literal)_: Load Register (literal).
+- _LDR (register)_: Load Register (register).
+- _LDR (immediate, SIMD&FP)_: Load SIMD&FP Register (immediate offset).
+- _LDR (literal, SIMD&FP)_: Load SIMD&FP Register (PC-relative literal).
+- _LDR (register, SIMD&FP)_: Load SIMD&FP Register (register offset).
+- _LDR_: Load vector to ZA array.
 
 ```
 ldr Bd, [Xn|SP], #imm  ····················································  (-256 <= imm < 256)
@@ -2868,6 +3522,8 @@ ldr Xd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············�
 
 ## LDRAA
 
+Load Register, with pointer authentication.
+
 ```
 ldraa Xd, [Xn|SP {, #imm }]  ··································  (-4096 <= imm < 4096, imm >> 3)
 ldraa Xd, [Xn|SP, #imm]!  ·····································  (-4096 <= imm < 4096, imm >> 3)
@@ -2875,12 +3531,17 @@ ldraa Xd, [Xn|SP, #imm]!  ···························
 
 ## LDRAB
 
+Load Register, with pointer authentication.
+
 ```
 ldrab Xd, [Xn|SP {, #imm }]  ··································  (-4096 <= imm < 4096, imm >> 3)
 ldrab Xd, [Xn|SP, #imm]!  ·····································  (-4096 <= imm < 4096, imm >> 3)
 ```
 
 ## LDRB
+
+- _LDRB (immediate)_: Load Register Byte (immediate).
+- _LDRB (register)_: Load Register Byte (register).
 
 ```
 ldrb Wd, [Xn|SP], #imm  ···················································  (-256 <= imm < 256)
@@ -2891,6 +3552,9 @@ ldrb Wd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············
 
 ## LDRH
 
+- _LDRH (immediate)_: Load Register Halfword (immediate).
+- _LDRH (register)_: Load Register Halfword (register).
+
 ```
 ldrh Wd, [Xn|SP], #imm  ···················································  (-256 <= imm < 256)
 ldrh Wd, [Xn|SP, #imm]!  ··················································  (-256 <= imm < 256)
@@ -2899,6 +3563,9 @@ ldrh Wd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············
 ```
 
 ## LDRSB
+
+- _LDRSB (immediate)_: Load Register Signed Byte (immediate).
+- _LDRSB (register)_: Load Register Signed Byte (register).
 
 ```
 ldrsb Wd, [Xn|SP], #imm  ··················································  (-256 <= imm < 256)
@@ -2913,6 +3580,9 @@ ldrsb Xd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ············�
 
 ## LDRSH
 
+- _LDRSH (immediate)_: Load Register Signed Halfword (immediate).
+- _LDRSH (register)_: Load Register Signed Halfword (register).
+
 ```
 ldrsh Wd, [Xn|SP], #imm  ··················································  (-256 <= imm < 256)
 ldrsh Xd, [Xn|SP], #imm  ··················································  (-256 <= imm < 256)
@@ -2926,6 +3596,10 @@ ldrsh Xd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ············�
 
 ## LDRSW
 
+- _LDRSW (immediate)_: Load Register Signed Word (immediate).
+- _LDRSW (literal)_: Load Register Signed Word (literal).
+- _LDRSW (register)_: Load Register Signed Word (register).
+
 ```
 ldrsw Xd, [Xn|SP], #imm  ··················································  (-256 <= imm < 256)
 ldrsw Xd, [Xn|SP, #imm]!  ·················································  (-256 <= imm < 256)
@@ -2936,12 +3610,16 @@ ldrsw Xd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ············�
 
 ## LDSET
 
+Atomic bit set on word or doubleword in memory.
+
 ```
 ldset Wd, Wn, [Xm|SP]
 ldset Xd, Xn, [Xm|SP]
 ```
 
 ## LDSETA
+
+Atomic bit set on word or doubleword in memory.
 
 ```
 ldseta Wd, Wn, [Xm|SP]
@@ -2950,17 +3628,23 @@ ldseta Xd, Xn, [Xm|SP]
 
 ## LDSETAB
 
+Atomic bit set on byte in memory.
+
 ```
 ldsetab Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETAH
 
+Atomic bit set on halfword in memory.
+
 ```
 ldsetah Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETAL
+
+Atomic bit set on word or doubleword in memory.
 
 ```
 ldsetal Wd, Wn, [Xm|SP]
@@ -2969,11 +3653,15 @@ ldsetal Xd, Xn, [Xm|SP]
 
 ## LDSETALB
 
+Atomic bit set on byte in memory.
+
 ```
 ldsetalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETALH
+
+Atomic bit set on halfword in memory.
 
 ```
 ldsetalh Wd, Wn, [Xm|SP]
@@ -2981,17 +3669,23 @@ ldsetalh Wd, Wn, [Xm|SP]
 
 ## LDSETB
 
+Atomic bit set on byte in memory.
+
 ```
 ldsetb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETH
 
+Atomic bit set on halfword in memory.
+
 ```
 ldseth Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETL
+
+Atomic bit set on word or doubleword in memory.
 
 ```
 ldsetl Wd, Wn, [Xm|SP]
@@ -3000,17 +3694,23 @@ ldsetl Xd, Xn, [Xm|SP]
 
 ## LDSETLB
 
+Atomic bit set on byte in memory.
+
 ```
 ldsetlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSETLH
 
+Atomic bit set on halfword in memory.
+
 ```
 ldsetlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAX
+
+Atomic signed maximum on word or doubleword in memory.
 
 ```
 ldsmax Wd, Wn, [Xm|SP]
@@ -3019,6 +3719,8 @@ ldsmax Xd, Xn, [Xm|SP]
 
 ## LDSMAXA
 
+Atomic signed maximum on word or doubleword in memory.
+
 ```
 ldsmaxa Wd, Wn, [Xm|SP]
 ldsmaxa Xd, Xn, [Xm|SP]
@@ -3026,17 +3728,23 @@ ldsmaxa Xd, Xn, [Xm|SP]
 
 ## LDSMAXAB
 
+Atomic signed maximum on byte in memory.
+
 ```
 ldsmaxab Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXAH
 
+Atomic signed maximum on halfword in memory.
+
 ```
 ldsmaxah Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXAL
+
+Atomic signed maximum on word or doubleword in memory.
 
 ```
 ldsmaxal Wd, Wn, [Xm|SP]
@@ -3045,11 +3753,15 @@ ldsmaxal Xd, Xn, [Xm|SP]
 
 ## LDSMAXALB
 
+Atomic signed maximum on byte in memory.
+
 ```
 ldsmaxalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXALH
+
+Atomic signed maximum on halfword in memory.
 
 ```
 ldsmaxalh Wd, Wn, [Xm|SP]
@@ -3057,17 +3769,23 @@ ldsmaxalh Wd, Wn, [Xm|SP]
 
 ## LDSMAXB
 
+Atomic signed maximum on byte in memory.
+
 ```
 ldsmaxb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXH
 
+Atomic signed maximum on halfword in memory.
+
 ```
 ldsmaxh Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXL
+
+Atomic signed maximum on word or doubleword in memory.
 
 ```
 ldsmaxl Wd, Wn, [Xm|SP]
@@ -3076,17 +3794,23 @@ ldsmaxl Xd, Xn, [Xm|SP]
 
 ## LDSMAXLB
 
+Atomic signed maximum on byte in memory.
+
 ```
 ldsmaxlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMAXLH
 
+Atomic signed maximum on halfword in memory.
+
 ```
 ldsmaxlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMIN
+
+Atomic signed minimum on word or doubleword in memory.
 
 ```
 ldsmin Wd, Wn, [Xm|SP]
@@ -3095,6 +3819,8 @@ ldsmin Xd, Xn, [Xm|SP]
 
 ## LDSMINA
 
+Atomic signed minimum on word or doubleword in memory.
+
 ```
 ldsmina Wd, Wn, [Xm|SP]
 ldsmina Xd, Xn, [Xm|SP]
@@ -3102,17 +3828,23 @@ ldsmina Xd, Xn, [Xm|SP]
 
 ## LDSMINAB
 
+Atomic signed minimum on byte in memory.
+
 ```
 ldsminab Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINAH
 
+Atomic signed minimum on halfword in memory.
+
 ```
 ldsminah Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINAL
+
+Atomic signed minimum on word or doubleword in memory.
 
 ```
 ldsminal Wd, Wn, [Xm|SP]
@@ -3121,11 +3853,15 @@ ldsminal Xd, Xn, [Xm|SP]
 
 ## LDSMINALB
 
+Atomic signed minimum on byte in memory.
+
 ```
 ldsminalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINALH
+
+Atomic signed minimum on halfword in memory.
 
 ```
 ldsminalh Wd, Wn, [Xm|SP]
@@ -3133,17 +3869,23 @@ ldsminalh Wd, Wn, [Xm|SP]
 
 ## LDSMINB
 
+Atomic signed minimum on byte in memory.
+
 ```
 ldsminb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINH
 
+Atomic signed minimum on halfword in memory.
+
 ```
 ldsminh Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINL
+
+Atomic signed minimum on word or doubleword in memory.
 
 ```
 ldsminl Wd, Wn, [Xm|SP]
@@ -3152,17 +3894,23 @@ ldsminl Xd, Xn, [Xm|SP]
 
 ## LDSMINLB
 
+Atomic signed minimum on byte in memory.
+
 ```
 ldsminlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDSMINLH
 
+Atomic signed minimum on halfword in memory.
+
 ```
 ldsminlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDTR
+
+Load Register (unprivileged).
 
 ```
 ldtr Wd, [Xn|SP {, #imm }]  ···············································  (-256 <= imm < 256)
@@ -3171,17 +3919,23 @@ ldtr Xd, [Xn|SP {, #imm }]  ··························
 
 ## LDTRB
 
+Load Register Byte (unprivileged).
+
 ```
 ldtrb Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## LDTRH
 
+Load Register Halfword (unprivileged).
+
 ```
 ldtrh Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## LDTRSB
+
+Load Register Signed Byte (unprivileged).
 
 ```
 ldtrsb Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
@@ -3190,6 +3944,8 @@ ldtrsb Xd, [Xn|SP {, #imm }]  ·························
 
 ## LDTRSH
 
+Load Register Signed Halfword (unprivileged).
+
 ```
 ldtrsh Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ldtrsh Xd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
@@ -3197,11 +3953,15 @@ ldtrsh Xd, [Xn|SP {, #imm }]  ·························
 
 ## LDTRSW
 
+Load Register Signed Word (unprivileged).
+
 ```
 ldtrsw Xd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ```
 
 ## LDUMAX
+
+Atomic unsigned maximum on word or doubleword in memory.
 
 ```
 ldumax Wd, Wn, [Xm|SP]
@@ -3210,6 +3970,8 @@ ldumax Xd, Xn, [Xm|SP]
 
 ## LDUMAXA
 
+Atomic unsigned maximum on word or doubleword in memory.
+
 ```
 ldumaxa Wd, Wn, [Xm|SP]
 ldumaxa Xd, Xn, [Xm|SP]
@@ -3217,17 +3979,23 @@ ldumaxa Xd, Xn, [Xm|SP]
 
 ## LDUMAXAB
 
+Atomic unsigned maximum on byte in memory.
+
 ```
 ldumaxab Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXAH
 
+Atomic unsigned maximum on halfword in memory.
+
 ```
 ldumaxah Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXAL
+
+Atomic unsigned maximum on word or doubleword in memory.
 
 ```
 ldumaxal Wd, Wn, [Xm|SP]
@@ -3236,11 +4004,15 @@ ldumaxal Xd, Xn, [Xm|SP]
 
 ## LDUMAXALB
 
+Atomic unsigned maximum on byte in memory.
+
 ```
 ldumaxalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXALH
+
+Atomic unsigned maximum on halfword in memory.
 
 ```
 ldumaxalh Wd, Wn, [Xm|SP]
@@ -3248,17 +4020,23 @@ ldumaxalh Wd, Wn, [Xm|SP]
 
 ## LDUMAXB
 
+Atomic unsigned maximum on byte in memory.
+
 ```
 ldumaxb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXH
 
+Atomic unsigned maximum on halfword in memory.
+
 ```
 ldumaxh Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXL
+
+Atomic unsigned maximum on word or doubleword in memory.
 
 ```
 ldumaxl Wd, Wn, [Xm|SP]
@@ -3267,17 +4045,23 @@ ldumaxl Xd, Xn, [Xm|SP]
 
 ## LDUMAXLB
 
+Atomic unsigned maximum on byte in memory.
+
 ```
 ldumaxlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMAXLH
 
+Atomic unsigned maximum on halfword in memory.
+
 ```
 ldumaxlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMIN
+
+Atomic unsigned minimum on word or doubleword in memory.
 
 ```
 ldumin Wd, Wn, [Xm|SP]
@@ -3286,6 +4070,8 @@ ldumin Xd, Xn, [Xm|SP]
 
 ## LDUMINA
 
+Atomic unsigned minimum on word or doubleword in memory.
+
 ```
 ldumina Wd, Wn, [Xm|SP]
 ldumina Xd, Xn, [Xm|SP]
@@ -3293,17 +4079,23 @@ ldumina Xd, Xn, [Xm|SP]
 
 ## LDUMINAB
 
+Atomic unsigned minimum on byte in memory.
+
 ```
 lduminab Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINAH
 
+Atomic unsigned minimum on halfword in memory.
+
 ```
 lduminah Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINAL
+
+Atomic unsigned minimum on word or doubleword in memory.
 
 ```
 lduminal Wd, Wn, [Xm|SP]
@@ -3312,11 +4104,15 @@ lduminal Xd, Xn, [Xm|SP]
 
 ## LDUMINALB
 
+Atomic unsigned minimum on byte in memory.
+
 ```
 lduminalb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINALH
+
+Atomic unsigned minimum on halfword in memory.
 
 ```
 lduminalh Wd, Wn, [Xm|SP]
@@ -3324,17 +4120,23 @@ lduminalh Wd, Wn, [Xm|SP]
 
 ## LDUMINB
 
+Atomic unsigned minimum on byte in memory.
+
 ```
 lduminb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINH
 
+Atomic unsigned minimum on halfword in memory.
+
 ```
 lduminh Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINL
+
+Atomic unsigned minimum on word or doubleword in memory.
 
 ```
 lduminl Wd, Wn, [Xm|SP]
@@ -3343,17 +4145,24 @@ lduminl Xd, Xn, [Xm|SP]
 
 ## LDUMINLB
 
+Atomic unsigned minimum on byte in memory.
+
 ```
 lduminlb Wd, Wn, [Xm|SP]
 ```
 
 ## LDUMINLH
 
+Atomic unsigned minimum on halfword in memory.
+
 ```
 lduminlh Wd, Wn, [Xm|SP]
 ```
 
 ## LDUR
+
+- _LDUR_: Load Register (unscaled).
+- _LDUR (SIMD&FP)_: Load SIMD&FP Register (unscaled offset).
 
 ```
 ldur Bd, [Xn|SP {, #imm }]  ···············································  (-256 <= imm < 256)
@@ -3367,17 +4176,23 @@ ldur Xd, [Xn|SP {, #imm }]  ··························
 
 ## LDURB
 
+Load Register Byte (unscaled).
+
 ```
 ldurb Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## LDURH
 
+Load Register Halfword (unscaled).
+
 ```
 ldurh Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## LDURSB
+
+Load Register Signed Byte (unscaled).
 
 ```
 ldursb Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
@@ -3386,6 +4201,8 @@ ldursb Xd, [Xn|SP {, #imm }]  ·························
 
 ## LDURSH
 
+Load Register Signed Halfword (unscaled).
+
 ```
 ldursh Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ldursh Xd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
@@ -3393,11 +4210,15 @@ ldursh Xd, [Xn|SP {, #imm }]  ·························
 
 ## LDURSW
 
+Load Register Signed Word (unscaled).
+
 ```
 ldursw Xd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ```
 
 ## LDXP
+
+Load Exclusive Pair of Registers.
 
 ```
 ldxp Wd, Wn, [Xm|SP]
@@ -3406,6 +4227,8 @@ ldxp Xd, Xn, [Xm|SP]
 
 ## LDXR
 
+Load Exclusive Register.
+
 ```
 ldxr Wd, [Xn|SP]
 ldxr Xd, [Xn|SP]
@@ -3413,17 +4236,24 @@ ldxr Xd, [Xn|SP]
 
 ## LDXRB
 
+Load Exclusive Register Byte.
+
 ```
 ldxrb Wd, [Xn|SP]
 ```
 
 ## LDXRH
 
+Load Exclusive Register Halfword.
+
 ```
 ldxrh Wd, [Xn|SP]
 ```
 
 ## LSL
+
+- _LSL (immediate)_: Logical Shift Left (immediate): an alias of UBFM.
+- _LSL (register)_: Logical Shift Left (register): an alias of LSLV.
 
 ```
 lsl Wd, Wn, Wm
@@ -3434,12 +4264,17 @@ lsl Xd, Xn, #imm  ·······························
 
 ## LSLV
 
+Logical Shift Left Variable.
+
 ```
 lslv Wd, Wn, Wm
 lslv Xd, Xn, Xm
 ```
 
 ## LSR
+
+- _LSR (immediate)_: Logical Shift Right (immediate): an alias of UBFM.
+- _LSR (register)_: Logical Shift Right (register): an alias of LSRV.
 
 ```
 lsr Wd, Wn, Wm
@@ -3450,6 +4285,8 @@ lsr Xd, Xn, #imm  ·······························
 
 ## LSRV
 
+Logical Shift Right Variable.
+
 ```
 lsrv Wd, Wn, Wm
 lsrv Xd, Xn, Xm
@@ -3457,12 +4294,17 @@ lsrv Xd, Xn, Xm
 
 ## MADD
 
+Multiply-Add.
+
 ```
 madd Wd, Wn, Wm, Wa
 madd Xd, Xn, Xm, Xa
 ```
 
 ## MLA
+
+- _MLA (by element)_: Multiply-Add to accumulator (vector, by element).
+- _MLA (vector)_: Multiply-Add to accumulator (vector).
 
 ```
 mla Vd.8H, Vn.8H, Vm.H[i]  ···························································  (m < 16)
@@ -3479,6 +4321,9 @@ mla Vd.2S, Vn.2S, Vm.2S
 
 ## MLS
 
+- _MLS (by element)_: Multiply-Subtract from accumulator (vector, by element).
+- _MLS (vector)_: Multiply-Subtract from accumulator (vector).
+
 ```
 mls Vd.8H, Vn.8H, Vm.H[i]  ···························································  (m < 16)
 mls Vd.4H, Vn.4H, Vm.H[i]  ···························································  (m < 16)
@@ -3494,12 +4339,27 @@ mls Vd.2S, Vn.2S, Vm.2S
 
 ## MNEG
 
+Multiply-Negate: an alias of MSUB.
+
 ```
 mneg Wd, Wn, Wm
 mneg Xd, Xn, Xm
 ```
 
 ## MOV
+
+- _MOV (bitmask immediate)_: Move (bitmask immediate): an alias of ORR (immediate).
+- _MOV (inverted wide immediate)_: Move (inverted wide immediate): an alias of MOVN.
+- _MOV (register)_: Move (register): an alias of ORR (shifted register).
+- _MOV (to/from SP)_: Move between register and stack pointer: an alias of ADD (immediate).
+- _MOV (wide immediate)_: Move (wide immediate): an alias of MOVZ.
+- _MOV (element)_: Move vector element to another vector element: an alias of INS (element).
+- _MOV (from general)_: Move general-purpose register to a vector element: an alias of INS (general).
+- _MOV (scalar)_: Move vector element to scalar: an alias of DUP (element).
+- _MOV (to general)_: Move vector element to general-purpose register: an alias of UMOV.
+- _MOV (vector)_: Move vector: an alias of ORR (vector, register).
+- _MOV (tile to vector)_: Move ZA tile slice to vector register: an alias of MOVA (tile to vector).
+- _MOV (vector to tile)_: Move vector register to ZA tile slice: an alias of MOVA (vector to tile).
 
 ```
 mov Wd, Wn
@@ -3532,6 +4392,8 @@ mov Xd, Vn.D[i]
 
 ## MOVI
 
+Move Immediate (vector).
+
 ```
 movi Vd.16B, #imm1 {, LSL #imm2 }  ·······························  (0 <= imm1 < 256, imm2 == 0)
 movi Vd.8B, #imm1 {, LSL #imm2 }  ································  (0 <= imm1 < 256, imm2 == 0)
@@ -3547,12 +4409,16 @@ movi Vd.2D, #imm  ·······························
 
 ## MOVK
 
+Move wide with keep.
+
 ```
 movk Wd, #imm1 {, LSL #imm2 }  ···························  (0 <= imm1 < 65536, imm2 in [0, 16])
 movk Xd, #imm1 {, LSL #imm2 }  ···················  (0 <= imm1 < 65536, imm2 in [0, 16, 32, 48])
 ```
 
 ## MOVN
+
+Move wide with NOT.
 
 ```
 movn Wd, #imm1 {, LSL #imm2 }  ···························  (0 <= imm1 < 65536, imm2 in [0, 16])
@@ -3561,6 +4427,8 @@ movn Xd, #imm1 {, LSL #imm2 }  ···················  (0 <= imm
 
 ## MOVZ
 
+Move wide with zero.
+
 ```
 movz Wd, #imm1 {, LSL #imm2 }  ···························  (0 <= imm1 < 65536, imm2 in [0, 16])
 movz Xd, #imm1 {, LSL #imm2 }  ···················  (0 <= imm1 < 65536, imm2 in [0, 16, 32, 48])
@@ -3568,11 +4436,16 @@ movz Xd, #imm1 {, LSL #imm2 }  ···················  (0 <= imm
 
 ## MRS
 
+Move System Register.
+
 ```
 mrs Xd, #imm  ······························································  (0 <= imm < 32768)
 ```
 
 ## MSR
+
+- _MSR (immediate)_: Move immediate value to Special Register.
+- _MSR (register)_: Move general-purpose register to System Register.
 
 ```
 msr <symbol>, #imm  ···························································  (0 <= imm < 16)
@@ -3581,12 +4454,18 @@ msr #imm, Xn  ·································
 
 ## MSUB
 
+Multiply-Subtract.
+
 ```
 msub Wd, Wn, Wm, Wa
 msub Xd, Xn, Xm, Xa
 ```
 
 ## MUL
+
+- _MUL_: Multiply: an alias of MADD.
+- _MUL (by element)_: Multiply (vector, by element).
+- _MUL (vector)_: Multiply (vector).
 
 ```
 mul Vd.8H, Vn.8H, Vm.H[i]  ···························································  (m < 16)
@@ -3605,6 +4484,9 @@ mul Xd, Xn, Xm
 
 ## MVN
 
+- _MVN_: Bitwise NOT: an alias of ORN (shifted register).
+- _MVN_: Bitwise NOT (vector): an alias of NOT.
+
 ```
 mvn Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
 mvn Xd, Xn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 64)
@@ -3613,6 +4495,8 @@ mvn Vd.8B, Vn.8B
 ```
 
 ## MVNI
+
+Move inverted Immediate (vector).
 
 ```
 mvni Vd.8H, #imm1 {, LSL #imm2 }  ···························  (0 <= imm1 < 256, imm2 in [0, 8])
@@ -3624,6 +4508,9 @@ mvni Vd.2S, #imm1, MSL #imm2  ·························
 ```
 
 ## NEG
+
+- _NEG (shifted register)_: Negate (shifted register): an alias of SUB (shifted register).
+- _NEG (vector)_: Negate (vector).
 
 ```
 neg Wd, Wn {, LSL|LSR|ASR #imm }  ·············································  (0 <= imm < 32)
@@ -3640,12 +4527,16 @@ neg Vd.2D, Vn.2D
 
 ## NEGS
 
+Negate, setting flags: an alias of SUBS (shifted register).
+
 ```
 negs Wd, Wn {, LSL|LSR|ASR #imm }  ············································  (0 <= imm < 32)
 negs Xd, Xn {, LSL|LSR|ASR #imm }  ············································  (0 <= imm < 64)
 ```
 
 ## NGC
+
+Negate with Carry: an alias of SBC.
 
 ```
 ngc Wd, Wn
@@ -3654,6 +4545,8 @@ ngc Xd, Xn
 
 ## NGCS
 
+Negate with Carry, setting flags: an alias of SBCS.
+
 ```
 ngcs Wd, Wn
 ngcs Xd, Xn
@@ -3661,11 +4554,15 @@ ngcs Xd, Xn
 
 ## NOP
 
+No Operation.
+
 ```
 nop 
 ```
 
 ## NOT
+
+Bitwise NOT (vector).
 
 ```
 not Vd.16B, Vn.16B
@@ -3673,6 +4570,9 @@ not Vd.8B, Vn.8B
 ```
 
 ## ORN
+
+- _ORN (shifted register)_: Bitwise OR NOT (shifted register).
+- _ORN (vector)_: Bitwise inclusive OR NOT (vector).
 
 ```
 orn Vd.16B, Vn.16B, Vm.16B
@@ -3682,6 +4582,11 @@ orn Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 ```
 
 ## ORR
+
+- _ORR (immediate)_: Bitwise OR (immediate).
+- _ORR (shifted register)_: Bitwise OR (shifted register).
+- _ORR (vector, immediate)_: Bitwise inclusive OR (vector, immediate).
+- _ORR (vector, register)_: Bitwise inclusive OR (vector, register).
 
 ```
 orr Vd.8H, #imm1 {, LSL #imm2 }  ····························  (0 <= imm1 < 256, imm2 in [0, 8])
@@ -3698,11 +4603,15 @@ orr Xd, Xn, Xm {, LSL|LSR|ASR|ROR #imm }  ···················
 
 ## PACDA
 
+Pointer Authentication Code for Data address, using key A.
+
 ```
 pacda Xd, Xn|SP
 ```
 
 ## PACDB
+
+Pointer Authentication Code for Data address, using key B.
 
 ```
 pacdb Xd, Xn|SP
@@ -3710,11 +4619,15 @@ pacdb Xd, Xn|SP
 
 ## PACDZA
 
+Pointer Authentication Code for Data address, using key A.
+
 ```
 pacdza Xd
 ```
 
 ## PACDZB
+
+Pointer Authentication Code for Data address, using key B.
 
 ```
 pacdzb Xd
@@ -3722,11 +4635,15 @@ pacdzb Xd
 
 ## PACGA
 
+Pointer Authentication Code, using Generic key.
+
 ```
 pacga Xd, Xn, Xm|SP
 ```
 
 ## PACIA
+
+Pointer Authentication Code for Instruction address, using key A.
 
 ```
 pacia Xd, Xn|SP
@@ -3734,11 +4651,15 @@ pacia Xd, Xn|SP
 
 ## PACIA1716
 
+Pointer Authentication Code for Instruction address, using key A.
+
 ```
 pacia1716 
 ```
 
 ## PACIASP
+
+Pointer Authentication Code for Instruction address, using key A.
 
 ```
 paciasp 
@@ -3746,11 +4667,15 @@ paciasp
 
 ## PACIAZ
 
+Pointer Authentication Code for Instruction address, using key A.
+
 ```
 paciaz 
 ```
 
 ## PACIB
+
+Pointer Authentication Code for Instruction address, using key B.
 
 ```
 pacib Xd, Xn|SP
@@ -3758,11 +4683,15 @@ pacib Xd, Xn|SP
 
 ## PACIB1716
 
+Pointer Authentication Code for Instruction address, using key B.
+
 ```
 pacib1716 
 ```
 
 ## PACIBSP
+
+Pointer Authentication Code for Instruction address, using key B.
 
 ```
 pacibsp 
@@ -3770,11 +4699,15 @@ pacibsp
 
 ## PACIBZ
 
+Pointer Authentication Code for Instruction address, using key B.
+
 ```
 pacibz 
 ```
 
 ## PACIZA
+
+Pointer Authentication Code for Instruction address, using key A.
 
 ```
 paciza Xd
@@ -3782,11 +4715,15 @@ paciza Xd
 
 ## PACIZB
 
+Pointer Authentication Code for Instruction address, using key B.
+
 ```
 pacizb Xd
 ```
 
 ## PMUL
+
+Polynomial Multiply.
 
 ```
 pmul Vd.16B, Vn.16B, Vm.16B
@@ -3795,12 +4732,16 @@ pmul Vd.8B, Vn.8B, Vm.8B
 
 ## PMULL
 
+Polynomial Multiply Long.
+
 ```
 pmull Vd.8H, Vn.8B, Vm.8B
 pmull Vd.1Q, Vn.1D, Vm.1D
 ```
 
 ## PMULL2
+
+Polynomial Multiply Long.
 
 ```
 pmull2 Vd.8H, Vn.16B, Vm.16B
@@ -3809,6 +4750,10 @@ pmull2 Vd.1Q, Vn.2D, Vm.2D
 
 ## PRFM
 
+- _PRFM (immediate)_: Prefetch Memory (immediate).
+- _PRFM (literal)_: Prefetch Memory (literal).
+- _PRFM (register)_: Prefetch Memory (register).
+
 ```
 prfm #imm, <offset>  ························  (0 <= imm < 32, offset >> 2 is 19-bit (+/- 1 MB))
 prfm #imm1, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm2 }]  ····  (0 <= imm1 < 32, imm2 in [0, 3])
@@ -3816,11 +4761,15 @@ prfm #imm1, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm2 }]  ····  (0 <= imm1 <
 
 ## PRFUM
 
+Prefetch Memory (unscaled offset).
+
 ```
 prfum #imm1, [Xn|SP {, #imm2 }]  ·························  (0 <= imm1 < 32, -256 <= imm2 < 256)
 ```
 
 ## PSB
+
+Profiling Synchronization Barrier.
 
 ```
 psb CSYNC
@@ -3828,11 +4777,15 @@ psb CSYNC
 
 ## PSSBB
 
+Physical Speculative Store Bypass Barrier: an alias of DSB.
+
 ```
 pssbb 
 ```
 
 ## RADDHN
+
+Rounding Add returning High Narrow.
 
 ```
 raddhn Vd.8B, Vn.8H, Vm.8H
@@ -3842,6 +4795,8 @@ raddhn Vd.2S, Vn.2D, Vm.2D
 
 ## RADDHN2
 
+Rounding Add returning High Narrow.
+
 ```
 raddhn2 Vd.16B, Vn.8H, Vm.8H
 raddhn2 Vd.8H, Vn.4S, Vm.4S
@@ -3850,11 +4805,16 @@ raddhn2 Vd.4S, Vn.2D, Vm.2D
 
 ## RAX1
 
+Rotate and Exclusive OR.
+
 ```
 rax1 Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## RBIT
+
+- _RBIT_: Reverse Bits.
+- _RBIT (vector)_: Reverse Bit order (vector).
 
 ```
 rbit Vd.16B, Vn.16B
@@ -3865,6 +4825,8 @@ rbit Xd, Xn
 
 ## RET
 
+Return from subroutine.
+
 ```
 ret Xd
 ret 
@@ -3872,11 +4834,15 @@ ret
 
 ## RETAA
 
+Return from subroutine, with pointer authentication.
+
 ```
 retaa 
 ```
 
 ## RETAB
+
+Return from subroutine, with pointer authentication.
 
 ```
 retab 
@@ -3884,12 +4850,17 @@ retab
 
 ## REV
 
+Reverse Bytes.
+
 ```
 rev Wd, Wn
 rev Xd, Xn
 ```
 
 ## REV16
+
+- _REV16_: Reverse bytes in 16-bit halfwords.
+- _REV16 (vector)_: Reverse elements in 16-bit halfwords (vector).
 
 ```
 rev16 Vd.16B, Vn.16B
@@ -3900,6 +4871,9 @@ rev16 Xd, Xn
 
 ## REV32
 
+- _REV32_: Reverse bytes in 32-bit words.
+- _REV32 (vector)_: Reverse elements in 32-bit words (vector).
+
 ```
 rev32 Vd.16B, Vn.16B
 rev32 Vd.8B, Vn.8B
@@ -3909,6 +4883,9 @@ rev32 Xd, Xn
 ```
 
 ## REV64
+
+- _REV64_: Reverse Bytes: an alias of REV.
+- _REV64_: Reverse elements in 64-bit doublewords (vector).
 
 ```
 rev64 Vd.16B, Vn.16B
@@ -3922,11 +4899,16 @@ rev64 Xd, Xn
 
 ## RMIF
 
+Rotate, Mask Insert Flags.
+
 ```
 rmif Xd, #imm1, #imm2  ·······································  (0 <= imm1 < 64, 0 <= imm2 < 16)
 ```
 
 ## ROR
+
+- _ROR (immediate)_: Rotate right (immediate): an alias of EXTR.
+- _ROR (register)_: Rotate Right (register): an alias of RORV.
 
 ```
 ror Wd, Wn, #imm  ·····························································  (0 <= imm < 32)
@@ -3937,12 +4919,16 @@ ror Xd, Xn, Xm
 
 ## RORV
 
+Rotate Right Variable.
+
 ```
 rorv Wd, Wn, Wm
 rorv Xd, Xn, Xm
 ```
 
 ## RSHRN
+
+Rounding Shift Right Narrow (immediate).
 
 ```
 rshrn Vd.8B, Vn.8H, #imm  ······················································  (0 < imm <= 8)
@@ -3952,6 +4938,8 @@ rshrn Vd.2S, Vn.2D, #imm  ···························
 
 ## RSHRN2
 
+Rounding Shift Right Narrow (immediate).
+
 ```
 rshrn2 Vd.16B, Vn.8H, #imm  ····················································  (0 < imm <= 8)
 rshrn2 Vd.8H, Vn.4S, #imm  ····················································  (0 < imm <= 16)
@@ -3959,6 +4947,8 @@ rshrn2 Vd.4S, Vn.2D, #imm  ··························�
 ```
 
 ## RSUBHN
+
+Rounding Subtract returning High Narrow.
 
 ```
 rsubhn Vd.8B, Vn.8H, Vm.8H
@@ -3968,6 +4958,8 @@ rsubhn Vd.2S, Vn.2D, Vm.2D
 
 ## RSUBHN2
 
+Rounding Subtract returning High Narrow.
+
 ```
 rsubhn2 Vd.16B, Vn.8H, Vm.8H
 rsubhn2 Vd.8H, Vn.4S, Vm.4S
@@ -3975,6 +4967,8 @@ rsubhn2 Vd.4S, Vn.2D, Vm.2D
 ```
 
 ## SABA
+
+Signed Absolute difference and Accumulate.
 
 ```
 saba Vd.16B, Vn.16B, Vm.16B
@@ -3987,6 +4981,8 @@ saba Vd.2S, Vn.2S, Vm.2S
 
 ## SABAL
 
+Signed Absolute difference and Accumulate Long.
+
 ```
 sabal Vd.8H, Vn.8B, Vm.8B
 sabal Vd.4S, Vn.4H, Vm.4H
@@ -3995,6 +4991,8 @@ sabal Vd.2D, Vn.2S, Vm.2S
 
 ## SABAL2
 
+Signed Absolute difference and Accumulate Long.
+
 ```
 sabal2 Vd.8H, Vn.16B, Vm.16B
 sabal2 Vd.4S, Vn.8H, Vm.8H
@@ -4002,6 +5000,8 @@ sabal2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SABD
+
+Signed Absolute Difference.
 
 ```
 sabd Vd.16B, Vn.16B, Vm.16B
@@ -4014,6 +5014,8 @@ sabd Vd.2S, Vn.2S, Vm.2S
 
 ## SABDL
 
+Signed Absolute Difference Long.
+
 ```
 sabdl Vd.8H, Vn.8B, Vm.8B
 sabdl Vd.4S, Vn.4H, Vm.4H
@@ -4022,6 +5024,8 @@ sabdl Vd.2D, Vn.2S, Vm.2S
 
 ## SABDL2
 
+Signed Absolute Difference Long.
+
 ```
 sabdl2 Vd.8H, Vn.16B, Vm.16B
 sabdl2 Vd.4S, Vn.8H, Vm.8H
@@ -4029,6 +5033,8 @@ sabdl2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SADALP
+
+Signed Add and Accumulate Long Pairwise.
 
 ```
 sadalp Vd.8H, Vn.16B
@@ -4041,6 +5047,8 @@ sadalp Vd.1D, Vn.2S
 
 ## SADDL
 
+Signed Add Long (vector).
+
 ```
 saddl Vd.8H, Vn.8B, Vm.8B
 saddl Vd.4S, Vn.4H, Vm.4H
@@ -4049,6 +5057,8 @@ saddl Vd.2D, Vn.2S, Vm.2S
 
 ## SADDL2
 
+Signed Add Long (vector).
+
 ```
 saddl2 Vd.8H, Vn.16B, Vm.16B
 saddl2 Vd.4S, Vn.8H, Vm.8H
@@ -4056,6 +5066,8 @@ saddl2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SADDLP
+
+Signed Add Long Pairwise.
 
 ```
 saddlp Vd.8H, Vn.16B
@@ -4068,6 +5080,8 @@ saddlp Vd.1D, Vn.2S
 
 ## SADDLV
 
+Signed Add Long across Vector.
+
 ```
 saddlv Hd, Vn.16B
 saddlv Hd, Vn.8B
@@ -4078,6 +5092,8 @@ saddlv Dd, Vn.4S
 
 ## SADDW
 
+Signed Add Wide.
+
 ```
 saddw Vd.8H, Vn.8H, Vm.8B
 saddw Vd.4S, Vn.4S, Vm.4H
@@ -4085,6 +5101,8 @@ saddw Vd.2D, Vn.2D, Vm.2S
 ```
 
 ## SADDW2
+
+Signed Add Wide.
 
 ```
 saddw2 Vd.8H, Vn.8H, Vm.16B
@@ -4094,11 +5112,15 @@ saddw2 Vd.2D, Vn.2D, Vm.4S
 
 ## SB
 
+Speculation Barrier.
+
 ```
 sb 
 ```
 
 ## SBC
+
+Subtract with Carry.
 
 ```
 sbc Wd, Wn, Wm
@@ -4107,12 +5129,16 @@ sbc Xd, Xn, Xm
 
 ## SBCS
 
+Subtract with Carry, setting flags.
+
 ```
 sbcs Wd, Wn, Wm
 sbcs Xd, Xn, Xm
 ```
 
 ## SBFIZ
+
+Signed Bitfield Insert in Zero: an alias of SBFM.
 
 ```
 sbfiz Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
@@ -4121,6 +5147,8 @@ sbfiz Xd, Xn, #imm1, #imm2  ···············  (0 <= imm1 < 64, 0 <
 
 ## SBFM
 
+Signed Bitfield Move.
+
 ```
 sbfm Wd, Wn, #imm1, #imm2  ···································  (0 <= imm1 < 32, 0 <= imm2 < 32)
 sbfm Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 0 < imm2 < 64, imm1 + imm2 <= 64)
@@ -4128,12 +5156,19 @@ sbfm Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 
 
 ## SBFX
 
+Signed Bitfield Extract: an alias of SBFM.
+
 ```
 sbfx Wd, Wn, #imm1, #imm2  ················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
 sbfx Xd, Xn, #imm1, #imm2  ················  (0 <= imm1 < 64, 0 < imm2 <= 64, imm1 + imm2 <= 64)
 ```
 
 ## SCVTF
+
+- _SCVTF (scalar, fixed-point)_: Signed fixed-point Convert to Floating-point (scalar).
+- _SCVTF (scalar, integer)_: Signed integer Convert to Floating-point (scalar).
+- _SCVTF (vector, fixed-point)_: Signed fixed-point Convert to Floating-point (vector).
+- _SCVTF (vector, integer)_: Signed integer Convert to Floating-point (vector).
 
 ```
 scvtf Hd, Hn, #imm  ···························································  (0 < imm <= 16)
@@ -4168,12 +5203,17 @@ scvtf Dd, Xn
 
 ## SDIV
 
+Signed Divide.
+
 ```
 sdiv Wd, Wn, Wm
 sdiv Xd, Xn, Xm
 ```
 
 ## SDOT
+
+- _SDOT (by element)_: Dot Product signed arithmetic (vector, by element).
+- _SDOT (vector)_: Dot Product signed arithmetic (vector).
 
 ```
 sdot Vd.2S, Vn.8B, Vm.4B[i]
@@ -4184,11 +5224,15 @@ sdot Vd.4S, Vn.16B, Vm.16B
 
 ## SETF16
 
+Evaluation of 8 or 16 bit flag values.
+
 ```
 setf16 Wd
 ```
 
 ## SETF8
+
+Evaluation of 8 or 16 bit flag values.
 
 ```
 setf8 Wd
@@ -4196,11 +5240,15 @@ setf8 Wd
 
 ## SEV
 
+Send Event.
+
 ```
 sev 
 ```
 
 ## SEVL
+
+Send Event Local.
 
 ```
 sevl 
@@ -4208,11 +5256,15 @@ sevl
 
 ## SHA1C
 
+SHA1 hash update (choose).
+
 ```
 sha1c Qd, Sn, Vm.4S
 ```
 
 ## SHA1H
+
+SHA1 fixed rotate.
 
 ```
 sha1h Sd, Sn
@@ -4220,11 +5272,15 @@ sha1h Sd, Sn
 
 ## SHA1M
 
+SHA1 hash update (majority).
+
 ```
 sha1m Qd, Sn, Vm.4S
 ```
 
 ## SHA1P
+
+SHA1 hash update (parity).
 
 ```
 sha1p Qd, Sn, Vm.4S
@@ -4232,11 +5288,15 @@ sha1p Qd, Sn, Vm.4S
 
 ## SHA1SU0
 
+SHA1 schedule update 0.
+
 ```
 sha1su0 Vd.4S, Vn.4S, Vm.4S
 ```
 
 ## SHA1SU1
+
+SHA1 schedule update 1.
 
 ```
 sha1su1 Vd.4S, Vn.4S
@@ -4244,11 +5304,15 @@ sha1su1 Vd.4S, Vn.4S
 
 ## SHA256H
 
+SHA256 hash update (part 1).
+
 ```
 sha256h Qd, Qn, Vm.4S
 ```
 
 ## SHA256H2
+
+SHA256 hash update (part 2).
 
 ```
 sha256h2 Qd, Qn, Vm.4S
@@ -4256,11 +5320,15 @@ sha256h2 Qd, Qn, Vm.4S
 
 ## SHA256SU0
 
+SHA256 schedule update 0.
+
 ```
 sha256su0 Vd.4S, Vn.4S
 ```
 
 ## SHA256SU1
+
+SHA256 schedule update 1.
 
 ```
 sha256su1 Vd.4S, Vn.4S, Vm.4S
@@ -4268,11 +5336,15 @@ sha256su1 Vd.4S, Vn.4S, Vm.4S
 
 ## SHA512H
 
+SHA512 Hash update part 1.
+
 ```
 sha512h Qd, Qn, Vm.2D
 ```
 
 ## SHA512H2
+
+SHA512 Hash update part 2.
 
 ```
 sha512h2 Qd, Qn, Vm.2D
@@ -4280,17 +5352,23 @@ sha512h2 Qd, Qn, Vm.2D
 
 ## SHA512SU0
 
+SHA512 Schedule Update 0.
+
 ```
 sha512su0 Vd.2D, Vn.2D
 ```
 
 ## SHA512SU1
 
+SHA512 Schedule Update 1.
+
 ```
 sha512su1 Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## SHADD
+
+Signed Halving Add.
 
 ```
 shadd Vd.16B, Vn.16B, Vm.16B
@@ -4302,6 +5380,8 @@ shadd Vd.2S, Vn.2S, Vm.2S
 ```
 
 ## SHL
+
+Shift Left (immediate).
 
 ```
 shl Dd, Dn, #imm  ·····························································  (0 <= imm < 64)
@@ -4316,6 +5396,8 @@ shl Vd.2D, Vn.2D, #imm  ····························
 
 ## SHLL
 
+Shift Left Long (by element size).
+
 ```
 shll Vd.8H, Vn.8B, #8
 shll Vd.4S, Vn.4H, #16
@@ -4323,6 +5405,8 @@ shll Vd.2D, Vn.2S, #32
 ```
 
 ## SHLL2
+
+Shift Left Long (by element size).
 
 ```
 shll2 Vd.8H, Vn.16B, #8
@@ -4332,6 +5416,8 @@ shll2 Vd.2D, Vn.4S, #32
 
 ## SHRN
 
+Shift Right Narrow (immediate).
+
 ```
 shrn Vd.8B, Vn.8H, #imm  ·······················································  (0 < imm <= 8)
 shrn Vd.4H, Vn.4S, #imm  ······················································  (0 < imm <= 16)
@@ -4340,6 +5426,8 @@ shrn Vd.2S, Vn.2D, #imm  ···························�
 
 ## SHRN2
 
+Shift Right Narrow (immediate).
+
 ```
 shrn2 Vd.16B, Vn.8H, #imm  ·····················································  (0 < imm <= 8)
 shrn2 Vd.8H, Vn.4S, #imm  ·····················································  (0 < imm <= 16)
@@ -4347,6 +5435,8 @@ shrn2 Vd.4S, Vn.2D, #imm  ···························
 ```
 
 ## SHSUB
+
+Signed Halving Subtract.
 
 ```
 shsub Vd.16B, Vn.16B, Vm.16B
@@ -4358,6 +5448,8 @@ shsub Vd.2S, Vn.2S, Vm.2S
 ```
 
 ## SLI
+
+Shift Left and Insert (immediate).
 
 ```
 sli Dd, Dn, #imm  ·····························································  (0 <= imm < 64)
@@ -4372,11 +5464,15 @@ sli Vd.2D, Vn.2D, #imm  ····························
 
 ## SM3PARTW1
 
+SM3PARTW1.
+
 ```
 sm3partw1 Vd.4S, Vn.4S, Vm.4S
 ```
 
 ## SM3PARTW2
+
+SM3PARTW2.
 
 ```
 sm3partw2 Vd.4S, Vn.4S, Vm.4S
@@ -4384,11 +5480,15 @@ sm3partw2 Vd.4S, Vn.4S, Vm.4S
 
 ## SM3SS1
 
+SM3SS1.
+
 ```
 sm3ss1 Vd.4S, Vn.4S, Vm.4S, Va.4S
 ```
 
 ## SM3TT1A
+
+SM3TT1A.
 
 ```
 sm3tt1a Vd.4S, Vn.4S, Vm.S[i]
@@ -4396,11 +5496,15 @@ sm3tt1a Vd.4S, Vn.4S, Vm.S[i]
 
 ## SM3TT1B
 
+SM3TT1B.
+
 ```
 sm3tt1b Vd.4S, Vn.4S, Vm.S[i]
 ```
 
 ## SM3TT2A
+
+SM3TT2A.
 
 ```
 sm3tt2a Vd.4S, Vn.4S, Vm.S[i]
@@ -4408,11 +5512,15 @@ sm3tt2a Vd.4S, Vn.4S, Vm.S[i]
 
 ## SM3TT2B
 
+SM3TT2B.
+
 ```
 sm3tt2b Vd.4S, Vn.4S, Vm.S[i]
 ```
 
 ## SM4E
+
+SM4 Encode.
 
 ```
 sm4e Vd.4S, Vn.4S
@@ -4420,17 +5528,23 @@ sm4e Vd.4S, Vn.4S
 
 ## SM4EKEY
 
+SM4 Key.
+
 ```
 sm4ekey Vd.4S, Vn.4S, Vm.4S
 ```
 
 ## SMADDL
 
+Signed Multiply-Add Long.
+
 ```
 smaddl Xd, Wn, Wm, Xa
 ```
 
 ## SMAX
+
+Signed Maximum (vector).
 
 ```
 smax Vd.16B, Vn.16B, Vm.16B
@@ -4443,6 +5557,8 @@ smax Vd.2S, Vn.2S, Vm.2S
 
 ## SMAXP
 
+Signed Maximum Pairwise.
+
 ```
 smaxp Vd.16B, Vn.16B, Vm.16B
 smaxp Vd.8B, Vn.8B, Vm.8B
@@ -4454,6 +5570,8 @@ smaxp Vd.2S, Vn.2S, Vm.2S
 
 ## SMAXV
 
+Signed Maximum across Vector.
+
 ```
 smaxv Bd, Vn.16B
 smaxv Bd, Vn.8B
@@ -4464,11 +5582,15 @@ smaxv Sd, Vn.4S
 
 ## SMC
 
+Secure Monitor Call.
+
 ```
 smc #imm  ··································································  (0 <= imm < 65536)
 ```
 
 ## SMIN
+
+Signed Minimum (vector).
 
 ```
 smin Vd.16B, Vn.16B, Vm.16B
@@ -4481,6 +5603,8 @@ smin Vd.2S, Vn.2S, Vm.2S
 
 ## SMINP
 
+Signed Minimum Pairwise.
+
 ```
 sminp Vd.16B, Vn.16B, Vm.16B
 sminp Vd.8B, Vn.8B, Vm.8B
@@ -4492,6 +5616,8 @@ sminp Vd.2S, Vn.2S, Vm.2S
 
 ## SMINV
 
+Signed Minimum across Vector.
+
 ```
 sminv Bd, Vn.16B
 sminv Bd, Vn.8B
@@ -4501,6 +5627,9 @@ sminv Sd, Vn.4S
 ```
 
 ## SMLAL
+
+- _SMLAL_: Signed Multiply-Add Long (vector, by element).
+- _SMLAL_: Signed Multiply-Add Long (vector).
 
 ```
 smlal Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -4512,6 +5641,9 @@ smlal Vd.2D, Vn.2S, Vm.2S
 
 ## SMLAL2
 
+- _SMLAL2 (by element)_: Signed Multiply-Add Long (vector, by element).
+- _SMLAL2 (vector)_: Signed Multiply-Add Long (vector).
+
 ```
 smlal2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 smlal2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4521,6 +5653,9 @@ smlal2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SMLSL
+
+- _SMLSL_: Signed Multiply-Subtract Long (vector, by element).
+- _SMLSL_: Signed Multiply-Subtract Long (vector).
 
 ```
 smlsl Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -4532,6 +5667,9 @@ smlsl Vd.2D, Vn.2S, Vm.2S
 
 ## SMLSL2
 
+- _SMLSL2 (by element)_: Signed Multiply-Subtract Long (vector, by element).
+- _SMLSL2 (vector)_: Signed Multiply-Subtract Long (vector).
+
 ```
 smlsl2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 smlsl2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4542,11 +5680,15 @@ smlsl2 Vd.2D, Vn.4S, Vm.4S
 
 ## SMNEGL
 
+Signed Multiply-Negate Long: an alias of SMSUBL.
+
 ```
 smnegl Xd, Wn, Wm
 ```
 
 ## SMOV
+
+Signed Move vector element to general-purpose register.
 
 ```
 smov Wd, Vn.B[i]
@@ -4558,17 +5700,25 @@ smov Xd, Vn.S[i]
 
 ## SMSUBL
 
+Signed Multiply-Subtract Long.
+
 ```
 smsubl Xd, Wn, Wm, Xa
 ```
 
 ## SMULH
 
+Signed Multiply High.
+
 ```
 smulh Xd, Xn, Xm
 ```
 
 ## SMULL
+
+- _SMULL_: Signed Multiply Long: an alias of SMADDL.
+- _SMULL_: Signed Multiply Long (vector, by element).
+- _SMULL_: Signed Multiply Long (vector).
 
 ```
 smull Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -4581,6 +5731,9 @@ smull Xd, Wn, Wm
 
 ## SMULL2
 
+- _SMULL2 (by element)_: Signed Multiply Long (vector, by element).
+- _SMULL2 (vector)_: Signed Multiply Long (vector).
+
 ```
 smull2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 smull2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4590,6 +5743,8 @@ smull2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SQABS
+
+Signed saturating Absolute value.
 
 ```
 sqabs Bd, Bn
@@ -4607,6 +5762,8 @@ sqabs Vd.2D, Vn.2D
 
 ## SQADD
 
+Signed saturating Add.
+
 ```
 sqadd Bd, Bn, Bm
 sqadd Hd, Hn, Hm
@@ -4623,6 +5780,9 @@ sqadd Vd.2D, Vn.2D, Vm.2D
 
 ## SQDMLAL
 
+- _SQDMLAL_: Signed saturating Doubling Multiply-Add Long (by element).
+- _SQDMLAL_: Signed saturating Doubling Multiply-Add Long.
+
 ```
 sqdmlal Sd, Hn, Vm.H[i]  ·····························································  (m < 16)
 sqdmlal Dd, Sn, Vm.S[i]
@@ -4636,6 +5796,9 @@ sqdmlal Vd.2D, Vn.2S, Vm.2S
 
 ## SQDMLAL2
 
+- _SQDMLAL2 (by element)_: Signed saturating Doubling Multiply-Add Long (by element).
+- _SQDMLAL2 (vector)_: Signed saturating Doubling Multiply-Add Long.
+
 ```
 sqdmlal2 Vd.4S, Vn.8H, Vm.H[i]  ······················································  (m < 16)
 sqdmlal2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4644,6 +5807,9 @@ sqdmlal2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SQDMLSL
+
+- _SQDMLSL_: Signed saturating Doubling Multiply-Subtract Long (by element).
+- _SQDMLSL_: Signed saturating Doubling Multiply-Subtract Long.
 
 ```
 sqdmlsl Sd, Hn, Vm.H[i]  ·····························································  (m < 16)
@@ -4658,6 +5824,9 @@ sqdmlsl Vd.2D, Vn.2S, Vm.2S
 
 ## SQDMLSL2
 
+- _SQDMLSL2 (by element)_: Signed saturating Doubling Multiply-Subtract Long (by element).
+- _SQDMLSL2 (vector)_: Signed saturating Doubling Multiply-Subtract Long.
+
 ```
 sqdmlsl2 Vd.4S, Vn.8H, Vm.H[i]  ······················································  (m < 16)
 sqdmlsl2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4666,6 +5835,9 @@ sqdmlsl2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SQDMULH
+
+- _SQDMULH (by element)_: Signed saturating Doubling Multiply returning High half (by element).
+- _SQDMULH (vector)_: Signed saturating Doubling Multiply returning High half.
 
 ```
 sqdmulh Hd, Hn, Vm.H[i]  ·····························································  (m < 16)
@@ -4684,6 +5856,9 @@ sqdmulh Vd.2S, Vn.2S, Vm.2S
 
 ## SQDMULL
 
+- _SQDMULL_: Signed saturating Doubling Multiply Long (by element).
+- _SQDMULL_: Signed saturating Doubling Multiply Long.
+
 ```
 sqdmull Sd, Hn, Vm.H[i]  ·····························································  (m < 16)
 sqdmull Dd, Sn, Vm.S[i]
@@ -4697,6 +5872,9 @@ sqdmull Vd.2D, Vn.2S, Vm.2S
 
 ## SQDMULL2
 
+- _SQDMULL2 (by element)_: Signed saturating Doubling Multiply Long (by element).
+- _SQDMULL2 (vector)_: Signed saturating Doubling Multiply Long.
+
 ```
 sqdmull2 Vd.4S, Vn.8H, Vm.H[i]  ······················································  (m < 16)
 sqdmull2 Vd.2D, Vn.4S, Vm.S[i]
@@ -4705,6 +5883,8 @@ sqdmull2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## SQNEG
+
+Signed saturating Negate.
 
 ```
 sqneg Bd, Bn
@@ -4721,6 +5901,9 @@ sqneg Vd.2D, Vn.2D
 ```
 
 ## SQRDMLAH
+
+- _SQRDMLAH (by element)_: Signed Saturating Rounding Doubling Multiply Accumulate returning High Half (by element).
+- _SQRDMLAH (vector)_: Signed Saturating Rounding Doubling Multiply Accumulate returning High Half (vector).
 
 ```
 sqrdmlah Hd, Hn, Vm.H[i]  ····························································  (m < 16)
@@ -4739,6 +5922,9 @@ sqrdmlah Vd.2S, Vn.2S, Vm.2S
 
 ## SQRDMLSH
 
+- _SQRDMLSH (by element)_: Signed Saturating Rounding Doubling Multiply Subtract returning High Half (by element).
+- _SQRDMLSH (vector)_: Signed Saturating Rounding Doubling Multiply Subtract returning High Half (vector).
+
 ```
 sqrdmlsh Hd, Hn, Vm.H[i]  ····························································  (m < 16)
 sqrdmlsh Sd, Sn, Vm.S[i]
@@ -4755,6 +5941,9 @@ sqrdmlsh Vd.2S, Vn.2S, Vm.2S
 ```
 
 ## SQRDMULH
+
+- _SQRDMULH (by element)_: Signed saturating Rounding Doubling Multiply returning High half (by element).
+- _SQRDMULH (vector)_: Signed saturating Rounding Doubling Multiply returning High half.
 
 ```
 sqrdmulh Hd, Hn, Vm.H[i]  ····························································  (m < 16)
@@ -4773,6 +5962,8 @@ sqrdmulh Vd.2S, Vn.2S, Vm.2S
 
 ## SQRSHL
 
+Signed saturating Rounding Shift Left (register).
+
 ```
 sqrshl Bd, Bn, Bm
 sqrshl Hd, Hn, Hm
@@ -4789,6 +5980,8 @@ sqrshl Vd.2D, Vn.2D, Vm.2D
 
 ## SQRSHRN
 
+Signed saturating Rounded Shift Right Narrow (immediate).
+
 ```
 sqrshrn Bd, Hn, #imm  ··························································  (0 < imm <= 8)
 sqrshrn Hd, Sn, #imm  ·························································  (0 < imm <= 16)
@@ -4800,6 +5993,8 @@ sqrshrn Vd.2S, Vn.2D, #imm  ··························
 
 ## SQRSHRN2
 
+Signed saturating Rounded Shift Right Narrow (immediate).
+
 ```
 sqrshrn2 Vd.16B, Vn.8H, #imm  ··················································  (0 < imm <= 8)
 sqrshrn2 Vd.8H, Vn.4S, #imm  ··················································  (0 < imm <= 16)
@@ -4807,6 +6002,8 @@ sqrshrn2 Vd.4S, Vn.2D, #imm  ·························�
 ```
 
 ## SQRSHRUN
+
+Signed saturating Rounded Shift Right Unsigned Narrow (immediate).
 
 ```
 sqrshrun Bd, Hn, #imm  ·························································  (0 < imm <= 8)
@@ -4819,6 +6016,8 @@ sqrshrun Vd.2S, Vn.2D, #imm  ·························�
 
 ## SQRSHRUN2
 
+Signed saturating Rounded Shift Right Unsigned Narrow (immediate).
+
 ```
 sqrshrun2 Vd.16B, Vn.8H, #imm  ·················································  (0 < imm <= 8)
 sqrshrun2 Vd.8H, Vn.4S, #imm  ·················································  (0 < imm <= 16)
@@ -4826,6 +6025,9 @@ sqrshrun2 Vd.4S, Vn.2D, #imm  ·························
 ```
 
 ## SQSHL
+
+- _SQSHL (immediate)_: Signed saturating Shift Left (immediate).
+- _SQSHL (register)_: Signed saturating Shift Left (register).
 
 ```
 sqshl Bd, Bn, #imm  ····························································  (0 <= imm < 8)
@@ -4854,6 +6056,8 @@ sqshl Vd.2D, Vn.2D, Vm.2D
 
 ## SQSHLU
 
+Signed saturating Shift Left Unsigned (immediate).
+
 ```
 sqshlu Bd, Bn, #imm  ···························································  (0 <= imm < 8)
 sqshlu Hd, Hn, #imm  ··························································  (0 <= imm < 16)
@@ -4870,6 +6074,8 @@ sqshlu Vd.2D, Vn.2D, #imm  ··························�
 
 ## SQSHRN
 
+Signed saturating Shift Right Narrow (immediate).
+
 ```
 sqshrn Bd, Hn, #imm  ···························································  (0 < imm <= 8)
 sqshrn Hd, Sn, #imm  ··························································  (0 < imm <= 16)
@@ -4881,6 +6087,8 @@ sqshrn Vd.2S, Vn.2D, #imm  ··························�
 
 ## SQSHRN2
 
+Signed saturating Shift Right Narrow (immediate).
+
 ```
 sqshrn2 Vd.16B, Vn.8H, #imm  ···················································  (0 < imm <= 8)
 sqshrn2 Vd.8H, Vn.4S, #imm  ···················································  (0 < imm <= 16)
@@ -4888,6 +6096,8 @@ sqshrn2 Vd.4S, Vn.2D, #imm  ··························
 ```
 
 ## SQSHRUN
+
+Signed saturating Shift Right Unsigned Narrow (immediate).
 
 ```
 sqshrun Bd, Hn, #imm  ··························································  (0 < imm <= 8)
@@ -4900,6 +6110,8 @@ sqshrun Vd.2S, Vn.2D, #imm  ··························
 
 ## SQSHRUN2
 
+Signed saturating Shift Right Unsigned Narrow (immediate).
+
 ```
 sqshrun2 Vd.16B, Vn.8H, #imm  ··················································  (0 < imm <= 8)
 sqshrun2 Vd.8H, Vn.4S, #imm  ··················································  (0 < imm <= 16)
@@ -4907,6 +6119,8 @@ sqshrun2 Vd.4S, Vn.2D, #imm  ·························�
 ```
 
 ## SQSUB
+
+Signed saturating Subtract.
 
 ```
 sqsub Bd, Bn, Bm
@@ -4924,6 +6138,8 @@ sqsub Vd.2D, Vn.2D, Vm.2D
 
 ## SQXTN
 
+Signed saturating extract Narrow.
+
 ```
 sqxtn Bd, Hn
 sqxtn Hd, Sn
@@ -4935,6 +6151,8 @@ sqxtn Vd.2S, Vn.2D
 
 ## SQXTN2
 
+Signed saturating extract Narrow.
+
 ```
 sqxtn2 Vd.16B, Vn.8H
 sqxtn2 Vd.8H, Vn.4S
@@ -4942,6 +6160,8 @@ sqxtn2 Vd.4S, Vn.2D
 ```
 
 ## SQXTUN
+
+Signed saturating extract Unsigned Narrow.
 
 ```
 sqxtun Bd, Hn
@@ -4954,6 +6174,8 @@ sqxtun Vd.2S, Vn.2D
 
 ## SQXTUN2
 
+Signed saturating extract Unsigned Narrow.
+
 ```
 sqxtun2 Vd.16B, Vn.8H
 sqxtun2 Vd.8H, Vn.4S
@@ -4961,6 +6183,8 @@ sqxtun2 Vd.4S, Vn.2D
 ```
 
 ## SRHADD
+
+Signed Rounding Halving Add.
 
 ```
 srhadd Vd.16B, Vn.16B, Vm.16B
@@ -4972,6 +6196,8 @@ srhadd Vd.2S, Vn.2S, Vm.2S
 ```
 
 ## SRI
+
+Shift Right and Insert (immediate).
 
 ```
 sri Dd, Dn, #imm  ·····························································  (0 < imm <= 64)
@@ -4986,6 +6212,8 @@ sri Vd.2D, Vn.2D, #imm  ····························
 
 ## SRSHL
 
+Signed Rounding Shift Left (register).
+
 ```
 srshl Dd, Dn, Dm
 srshl Vd.16B, Vn.16B, Vm.16B
@@ -4998,6 +6226,8 @@ srshl Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## SRSHR
+
+Signed Rounding Shift Right (immediate).
 
 ```
 srshr Dd, Dn, #imm  ···························································  (0 < imm <= 64)
@@ -5012,6 +6242,8 @@ srshr Vd.2D, Vn.2D, #imm  ···························
 
 ## SRSRA
 
+Signed Rounding Shift Right and Accumulate (immediate).
+
 ```
 srsra Dd, Dn, #imm  ···························································  (0 < imm <= 64)
 srsra Vd.16B, Vn.16B, #imm  ····················································  (0 < imm <= 8)
@@ -5025,11 +6257,15 @@ srsra Vd.2D, Vn.2D, #imm  ···························
 
 ## SSBB
 
+Speculative Store Bypass Barrier: an alias of DSB.
+
 ```
 ssbb 
 ```
 
 ## SSHL
+
+Signed Shift Left (register).
 
 ```
 sshl Dd, Dn, Dm
@@ -5044,6 +6280,8 @@ sshl Vd.2D, Vn.2D, Vm.2D
 
 ## SSHLL
 
+Signed Shift Left Long (immediate).
+
 ```
 sshll Vd.8H, Vn.8B, #imm  ······················································  (0 <= imm < 8)
 sshll Vd.4S, Vn.4H, #imm  ·····················································  (0 <= imm < 16)
@@ -5052,6 +6290,8 @@ sshll Vd.2D, Vn.2S, #imm  ···························
 
 ## SSHLL2
 
+Signed Shift Left Long (immediate).
+
 ```
 sshll2 Vd.8H, Vn.16B, #imm  ····················································  (0 <= imm < 8)
 sshll2 Vd.4S, Vn.8H, #imm  ····················································  (0 <= imm < 16)
@@ -5059,6 +6299,8 @@ sshll2 Vd.2D, Vn.4S, #imm  ··························�
 ```
 
 ## SSHR
+
+Signed Shift Right (immediate).
 
 ```
 sshr Dd, Dn, #imm  ····························································  (0 < imm <= 64)
@@ -5073,6 +6315,8 @@ sshr Vd.2D, Vn.2D, #imm  ···························�
 
 ## SSRA
 
+Signed Shift Right and Accumulate (immediate).
+
 ```
 ssra Dd, Dn, #imm  ····························································  (0 < imm <= 64)
 ssra Vd.16B, Vn.16B, #imm  ·····················································  (0 < imm <= 8)
@@ -5086,6 +6330,8 @@ ssra Vd.2D, Vn.2D, #imm  ···························�
 
 ## SSUBL
 
+Signed Subtract Long.
+
 ```
 ssubl Vd.8H, Vn.8B, Vm.8B
 ssubl Vd.4S, Vn.4H, Vm.4H
@@ -5093,6 +6339,8 @@ ssubl Vd.2D, Vn.2S, Vm.2S
 ```
 
 ## SSUBL2
+
+Signed Subtract Long.
 
 ```
 ssubl2 Vd.8H, Vn.16B, Vm.16B
@@ -5102,6 +6350,8 @@ ssubl2 Vd.2D, Vn.4S, Vm.4S
 
 ## SSUBW
 
+Signed Subtract Wide.
+
 ```
 ssubw Vd.8H, Vn.8H, Vm.8B
 ssubw Vd.4S, Vn.4S, Vm.4H
@@ -5110,6 +6360,8 @@ ssubw Vd.2D, Vn.2D, Vm.2S
 
 ## SSUBW2
 
+Signed Subtract Wide.
+
 ```
 ssubw2 Vd.8H, Vn.8H, Vm.16B
 ssubw2 Vd.4S, Vn.4S, Vm.8H
@@ -5117,6 +6369,9 @@ ssubw2 Vd.2D, Vn.2D, Vm.4S
 ```
 
 ## ST1
+
+- _ST1 (multiple structures)_: Store multiple single-element structures from one, two, three, or four registers.
+- _ST1 (single structure)_: Store a single-element structure from one lane of one register.
 
 ```
 st1 {Vd.16B * 1}, [Xn|SP]
@@ -5231,6 +6486,9 @@ st1 {Vd.D * 1}[i], [Xn|SP], Xm  ························
 
 ## ST2
 
+- _ST2 (multiple structures)_: Store multiple 2-element structures from two registers.
+- _ST2 (single structure)_: Store single 2-element structure from one lane of two registers.
+
 ```
 st2 {Vd.16B * 2}, [Xn|SP]
 st2 {Vd.8B * 2}, [Xn|SP]
@@ -5268,6 +6526,9 @@ st2 {Vd.D * 2}[i], [Xn|SP], Xm  ························
 ```
 
 ## ST3
+
+- _ST3 (multiple structures)_: Store multiple 3-element structures from three registers.
+- _ST3 (single structure)_: Store single 3-element structure from one lane of three registers.
 
 ```
 st3 {Vd.16B * 3}, [Xn|SP]
@@ -5307,6 +6568,9 @@ st3 {Vd.D * 3}[i], [Xn|SP], Xm  ························
 
 ## ST4
 
+- _ST4 (multiple structures)_: Store multiple 4-element structures from four registers.
+- _ST4 (single structure)_: Store single 4-element structure from one lane of four registers.
+
 ```
 st4 {Vd.16B * 4}, [Xn|SP]
 st4 {Vd.8B * 4}, [Xn|SP]
@@ -5345,6 +6609,8 @@ st4 {Vd.D * 4}[i], [Xn|SP], Xm  ························
 
 ## STADD
 
+Atomic add on word or doubleword in memory, without return: an alias of LDADD, LDADDA, LDADDAL, LDADDL.
+
 ```
 stadd Wd, [Xn|SP]
 stadd Xd, [Xn|SP]
@@ -5352,17 +6618,23 @@ stadd Xd, [Xn|SP]
 
 ## STADDB
 
+Atomic add on byte in memory, without return: an alias of LDADDB, LDADDAB, LDADDALB, LDADDLB.
+
 ```
 staddb Wd, [Xn|SP]
 ```
 
 ## STADDH
 
+Atomic add on halfword in memory, without return: an alias of LDADDH, LDADDAH, LDADDALH, LDADDLH.
+
 ```
 staddh Wd, [Xn|SP]
 ```
 
 ## STADDL
+
+Atomic add on word or doubleword in memory, without return: an alias of LDADD, LDADDA, LDADDAL, LDADDL.
 
 ```
 staddl Wd, [Xn|SP]
@@ -5371,17 +6643,23 @@ staddl Xd, [Xn|SP]
 
 ## STADDLB
 
+Atomic add on byte in memory, without return: an alias of LDADDB, LDADDAB, LDADDALB, LDADDLB.
+
 ```
 staddlb Wd, [Xn|SP]
 ```
 
 ## STADDLH
 
+Atomic add on halfword in memory, without return: an alias of LDADDH, LDADDAH, LDADDALH, LDADDLH.
+
 ```
 staddlh Wd, [Xn|SP]
 ```
 
 ## STCLR
+
+Atomic bit clear on word or doubleword in memory, without return: an alias of LDCLR, LDCLRA, LDCLRAL, LDCLRL.
 
 ```
 stclr Wd, [Xn|SP]
@@ -5390,17 +6668,23 @@ stclr Xd, [Xn|SP]
 
 ## STCLRB
 
+Atomic bit clear on byte in memory, without return: an alias of LDCLRB, LDCLRAB, LDCLRALB, LDCLRLB.
+
 ```
 stclrb Wd, [Xn|SP]
 ```
 
 ## STCLRH
 
+Atomic bit clear on halfword in memory, without return: an alias of LDCLRH, LDCLRAH, LDCLRALH, LDCLRLH.
+
 ```
 stclrh Wd, [Xn|SP]
 ```
 
 ## STCLRL
+
+Atomic bit clear on word or doubleword in memory, without return: an alias of LDCLR, LDCLRA, LDCLRAL, LDCLRL.
 
 ```
 stclrl Wd, [Xn|SP]
@@ -5409,17 +6693,23 @@ stclrl Xd, [Xn|SP]
 
 ## STCLRLB
 
+Atomic bit clear on byte in memory, without return: an alias of LDCLRB, LDCLRAB, LDCLRALB, LDCLRLB.
+
 ```
 stclrlb Wd, [Xn|SP]
 ```
 
 ## STCLRLH
 
+Atomic bit clear on halfword in memory, without return: an alias of LDCLRH, LDCLRAH, LDCLRALH, LDCLRLH.
+
 ```
 stclrlh Wd, [Xn|SP]
 ```
 
 ## STEOR
+
+Atomic exclusive OR on word or doubleword in memory, without return: an alias of LDEOR, LDEORA, LDEORAL, LDEORL.
 
 ```
 steor Wd, [Xn|SP]
@@ -5428,17 +6718,23 @@ steor Xd, [Xn|SP]
 
 ## STEORB
 
+Atomic exclusive OR on byte in memory, without return: an alias of LDEORB, LDEORAB, LDEORALB, LDEORLB.
+
 ```
 steorb Wd, [Xn|SP]
 ```
 
 ## STEORH
 
+Atomic exclusive OR on halfword in memory, without return: an alias of LDEORH, LDEORAH, LDEORALH, LDEORLH.
+
 ```
 steorh Wd, [Xn|SP]
 ```
 
 ## STEORL
+
+Atomic exclusive OR on word or doubleword in memory, without return: an alias of LDEOR, LDEORA, LDEORAL, LDEORL.
 
 ```
 steorl Wd, [Xn|SP]
@@ -5447,17 +6743,23 @@ steorl Xd, [Xn|SP]
 
 ## STEORLB
 
+Atomic exclusive OR on byte in memory, without return: an alias of LDEORB, LDEORAB, LDEORALB, LDEORLB.
+
 ```
 steorlb Wd, [Xn|SP]
 ```
 
 ## STEORLH
 
+Atomic exclusive OR on halfword in memory, without return: an alias of LDEORH, LDEORAH, LDEORALH, LDEORLH.
+
 ```
 steorlh Wd, [Xn|SP]
 ```
 
 ## STLLR
+
+Store LORelease Register.
 
 ```
 stllr Wd, [Xn|SP]
@@ -5466,17 +6768,23 @@ stllr Xd, [Xn|SP]
 
 ## STLLRB
 
+Store LORelease Register Byte.
+
 ```
 stllrb Wd, [Xn|SP]
 ```
 
 ## STLLRH
 
+Store LORelease Register Halfword.
+
 ```
 stllrh Wd, [Xn|SP]
 ```
 
 ## STLR
+
+Store-Release Register.
 
 ```
 stlr Wd, [Xn|SP]
@@ -5485,17 +6793,23 @@ stlr Xd, [Xn|SP]
 
 ## STLRB
 
+Store-Release Register Byte.
+
 ```
 stlrb Wd, [Xn|SP]
 ```
 
 ## STLRH
 
+Store-Release Register Halfword.
+
 ```
 stlrh Wd, [Xn|SP]
 ```
 
 ## STLUR
+
+Store-Release Register (unscaled).
 
 ```
 stlur Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
@@ -5504,17 +6818,23 @@ stlur Xd, [Xn|SP {, #imm }]  ·························�
 
 ## STLURB
 
+Store-Release Register Byte (unscaled).
+
 ```
 stlurb Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ```
 
 ## STLURH
 
+Store-Release Register Halfword (unscaled).
+
 ```
 stlurh Wd, [Xn|SP {, #imm }]  ·············································  (-256 <= imm < 256)
 ```
 
 ## STLXP
+
+Store-Release Exclusive Pair of registers.
 
 ```
 stlxp Wd, Wn, Wm, [Xa|SP]
@@ -5523,6 +6843,8 @@ stlxp Wd, Xn, Xm, [Xa|SP]
 
 ## STLXR
 
+Store-Release Exclusive Register.
+
 ```
 stlxr Wd, Wn, [Xm|SP]
 stlxr Wd, Xn, [Xm|SP]
@@ -5530,17 +6852,24 @@ stlxr Wd, Xn, [Xm|SP]
 
 ## STLXRB
 
+Store-Release Exclusive Register Byte.
+
 ```
 stlxrb Wd, Wn, [Xm|SP]
 ```
 
 ## STLXRH
 
+Store-Release Exclusive Register Halfword.
+
 ```
 stlxrh Wd, Wn, [Xm|SP]
 ```
 
 ## STNP
+
+- _STNP_: Store Pair of Registers, with non-temporal hint.
+- _STNP (SIMD&FP)_: Store Pair of SIMD&FP registers, with Non-temporal hint.
 
 ```
 stnp Sd, Sn, [Xm|SP {, #imm }]  ·································  (-256 <= imm < 256, imm >> 2)
@@ -5551,6 +6880,9 @@ stnp Xd, Xn, [Xm|SP {, #imm }]  ························
 ```
 
 ## STP
+
+- _STP_: Store Pair of Registers.
+- _STP (SIMD&FP)_: Store Pair of SIMD&FP registers.
 
 ```
 stp Sd, Sn, [Xm|SP], #imm  ······································  (-256 <= imm < 256, imm >> 2)
@@ -5571,6 +6903,12 @@ stp Xd, Xn, [Xm|SP {, #imm }]  ························�
 ```
 
 ## STR
+
+- _STR (immediate)_: Store Register (immediate).
+- _STR (register)_: Store Register (register).
+- _STR (immediate, SIMD&FP)_: Store SIMD&FP register (immediate offset).
+- _STR (register, SIMD&FP)_: Store SIMD&FP register (register offset).
+- _STR_: Store vector from ZA array.
 
 ```
 str Bd, [Xn|SP], #imm  ····················································  (-256 <= imm < 256)
@@ -5605,6 +6943,9 @@ str Xd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············�
 
 ## STRB
 
+- _STRB (immediate)_: Store Register Byte (immediate).
+- _STRB (register)_: Store Register Byte (register).
+
 ```
 strb Wd, [Xn|SP], #imm  ···················································  (-256 <= imm < 256)
 strb Wd, [Xn|SP, #imm]!  ··················································  (-256 <= imm < 256)
@@ -5613,6 +6954,9 @@ strb Wd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············
 ```
 
 ## STRH
+
+- _STRH (immediate)_: Store Register Halfword (immediate).
+- _STRH (register)_: Store Register Halfword (register).
 
 ```
 strh Wd, [Xn|SP], #imm  ···················································  (-256 <= imm < 256)
@@ -5623,6 +6967,8 @@ strh Wd, [Xn|SP, Wm|Xm {, LSL|UXTW|SXTW|SXTX #imm }]  ·············
 
 ## STSET
 
+Atomic bit set on word or doubleword in memory, without return: an alias of LDSET, LDSETA, LDSETAL, LDSETL.
+
 ```
 stset Wd, [Xn|SP]
 stset Xd, [Xn|SP]
@@ -5630,17 +6976,23 @@ stset Xd, [Xn|SP]
 
 ## STSETB
 
+Atomic bit set on byte in memory, without return: an alias of LDSETB, LDSETAB, LDSETALB, LDSETLB.
+
 ```
 stsetb Wd, [Xn|SP]
 ```
 
 ## STSETH
 
+Atomic bit set on halfword in memory, without return: an alias of LDSETH, LDSETAH, LDSETALH, LDSETLH.
+
 ```
 stseth Wd, [Xn|SP]
 ```
 
 ## STSETL
+
+Atomic bit set on word or doubleword in memory, without return: an alias of LDSET, LDSETA, LDSETAL, LDSETL.
 
 ```
 stsetl Wd, [Xn|SP]
@@ -5649,17 +7001,23 @@ stsetl Xd, [Xn|SP]
 
 ## STSETLB
 
+Atomic bit set on byte in memory, without return: an alias of LDSETB, LDSETAB, LDSETALB, LDSETLB.
+
 ```
 stsetlb Wd, [Xn|SP]
 ```
 
 ## STSETLH
 
+Atomic bit set on halfword in memory, without return: an alias of LDSETH, LDSETAH, LDSETALH, LDSETLH.
+
 ```
 stsetlh Wd, [Xn|SP]
 ```
 
 ## STSMAX
+
+Atomic signed maximum on word or doubleword in memory, without return: an alias of LDSMAX, LDSMAXA, LDSMAXAL, LDSMAXL.
 
 ```
 stsmax Wd, [Xn|SP]
@@ -5668,17 +7026,23 @@ stsmax Xd, [Xn|SP]
 
 ## STSMAXB
 
+Atomic signed maximum on byte in memory, without return: an alias of LDSMAXB, LDSMAXAB, LDSMAXALB, LDSMAXLB.
+
 ```
 stsmaxb Wd, [Xn|SP]
 ```
 
 ## STSMAXH
 
+Atomic signed maximum on halfword in memory, without return: an alias of LDSMAXH, LDSMAXAH, LDSMAXALH, LDSMAXLH.
+
 ```
 stsmaxh Wd, [Xn|SP]
 ```
 
 ## STSMAXL
+
+Atomic signed maximum on word or doubleword in memory, without return: an alias of LDSMAX, LDSMAXA, LDSMAXAL, LDSMAXL.
 
 ```
 stsmaxl Wd, [Xn|SP]
@@ -5687,17 +7051,23 @@ stsmaxl Xd, [Xn|SP]
 
 ## STSMAXLB
 
+Atomic signed maximum on byte in memory, without return: an alias of LDSMAXB, LDSMAXAB, LDSMAXALB, LDSMAXLB.
+
 ```
 stsmaxlb Wd, [Xn|SP]
 ```
 
 ## STSMAXLH
 
+Atomic signed maximum on halfword in memory, without return: an alias of LDSMAXH, LDSMAXAH, LDSMAXALH, LDSMAXLH.
+
 ```
 stsmaxlh Wd, [Xn|SP]
 ```
 
 ## STSMIN
+
+Atomic signed minimum on word or doubleword in memory, without return: an alias of LDSMIN, LDSMINA, LDSMINAL, LDSMINL.
 
 ```
 stsmin Wd, [Xn|SP]
@@ -5706,17 +7076,23 @@ stsmin Xd, [Xn|SP]
 
 ## STSMINB
 
+Atomic signed minimum on byte in memory, without return: an alias of LDSMINB, LDSMINAB, LDSMINALB, LDSMINLB.
+
 ```
 stsminb Wd, [Xn|SP]
 ```
 
 ## STSMINH
 
+Atomic signed minimum on halfword in memory, without return: an alias of LDSMINH, LDSMINAH, LDSMINALH, LDSMINLH.
+
 ```
 stsminh Wd, [Xn|SP]
 ```
 
 ## STSMINL
+
+Atomic signed minimum on word or doubleword in memory, without return: an alias of LDSMIN, LDSMINA, LDSMINAL, LDSMINL.
 
 ```
 stsminl Wd, [Xn|SP]
@@ -5725,17 +7101,23 @@ stsminl Xd, [Xn|SP]
 
 ## STSMINLB
 
+Atomic signed minimum on byte in memory, without return: an alias of LDSMINB, LDSMINAB, LDSMINALB, LDSMINLB.
+
 ```
 stsminlb Wd, [Xn|SP]
 ```
 
 ## STSMINLH
 
+Atomic signed minimum on halfword in memory, without return: an alias of LDSMINH, LDSMINAH, LDSMINALH, LDSMINLH.
+
 ```
 stsminlh Wd, [Xn|SP]
 ```
 
 ## STTR
+
+Store Register (unprivileged).
 
 ```
 sttr Wd, [Xn|SP {, #imm }]  ···············································  (-256 <= imm < 256)
@@ -5744,17 +7126,23 @@ sttr Xd, [Xn|SP {, #imm }]  ··························
 
 ## STTRB
 
+Store Register Byte (unprivileged).
+
 ```
 sttrb Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## STTRH
 
+Store Register Halfword (unprivileged).
+
 ```
 sttrh Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## STUMAX
+
+Atomic unsigned maximum on word or doubleword in memory, without return: an alias of LDUMAX, LDUMAXA, LDUMAXAL, LDUMAXL.
 
 ```
 stumax Wd, [Xn|SP]
@@ -5763,17 +7151,23 @@ stumax Xd, [Xn|SP]
 
 ## STUMAXB
 
+Atomic unsigned maximum on byte in memory, without return: an alias of LDUMAXB, LDUMAXAB, LDUMAXALB, LDUMAXLB.
+
 ```
 stumaxb Wd, [Xn|SP]
 ```
 
 ## STUMAXH
 
+Atomic unsigned maximum on halfword in memory, without return: an alias of LDUMAXH, LDUMAXAH, LDUMAXALH, LDUMAXLH.
+
 ```
 stumaxh Wd, [Xn|SP]
 ```
 
 ## STUMAXL
+
+Atomic unsigned maximum on word or doubleword in memory, without return: an alias of LDUMAX, LDUMAXA, LDUMAXAL, LDUMAXL.
 
 ```
 stumaxl Wd, [Xn|SP]
@@ -5782,17 +7176,23 @@ stumaxl Xd, [Xn|SP]
 
 ## STUMAXLB
 
+Atomic unsigned maximum on byte in memory, without return: an alias of LDUMAXB, LDUMAXAB, LDUMAXALB, LDUMAXLB.
+
 ```
 stumaxlb Wd, [Xn|SP]
 ```
 
 ## STUMAXLH
 
+Atomic unsigned maximum on halfword in memory, without return: an alias of LDUMAXH, LDUMAXAH, LDUMAXALH, LDUMAXLH.
+
 ```
 stumaxlh Wd, [Xn|SP]
 ```
 
 ## STUMIN
+
+Atomic unsigned minimum on word or doubleword in memory, without return: an alias of LDUMIN, LDUMINA, LDUMINAL, LDUMINL.
 
 ```
 stumin Wd, [Xn|SP]
@@ -5801,17 +7201,23 @@ stumin Xd, [Xn|SP]
 
 ## STUMINB
 
+Atomic unsigned minimum on byte in memory, without return: an alias of LDUMINB, LDUMINAB, LDUMINALB, LDUMINLB.
+
 ```
 stuminb Wd, [Xn|SP]
 ```
 
 ## STUMINH
 
+Atomic unsigned minimum on halfword in memory, without return: an alias of LDUMINH, LDUMINAH, LDUMINALH, LDUMINLH.
+
 ```
 stuminh Wd, [Xn|SP]
 ```
 
 ## STUMINL
+
+Atomic unsigned minimum on word or doubleword in memory, without return: an alias of LDUMIN, LDUMINA, LDUMINAL, LDUMINL.
 
 ```
 stuminl Wd, [Xn|SP]
@@ -5820,17 +7226,24 @@ stuminl Xd, [Xn|SP]
 
 ## STUMINLB
 
+Atomic unsigned minimum on byte in memory, without return: an alias of LDUMINB, LDUMINAB, LDUMINALB, LDUMINLB.
+
 ```
 stuminlb Wd, [Xn|SP]
 ```
 
 ## STUMINLH
 
+Atomic unsigned minimum on halfword in memory, without return: an alias of LDUMINH, LDUMINAH, LDUMINALH, LDUMINLH.
+
 ```
 stuminlh Wd, [Xn|SP]
 ```
 
 ## STUR
+
+- _STUR_: Store Register (unscaled).
+- _STUR (SIMD&FP)_: Store SIMD&FP register (unscaled offset).
 
 ```
 stur Bd, [Xn|SP {, #imm }]  ···············································  (-256 <= imm < 256)
@@ -5844,17 +7257,23 @@ stur Xd, [Xn|SP {, #imm }]  ··························
 
 ## STURB
 
+Store Register Byte (unscaled).
+
 ```
 sturb Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## STURH
 
+Store Register Halfword (unscaled).
+
 ```
 sturh Wd, [Xn|SP {, #imm }]  ··············································  (-256 <= imm < 256)
 ```
 
 ## STXP
+
+Store Exclusive Pair of registers.
 
 ```
 stxp Wd, Wn, Wm, [Xa|SP]
@@ -5863,6 +7282,8 @@ stxp Wd, Xn, Xm, [Xa|SP]
 
 ## STXR
 
+Store Exclusive Register.
+
 ```
 stxr Wd, Wn, [Xm|SP]
 stxr Wd, Xn, [Xm|SP]
@@ -5870,17 +7291,26 @@ stxr Wd, Xn, [Xm|SP]
 
 ## STXRB
 
+Store Exclusive Register Byte.
+
 ```
 stxrb Wd, Wn, [Xm|SP]
 ```
 
 ## STXRH
 
+Store Exclusive Register Halfword.
+
 ```
 stxrh Wd, Wn, [Xm|SP]
 ```
 
 ## SUB
+
+- _SUB (extended register)_: Subtract (extended register).
+- _SUB (immediate)_: Subtract (immediate).
+- _SUB (shifted register)_: Subtract (shifted register).
+- _SUB (vector)_: Subtract (vector).
 
 ```
 sub Wd, Wn, Wm {, LSL|LSR|ASR #imm }  ·········································  (0 <= imm < 32)
@@ -5902,6 +7332,8 @@ sub Vd.2D, Vn.2D, Vm.2D
 
 ## SUBHN
 
+Subtract returning High Narrow.
+
 ```
 subhn Vd.8B, Vn.8H, Vm.8H
 subhn Vd.4H, Vn.4S, Vm.4S
@@ -5910,6 +7342,8 @@ subhn Vd.2S, Vn.2D, Vm.2D
 
 ## SUBHN2
 
+Subtract returning High Narrow.
+
 ```
 subhn2 Vd.16B, Vn.8H, Vm.8H
 subhn2 Vd.8H, Vn.4S, Vm.4S
@@ -5917,6 +7351,10 @@ subhn2 Vd.4S, Vn.2D, Vm.2D
 ```
 
 ## SUBS
+
+- _SUBS (extended register)_: Subtract (extended register), setting flags.
+- _SUBS (immediate)_: Subtract (immediate), setting flags.
+- _SUBS (shifted register)_: Subtract (shifted register), setting flags.
 
 ```
 subs Wd, Wn, Wm {, LSL|LSR|ASR #imm }  ········································  (0 <= imm < 32)
@@ -5929,6 +7367,8 @@ subs Xd, Xn|SP, #imm1 {, LSL #imm2 }  ·····················
 ```
 
 ## SUQADD
+
+Signed saturating Accumulate of Unsigned value.
 
 ```
 suqadd Bd, Bn
@@ -5946,11 +7386,15 @@ suqadd Vd.2D, Vn.2D
 
 ## SVC
 
+Supervisor Call.
+
 ```
 svc #imm  ··································································  (0 <= imm < 65536)
 ```
 
 ## SWP
+
+Swap word or doubleword in memory.
 
 ```
 swp Wd, Wn, [Xm|SP]
@@ -5959,6 +7403,8 @@ swp Xd, Xn, [Xm|SP]
 
 ## SWPA
 
+Swap word or doubleword in memory.
+
 ```
 swpa Wd, Wn, [Xm|SP]
 swpa Xd, Xn, [Xm|SP]
@@ -5966,17 +7412,23 @@ swpa Xd, Xn, [Xm|SP]
 
 ## SWPAB
 
+Swap byte in memory.
+
 ```
 swpab Wd, Wn, [Xm|SP]
 ```
 
 ## SWPAH
 
+Swap halfword in memory.
+
 ```
 swpah Wd, Wn, [Xm|SP]
 ```
 
 ## SWPAL
+
+Swap word or doubleword in memory.
 
 ```
 swpal Wd, Wn, [Xm|SP]
@@ -5985,11 +7437,15 @@ swpal Xd, Xn, [Xm|SP]
 
 ## SWPALB
 
+Swap byte in memory.
+
 ```
 swpalb Wd, Wn, [Xm|SP]
 ```
 
 ## SWPALH
+
+Swap halfword in memory.
 
 ```
 swpalh Wd, Wn, [Xm|SP]
@@ -5997,17 +7453,23 @@ swpalh Wd, Wn, [Xm|SP]
 
 ## SWPB
 
+Swap byte in memory.
+
 ```
 swpb Wd, Wn, [Xm|SP]
 ```
 
 ## SWPH
 
+Swap halfword in memory.
+
 ```
 swph Wd, Wn, [Xm|SP]
 ```
 
 ## SWPL
+
+Swap word or doubleword in memory.
 
 ```
 swpl Wd, Wn, [Xm|SP]
@@ -6016,17 +7478,23 @@ swpl Xd, Xn, [Xm|SP]
 
 ## SWPLB
 
+Swap byte in memory.
+
 ```
 swplb Wd, Wn, [Xm|SP]
 ```
 
 ## SWPLH
 
+Swap halfword in memory.
+
 ```
 swplh Wd, Wn, [Xm|SP]
 ```
 
 ## SXTB
+
+Signed Extend Byte: an alias of SBFM.
 
 ```
 sxtb Wd, Wn
@@ -6035,12 +7503,16 @@ sxtb Xd, Wn
 
 ## SXTH
 
+Sign Extend Halfword: an alias of SBFM.
+
 ```
 sxth Wd, Wn
 sxth Xd, Wn
 ```
 
 ## SXTL
+
+Signed extend Long: an alias of SSHLL, SSHLL2.
 
 ```
 sxtl Vd.8H, Vn.8B
@@ -6050,6 +7522,8 @@ sxtl Vd.2D, Vn.2S
 
 ## SXTL2
 
+Signed extend Long: an alias of SSHLL, SSHLL2.
+
 ```
 sxtl2 Vd.8H, Vn.16B
 sxtl2 Vd.4S, Vn.8H
@@ -6058,11 +7532,15 @@ sxtl2 Vd.2D, Vn.4S
 
 ## SXTW
 
+Sign Extend Word: an alias of SBFM.
+
 ```
 sxtw Xd, Wn
 ```
 
 ## SYS
+
+System instruction.
 
 ```
 sys #imm1, <symbol>, <symbol>, #imm2 {, Xn }  ··················  (0 <= imm1 < 8, 0 <= imm2 < 8)
@@ -6070,11 +7548,15 @@ sys #imm1, <symbol>, <symbol>, #imm2 {, Xn }  ·················
 
 ## SYSL
 
+System instruction with result.
+
 ```
 sysl Xd, #imm1, <symbol>, <symbol>, #imm2  ·····················  (0 <= imm1 < 8, 0 <= imm2 < 8)
 ```
 
 ## TBL
+
+Table vector Lookup.
 
 ```
 tbl Vd.16B, {Vn.16B * 2}, Vm.16B
@@ -6089,12 +7571,16 @@ tbl Vd.8B, {Vn.16B * 1}, Vm.8B
 
 ## TBNZ
 
+Test bit and Branch if Nonzero.
+
 ```
 tbnz Wd, #imm, <offset>  ···················  (0 <= imm < 32, offset >> 2 is 14-bit (+/- 32 KB))
 tbnz Xd, #imm, <offset>  ···················  (0 <= imm < 64, offset >> 2 is 14-bit (+/- 32 KB))
 ```
 
 ## TBX
+
+Table vector lookup extension.
 
 ```
 tbx Vd.16B, {Vn.16B * 2}, Vm.16B
@@ -6109,6 +7595,8 @@ tbx Vd.8B, {Vn.16B * 1}, Vm.8B
 
 ## TBZ
 
+Test bit and Branch if Zero.
+
 ```
 tbz Wd, #imm, <offset>  ····················  (0 <= imm < 32, offset >> 2 is 14-bit (+/- 32 KB))
 tbz Xd, #imm, <offset>  ····················  (0 <= imm < 64, offset >> 2 is 14-bit (+/- 32 KB))
@@ -6116,11 +7604,15 @@ tbz Xd, #imm, <offset>  ····················  (0 <= imm < 64
 
 ## TLBI
 
+TLB Invalidate operation: an alias of SYS.
+
 ```
 tlbi <symbol> {, Xn }
 ```
 
 ## TRN1
+
+Transpose vectors (primary).
 
 ```
 trn1 Vd.16B, Vn.16B, Vm.16B
@@ -6134,6 +7626,8 @@ trn1 Vd.2D, Vn.2D, Vm.2D
 
 ## TRN2
 
+Transpose vectors (secondary).
+
 ```
 trn2 Vd.16B, Vn.16B, Vm.16B
 trn2 Vd.8B, Vn.8B, Vm.8B
@@ -6146,11 +7640,16 @@ trn2 Vd.2D, Vn.2D, Vm.2D
 
 ## TSB
 
+Trace Synchronization Barrier.
+
 ```
 tsb CSYNC
 ```
 
 ## TST
+
+- _TST (immediate)_: Test bits (immediate): an alias of ANDS (immediate).
+- _TST (shifted register)_: Test (shifted register): an alias of ANDS (shifted register).
 
 ```
 tst Wd, #imm  ·························································  (imm is 32-bit logical)
@@ -6160,6 +7659,8 @@ tst Xd, Xn {, LSL|LSR|ASR|ROR #imm }  ·····················
 ```
 
 ## UABA
+
+Unsigned Absolute difference and Accumulate.
 
 ```
 uaba Vd.16B, Vn.16B, Vm.16B
@@ -6172,6 +7673,8 @@ uaba Vd.2S, Vn.2S, Vm.2S
 
 ## UABAL
 
+Unsigned Absolute difference and Accumulate Long.
+
 ```
 uabal Vd.8H, Vn.8B, Vm.8B
 uabal Vd.4S, Vn.4H, Vm.4H
@@ -6180,6 +7683,8 @@ uabal Vd.2D, Vn.2S, Vm.2S
 
 ## UABAL2
 
+Unsigned Absolute difference and Accumulate Long.
+
 ```
 uabal2 Vd.8H, Vn.16B, Vm.16B
 uabal2 Vd.4S, Vn.8H, Vm.8H
@@ -6187,6 +7692,8 @@ uabal2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## UABD
+
+Unsigned Absolute Difference (vector).
 
 ```
 uabd Vd.16B, Vn.16B, Vm.16B
@@ -6199,6 +7706,8 @@ uabd Vd.2S, Vn.2S, Vm.2S
 
 ## UABDL
 
+Unsigned Absolute Difference Long.
+
 ```
 uabdl Vd.8H, Vn.8B, Vm.8B
 uabdl Vd.4S, Vn.4H, Vm.4H
@@ -6207,6 +7716,8 @@ uabdl Vd.2D, Vn.2S, Vm.2S
 
 ## UABDL2
 
+Unsigned Absolute Difference Long.
+
 ```
 uabdl2 Vd.8H, Vn.16B, Vm.16B
 uabdl2 Vd.4S, Vn.8H, Vm.8H
@@ -6214,6 +7725,8 @@ uabdl2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## UADALP
+
+Unsigned Add and Accumulate Long Pairwise.
 
 ```
 uadalp Vd.8H, Vn.16B
@@ -6226,6 +7739,8 @@ uadalp Vd.1D, Vn.2S
 
 ## UADDL
 
+Unsigned Add Long (vector).
+
 ```
 uaddl Vd.8H, Vn.8B, Vm.8B
 uaddl Vd.4S, Vn.4H, Vm.4H
@@ -6234,6 +7749,8 @@ uaddl Vd.2D, Vn.2S, Vm.2S
 
 ## UADDL2
 
+Unsigned Add Long (vector).
+
 ```
 uaddl2 Vd.8H, Vn.16B, Vm.16B
 uaddl2 Vd.4S, Vn.8H, Vm.8H
@@ -6241,6 +7758,8 @@ uaddl2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## UADDLP
+
+Unsigned Add Long Pairwise.
 
 ```
 uaddlp Vd.8H, Vn.16B
@@ -6253,6 +7772,8 @@ uaddlp Vd.1D, Vn.2S
 
 ## UADDLV
 
+Unsigned sum Long across Vector.
+
 ```
 uaddlv Hd, Vn.16B
 uaddlv Hd, Vn.8B
@@ -6263,6 +7784,8 @@ uaddlv Dd, Vn.4S
 
 ## UADDW
 
+Unsigned Add Wide.
+
 ```
 uaddw Vd.8H, Vn.8H, Vm.8B
 uaddw Vd.4S, Vn.4S, Vm.4H
@@ -6270,6 +7793,8 @@ uaddw Vd.2D, Vn.2D, Vm.2S
 ```
 
 ## UADDW2
+
+Unsigned Add Wide.
 
 ```
 uaddw2 Vd.8H, Vn.8H, Vm.16B
@@ -6279,12 +7804,16 @@ uaddw2 Vd.2D, Vn.2D, Vm.4S
 
 ## UBFIZ
 
+Unsigned Bitfield Insert in Zero: an alias of UBFM.
+
 ```
 ubfiz Wd, Wn, #imm1, #imm2  ···············  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
 ubfiz Xd, Xn, #imm1, #imm2  ···············  (0 <= imm1 < 64, 0 < imm2 <= 64, imm1 + imm2 <= 64)
 ```
 
 ## UBFM
+
+Unsigned Bitfield Move.
 
 ```
 ubfm Wd, Wn, #imm1, #imm2  ···································  (0 <= imm1 < 32, 0 <= imm2 < 32)
@@ -6293,12 +7822,19 @@ ubfm Xd, Xn, #imm1, #imm2  ·················  (0 <= imm1 < 64, 
 
 ## UBFX
 
+Unsigned Bitfield Extract: an alias of UBFM.
+
 ```
 ubfx Wd, Wn, #imm1, #imm2  ················  (0 <= imm1 < 32, 0 < imm2 <= 32, imm1 + imm2 <= 32)
 ubfx Xd, Xn, #imm1, #imm2  ················  (0 <= imm1 < 64, 0 < imm2 <= 64, imm1 + imm2 <= 64)
 ```
 
 ## UCVTF
+
+- _UCVTF (scalar, fixed-point)_: Unsigned fixed-point Convert to Floating-point (scalar).
+- _UCVTF (scalar, integer)_: Unsigned integer Convert to Floating-point (scalar).
+- _UCVTF (vector, fixed-point)_: Unsigned fixed-point Convert to Floating-point (vector).
+- _UCVTF (vector, integer)_: Unsigned integer Convert to Floating-point (vector).
 
 ```
 ucvtf Hd, Hn, #imm  ···························································  (0 < imm <= 16)
@@ -6333,11 +7869,15 @@ ucvtf Dd, Xn
 
 ## UDF
 
+Permanently Undefined.
+
 ```
 udf #imm  ··································································  (0 <= imm < 65536)
 ```
 
 ## UDIV
+
+Unsigned Divide.
 
 ```
 udiv Wd, Wn, Wm
@@ -6345,6 +7885,9 @@ udiv Xd, Xn, Xm
 ```
 
 ## UDOT
+
+- _UDOT (by element)_: Dot Product unsigned arithmetic (vector, by element).
+- _UDOT (vector)_: Dot Product unsigned arithmetic (vector).
 
 ```
 udot Vd.2S, Vn.8B, Vm.4B[i]
@@ -6354,6 +7897,8 @@ udot Vd.4S, Vn.16B, Vm.16B
 ```
 
 ## UHADD
+
+Unsigned Halving Add.
 
 ```
 uhadd Vd.16B, Vn.16B, Vm.16B
@@ -6366,6 +7911,8 @@ uhadd Vd.2S, Vn.2S, Vm.2S
 
 ## UHSUB
 
+Unsigned Halving Subtract.
+
 ```
 uhsub Vd.16B, Vn.16B, Vm.16B
 uhsub Vd.8B, Vn.8B, Vm.8B
@@ -6377,11 +7924,15 @@ uhsub Vd.2S, Vn.2S, Vm.2S
 
 ## UMADDL
 
+Unsigned Multiply-Add Long.
+
 ```
 umaddl Xd, Wn, Wm, Xa
 ```
 
 ## UMAX
+
+Unsigned Maximum (vector).
 
 ```
 umax Vd.16B, Vn.16B, Vm.16B
@@ -6394,6 +7945,8 @@ umax Vd.2S, Vn.2S, Vm.2S
 
 ## UMAXP
 
+Unsigned Maximum Pairwise.
+
 ```
 umaxp Vd.16B, Vn.16B, Vm.16B
 umaxp Vd.8B, Vn.8B, Vm.8B
@@ -6405,6 +7958,8 @@ umaxp Vd.2S, Vn.2S, Vm.2S
 
 ## UMAXV
 
+Unsigned Maximum across Vector.
+
 ```
 umaxv Bd, Vn.16B
 umaxv Bd, Vn.8B
@@ -6414,6 +7969,8 @@ umaxv Sd, Vn.4S
 ```
 
 ## UMIN
+
+Unsigned Minimum (vector).
 
 ```
 umin Vd.16B, Vn.16B, Vm.16B
@@ -6426,6 +7983,8 @@ umin Vd.2S, Vn.2S, Vm.2S
 
 ## UMINP
 
+Unsigned Minimum Pairwise.
+
 ```
 uminp Vd.16B, Vn.16B, Vm.16B
 uminp Vd.8B, Vn.8B, Vm.8B
@@ -6437,6 +7996,8 @@ uminp Vd.2S, Vn.2S, Vm.2S
 
 ## UMINV
 
+Unsigned Minimum across Vector.
+
 ```
 uminv Bd, Vn.16B
 uminv Bd, Vn.8B
@@ -6446,6 +8007,9 @@ uminv Sd, Vn.4S
 ```
 
 ## UMLAL
+
+- _UMLAL_: Unsigned Multiply-Add Long (vector, by element).
+- _UMLAL_: Unsigned Multiply-Add Long (vector).
 
 ```
 umlal Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -6457,6 +8021,9 @@ umlal Vd.2D, Vn.2S, Vm.2S
 
 ## UMLAL2
 
+- _UMLAL2 (by element)_: Unsigned Multiply-Add Long (vector, by element).
+- _UMLAL2 (vector)_: Unsigned Multiply-Add Long (vector).
+
 ```
 umlal2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 umlal2 Vd.2D, Vn.4S, Vm.S[i]
@@ -6466,6 +8033,9 @@ umlal2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## UMLSL
+
+- _UMLSL_: Unsigned Multiply-Subtract Long (vector, by element).
+- _UMLSL_: Unsigned Multiply-Subtract Long (vector).
 
 ```
 umlsl Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -6477,6 +8047,9 @@ umlsl Vd.2D, Vn.2S, Vm.2S
 
 ## UMLSL2
 
+- _UMLSL2 (by element)_: Unsigned Multiply-Subtract Long (vector, by element).
+- _UMLSL2 (vector)_: Unsigned Multiply-Subtract Long (vector).
+
 ```
 umlsl2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 umlsl2 Vd.2D, Vn.4S, Vm.S[i]
@@ -6487,11 +8060,15 @@ umlsl2 Vd.2D, Vn.4S, Vm.4S
 
 ## UMNEGL
 
+Unsigned Multiply-Negate Long: an alias of UMSUBL.
+
 ```
 umnegl Xd, Wn, Wm
 ```
 
 ## UMOV
+
+Unsigned Move vector element to general-purpose register.
 
 ```
 umov Wd, Vn.B[i]
@@ -6502,17 +8079,25 @@ umov Xd, Vn.D[i]
 
 ## UMSUBL
 
+Unsigned Multiply-Subtract Long.
+
 ```
 umsubl Xd, Wn, Wm, Xa
 ```
 
 ## UMULH
 
+Unsigned Multiply High.
+
 ```
 umulh Xd, Xn, Xm
 ```
 
 ## UMULL
+
+- _UMULL_: Unsigned Multiply Long: an alias of UMADDL.
+- _UMULL_: Unsigned Multiply Long (vector, by element).
+- _UMULL_: Unsigned Multiply long (vector).
 
 ```
 umull Vd.4S, Vn.4H, Vm.H[i]  ·························································  (m < 16)
@@ -6525,6 +8110,9 @@ umull Xd, Wn, Wm
 
 ## UMULL2
 
+- _UMULL2 (by element)_: Unsigned Multiply Long (vector, by element).
+- _UMULL2 (vector)_: Unsigned Multiply long (vector).
+
 ```
 umull2 Vd.4S, Vn.8H, Vm.H[i]  ························································  (m < 16)
 umull2 Vd.2D, Vn.4S, Vm.S[i]
@@ -6534,6 +8122,8 @@ umull2 Vd.2D, Vn.4S, Vm.4S
 ```
 
 ## UQADD
+
+Unsigned saturating Add.
 
 ```
 uqadd Bd, Bn, Bm
@@ -6551,6 +8141,8 @@ uqadd Vd.2D, Vn.2D, Vm.2D
 
 ## UQRSHL
 
+Unsigned saturating Rounding Shift Left (register).
+
 ```
 uqrshl Bd, Bn, Bm
 uqrshl Hd, Hn, Hm
@@ -6567,6 +8159,8 @@ uqrshl Vd.2D, Vn.2D, Vm.2D
 
 ## UQRSHRN
 
+Unsigned saturating Rounded Shift Right Narrow (immediate).
+
 ```
 uqrshrn Bd, Hn, #imm  ··························································  (0 < imm <= 8)
 uqrshrn Hd, Sn, #imm  ·························································  (0 < imm <= 16)
@@ -6578,6 +8172,8 @@ uqrshrn Vd.2S, Vn.2D, #imm  ··························
 
 ## UQRSHRN2
 
+Unsigned saturating Rounded Shift Right Narrow (immediate).
+
 ```
 uqrshrn2 Vd.16B, Vn.8H, #imm  ··················································  (0 < imm <= 8)
 uqrshrn2 Vd.8H, Vn.4S, #imm  ··················································  (0 < imm <= 16)
@@ -6585,6 +8181,9 @@ uqrshrn2 Vd.4S, Vn.2D, #imm  ·························�
 ```
 
 ## UQSHL
+
+- _UQSHL (immediate)_: Unsigned saturating Shift Left (immediate).
+- _UQSHL (register)_: Unsigned saturating Shift Left (register).
 
 ```
 uqshl Bd, Bn, #imm  ····························································  (0 <= imm < 8)
@@ -6613,6 +8212,8 @@ uqshl Vd.2D, Vn.2D, Vm.2D
 
 ## UQSHRN
 
+Unsigned saturating Shift Right Narrow (immediate).
+
 ```
 uqshrn Bd, Hn, #imm  ···························································  (0 < imm <= 8)
 uqshrn Hd, Sn, #imm  ··························································  (0 < imm <= 16)
@@ -6624,6 +8225,8 @@ uqshrn Vd.2S, Vn.2D, #imm  ··························�
 
 ## UQSHRN2
 
+Unsigned saturating Shift Right Narrow (immediate).
+
 ```
 uqshrn2 Vd.16B, Vn.8H, #imm  ···················································  (0 < imm <= 8)
 uqshrn2 Vd.8H, Vn.4S, #imm  ···················································  (0 < imm <= 16)
@@ -6631,6 +8234,8 @@ uqshrn2 Vd.4S, Vn.2D, #imm  ··························
 ```
 
 ## UQSUB
+
+Unsigned saturating Subtract.
 
 ```
 uqsub Bd, Bn, Bm
@@ -6648,6 +8253,8 @@ uqsub Vd.2D, Vn.2D, Vm.2D
 
 ## UQXTN
 
+Unsigned saturating extract Narrow.
+
 ```
 uqxtn Bd, Hn
 uqxtn Hd, Sn
@@ -6659,6 +8266,8 @@ uqxtn Vd.2S, Vn.2D
 
 ## UQXTN2
 
+Unsigned saturating extract Narrow.
+
 ```
 uqxtn2 Vd.16B, Vn.8H
 uqxtn2 Vd.8H, Vn.4S
@@ -6667,12 +8276,16 @@ uqxtn2 Vd.4S, Vn.2D
 
 ## URECPE
 
+Unsigned Reciprocal Estimate.
+
 ```
 urecpe Vd.4S, Vn.4S
 urecpe Vd.2S, Vn.2S
 ```
 
 ## URHADD
+
+Unsigned Rounding Halving Add.
 
 ```
 urhadd Vd.16B, Vn.16B, Vm.16B
@@ -6684,6 +8297,8 @@ urhadd Vd.2S, Vn.2S, Vm.2S
 ```
 
 ## URSHL
+
+Unsigned Rounding Shift Left (register).
 
 ```
 urshl Dd, Dn, Dm
@@ -6698,6 +8313,8 @@ urshl Vd.2D, Vn.2D, Vm.2D
 
 ## URSHR
 
+Unsigned Rounding Shift Right (immediate).
+
 ```
 urshr Dd, Dn, #imm  ···························································  (0 < imm <= 64)
 urshr Vd.16B, Vn.16B, #imm  ····················································  (0 < imm <= 8)
@@ -6711,12 +8328,16 @@ urshr Vd.2D, Vn.2D, #imm  ···························
 
 ## URSQRTE
 
+Unsigned Reciprocal Square Root Estimate.
+
 ```
 ursqrte Vd.4S, Vn.4S
 ursqrte Vd.2S, Vn.2S
 ```
 
 ## URSRA
+
+Unsigned Rounding Shift Right and Accumulate (immediate).
 
 ```
 ursra Dd, Dn, #imm  ···························································  (0 < imm <= 64)
@@ -6731,6 +8352,8 @@ ursra Vd.2D, Vn.2D, #imm  ···························
 
 ## USHL
 
+Unsigned Shift Left (register).
+
 ```
 ushl Dd, Dn, Dm
 ushl Vd.16B, Vn.16B, Vm.16B
@@ -6744,6 +8367,8 @@ ushl Vd.2D, Vn.2D, Vm.2D
 
 ## USHLL
 
+Unsigned Shift Left Long (immediate).
+
 ```
 ushll Vd.8H, Vn.8B, #imm  ······················································  (0 <= imm < 8)
 ushll Vd.4S, Vn.4H, #imm  ·····················································  (0 <= imm < 16)
@@ -6752,6 +8377,8 @@ ushll Vd.2D, Vn.2S, #imm  ···························
 
 ## USHLL2
 
+Unsigned Shift Left Long (immediate).
+
 ```
 ushll2 Vd.8H, Vn.16B, #imm  ····················································  (0 <= imm < 8)
 ushll2 Vd.4S, Vn.8H, #imm  ····················································  (0 <= imm < 16)
@@ -6759,6 +8386,8 @@ ushll2 Vd.2D, Vn.4S, #imm  ··························�
 ```
 
 ## USHR
+
+Unsigned Shift Right (immediate).
 
 ```
 ushr Dd, Dn, #imm  ····························································  (0 < imm <= 64)
@@ -6772,6 +8401,8 @@ ushr Vd.2D, Vn.2D, #imm  ···························�
 ```
 
 ## USQADD
+
+Unsigned saturating Accumulate of Signed value.
 
 ```
 usqadd Bd, Bn
@@ -6789,6 +8420,8 @@ usqadd Vd.2D, Vn.2D
 
 ## USRA
 
+Unsigned Shift Right and Accumulate (immediate).
+
 ```
 usra Dd, Dn, #imm  ····························································  (0 < imm <= 64)
 usra Vd.16B, Vn.16B, #imm  ·····················································  (0 < imm <= 8)
@@ -6802,6 +8435,8 @@ usra Vd.2D, Vn.2D, #imm  ···························�
 
 ## USUBL
 
+Unsigned Subtract Long.
+
 ```
 usubl Vd.8H, Vn.8B, Vm.8B
 usubl Vd.4S, Vn.4H, Vm.4H
@@ -6809,6 +8444,8 @@ usubl Vd.2D, Vn.2S, Vm.2S
 ```
 
 ## USUBL2
+
+Unsigned Subtract Long.
 
 ```
 usubl2 Vd.8H, Vn.16B, Vm.16B
@@ -6818,6 +8455,8 @@ usubl2 Vd.2D, Vn.4S, Vm.4S
 
 ## USUBW
 
+Unsigned Subtract Wide.
+
 ```
 usubw Vd.8H, Vn.8H, Vm.8B
 usubw Vd.4S, Vn.4S, Vm.4H
@@ -6825,6 +8464,8 @@ usubw Vd.2D, Vn.2D, Vm.2S
 ```
 
 ## USUBW2
+
+Unsigned Subtract Wide.
 
 ```
 usubw2 Vd.8H, Vn.8H, Vm.16B
@@ -6834,17 +8475,23 @@ usubw2 Vd.2D, Vn.2D, Vm.4S
 
 ## UXTB
 
+Unsigned Extend Byte: an alias of UBFM.
+
 ```
 uxtb Wd, Wn
 ```
 
 ## UXTH
 
+Unsigned Extend Halfword: an alias of UBFM.
+
 ```
 uxth Wd, Wn
 ```
 
 ## UXTL
+
+Unsigned extend Long: an alias of USHLL, USHLL2.
 
 ```
 uxtl Vd.8H, Vn.8B
@@ -6854,6 +8501,8 @@ uxtl Vd.2D, Vn.2S
 
 ## UXTL2
 
+Unsigned extend Long: an alias of USHLL, USHLL2.
+
 ```
 uxtl2 Vd.8H, Vn.16B
 uxtl2 Vd.4S, Vn.8H
@@ -6861,6 +8510,8 @@ uxtl2 Vd.2D, Vn.4S
 ```
 
 ## UZP1
+
+Unzip vectors (primary).
 
 ```
 uzp1 Vd.16B, Vn.16B, Vm.16B
@@ -6874,6 +8525,8 @@ uzp1 Vd.2D, Vn.2D, Vm.2D
 
 ## UZP2
 
+Unzip vectors (secondary).
+
 ```
 uzp2 Vd.16B, Vn.16B, Vm.16B
 uzp2 Vd.8B, Vn.8B, Vm.8B
@@ -6886,11 +8539,15 @@ uzp2 Vd.2D, Vn.2D, Vm.2D
 
 ## WFE
 
+Wait For Event.
+
 ```
 wfe 
 ```
 
 ## WFI
+
+Wait For Interrupt.
 
 ```
 wfi 
@@ -6898,11 +8555,15 @@ wfi
 
 ## XAR
 
+Exclusive OR and Rotate.
+
 ```
 xar Vd.2D, Vn.2D, Vm.2D, #imm  ················································  (0 <= imm < 64)
 ```
 
 ## XPACD
+
+Strip Pointer Authentication Code.
 
 ```
 xpacd Xd
@@ -6910,17 +8571,23 @@ xpacd Xd
 
 ## XPACI
 
+Strip Pointer Authentication Code.
+
 ```
 xpaci Xd
 ```
 
 ## XPACLRI
 
+Strip Pointer Authentication Code.
+
 ```
 xpaclri 
 ```
 
 ## XTN
+
+Extract Narrow.
 
 ```
 xtn Vd.8B, Vn.8H
@@ -6930,6 +8597,8 @@ xtn Vd.2S, Vn.2D
 
 ## XTN2
 
+Extract Narrow.
+
 ```
 xtn2 Vd.16B, Vn.8H
 xtn2 Vd.8H, Vn.4S
@@ -6938,11 +8607,15 @@ xtn2 Vd.4S, Vn.2D
 
 ## YIELD
 
+YIELD.
+
 ```
 yield 
 ```
 
 ## ZIP1
+
+Zip vectors (primary).
 
 ```
 zip1 Vd.16B, Vn.16B, Vm.16B
@@ -6955,6 +8628,8 @@ zip1 Vd.2D, Vn.2D, Vm.2D
 ```
 
 ## ZIP2
+
+Zip vectors (secondary).
 
 ```
 zip2 Vd.16B, Vn.16B, Vm.16B
